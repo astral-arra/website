@@ -1,0 +1,94 @@
+---
+import { Image } from "astro:assets";
+import logoImg from "../assets/images/arra.jpg";
+const navItems = [
+  {
+    title: "Какво е астрален дизайн",
+    url: "/about",
+  },
+  {
+    title: "Блог",
+    url: "/blog",
+  },
+  {
+    title: "Генерирай карта",
+    url: "/map",
+  },
+  {
+    title: "Консултации",
+    url: "/consult",
+  },
+  {
+    title: "Магазин",
+    url: "/shop",
+  },
+  {
+    title: "Библиотека",
+    url: "/library",
+  },
+];
+
+const { url = "", isHero = false } = Astro.props;
+---
+
+<div
+  class={`${
+    isHero
+      ? ""
+      : "from-cloud-burst-900/60 to-cloud-burst-900/70 shadow-cloud-burst-100 bg-gradient-to-b shadow-2xl"
+  } main-nav hidden w-full md:flex flex-row justify-between items-center`}
+>
+  <div class="logo">
+    <a class="home" href="/">
+      <Image class="rounded-full sepia" src={logoImg} alt="Astral Arra Logo" width="80" /></a
+    >
+  </div>
+  <div>
+    <nav class="w-full uppercase">
+      <ul class="flex flex-row items-center justify-around p-4" role="menu">
+        {
+          navItems.map((item) => (
+            <li role="none">
+              <a
+                href={item.url}
+                class={`${
+                  url === item.url ? "font-bold underline" : ""
+                } text-cloud-burst-50 hover:bg-cloud-burst-400/50 flex h-12 items-center justify-center rounded-lg bg-transparent px-4 py-2 text-center transition duration-500 hover:shadow-2xl`}
+              >
+                {item.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+  <div
+    class="mobile-nav from-cloud-burst-900/60 to-cloud-burst-900 shadow-cloud-burst-100 h-full w-[98%] rounded-r-lg bg-gradient-to-r shadow-2xl transition duration-500 md:hidden"
+  >
+    <nav class="h-full uppercase">
+      <ul class="flex flex-col items-start justify-center p-4" role="menu">
+        {
+          navItems.map((item) => (
+            <li role="none" class="w-full text-left">
+              <a
+                href={item.url}
+                class={`${
+                  url === item.url ? "font-bold underline" : ""
+                } text-cloud-burst-50 hover:bg-cloud-burst-400/50 flex h-12 w-full items-center rounded-lg bg-transparent px-4 py-2 text-center transition duration-500 hover:shadow-2xl`}
+              >
+                {item.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<style>
+  .logo {
+    @apply flex items-center justify-center p-4;
+  }
+</style>

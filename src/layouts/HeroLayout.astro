@@ -1,0 +1,8 @@
+---
+import Layout from "../components/Layout.astro";
+const { title, activeUrl } = Astro.props;
+---
+
+<Layout title={title} activeUrl={activeUrl} isHero={true}>
+  <slot />
+</Layout>
