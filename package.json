@@ -1,31 +1,23 @@
 {
-  "name": "html-tailwind-starter",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "watch": {
-    "build": {
-      "patterns": [
-        "src"
-      ],
-      "extensions": "html"
-    }
-  },
+  "name": "a",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "watch": "npm-watch",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "postcss styles.css -o build/styles.css",
-    "dev": "concurrently \"npm run build && live-server . --port=8080\" \"npm run watch\""
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
-  "keywords": [],
-  "author": "",
   "dependencies": {
-    "autoprefixer": "^10.4.15",
-    "postcss-cli": "^10.1.0",
-    "tailwindcss": "^3.3.3"
+    "@astrojs/tailwind": "^5.0.0",
+    "astro": "^3.0.5"
   },
   "devDependencies": {
-    "concurrently": "^8.2.1",
-    "npm-watch": "^0.11.0"
+    "prettier": "^3.0.3",
+    "prettier-plugin-astro": "^0.12.0",
+    "prettier-plugin-tailwindcss": "^0.5.4",
+    "sharp": "^0.32.5",
+    "tailwindcss": "^3.3.3"
   }
 }

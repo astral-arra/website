@@ -1,0 +1,15 @@
+---
+import { Image } from "astro:assets";
+import underConstructionImg from "../assets/images/under-construction.png";
+import Layout from "../layouts/RegularLayout.astro";
+---
+
+<Layout title="Astral Arra" activeUrl="/blog">
+  <div class="flex h-full">
+    <Image
+      class="mx-auto place-self-center"
+      src={underConstructionImg}
+      alt="Image showing that this page is under construction"
+    />
+  </div>
+</Layout>
