@@ -28,7 +28,7 @@ const { title, activeUrl, isHero = false } = Astro.props;
       <main class="container mx-auto">
         <slot />
       </main>
-      <Footer />
+      <Footer isHero={isHero} />
     </div>
   </body>
 </html>

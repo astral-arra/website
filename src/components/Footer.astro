@@ -1,4 +1,12 @@
-<footer>
+---
+const { isHero = false } = Astro.props;
+---
+
+<footer
+  class={isHero
+    ? ""
+    : "from-cloud-burst-900/60 to-cloud-burst-900/70 shadow-cloud-burst-100 bg-gradient-to-b shadow-2xl"}
+>
   <div class="text-cloud-burst-100 w-full p-4 text-right text-sm">
     Copyright © <span id="copyright-year">2023</span> All rights reserved - AstralARЯA
   </div>

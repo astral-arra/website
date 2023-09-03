@@ -1,7 +1,31 @@
 ---
+import { Image } from "astro:assets";
 import Layout from "../layouts/HeroLayout.astro";
+import instaImg from "../assets/images/instagram.svg";
+import fbImg from "../assets/images/facebook.svg";
+import tiktokImg from "../assets/images/tiktok.svg";
 ---
 
 <Layout title="Astral Arra" activeUrl="/">
-  <main></main>
+  <div class="flex h-full flex-row items-center justify-start">
+    <h1 class="text-cloud-burst-50 text-left text-8xl font-bold drop-shadow">
+      Овладей<br />
+       съдбата си
+    </h1>
+  </div>
+  <a id="soccial-media" href="https://linktr.ee/astralarra">
+    <div
+      class="bg-cloud-burst-200/20 absolute bottom-32 left-0 flex flex-col items-center gap-2 rounded-lg px-3 py-2"
+    >
+      <div class="tiktok">
+        <Image src={tiktokImg} class="h-12 w-12" alt="tiktok" />
+      </div>
+      <div class="facebook">
+        <Image src={fbImg} class="h-12 w-12" alt="Facebook" />
+      </div>
+      <div class="instagram">
+        <Image src={instaImg} class="h-12 w-12" alt="Instagram" />
+      </div>
+    </div>
+  </a>
 </Layout>
