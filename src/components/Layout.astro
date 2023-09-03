@@ -23,7 +23,7 @@ const { title, activeUrl, isHero = false } = Astro.props;
     <title>{title}</title>
   </head>
   <body class={`${isHero ? "bg-hero bg-cover bg-no-repeat" : ""}`}>
-    <div class="wrapper h-full w-full">
+    <div class="wrapper grid-rows-layout grid h-full w-full grid-cols-1">
       <MainNav url={activeUrl} isHero={isHero} />
       <main class="container mx-auto">
         <slot />

@@ -20,6 +20,9 @@ module.exports = {
           '900': '#2a3a7e',
           '950': '#202852',
         },
+      },
+      gridTemplateRows: {
+        layout: "auto 1fr auto",
       }
     },
   },

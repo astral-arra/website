@@ -1,5 +1,8 @@
----
-
----
-
-<footer>TODO</footer>
+<footer>
+  <div class="text-cloud-burst-100 w-full p-4 text-right text-sm">
+    Copyright © <span id="copyright-year">2023</span> All rights reserved - AstralAЯA
+  </div>
+</footer>
+<script>
+  document.querySelector("#copyright-year").textContent = new Date().getFullYear().toString();
+</script>
