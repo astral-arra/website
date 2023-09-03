@@ -1,7 +1,30 @@
 ---
+import { Image } from "astro:assets";
+import logoImg from "../assets/images/arra.jpg";
+import authorImg from "../assets/images/author.png";
 import Layout from "../layouts/RegularLayout.astro";
 ---
 
 <Layout title="Astral Arra" activeUrl="/about">
-  <main><h1>about</h1></main>
+  <div>
+    <h1 class="py-4 text-center text-4xl">Какво е Астрален дизайн?</h1>
+    <Image class="mx-auto h-40 w-40" src={logoImg} alt="Astral Arra Logo" />
+    <div class="mx-auto flex max-w-4xl flex-col gap-8 py-8">
+      <section class="about">
+        <p class="text-lg">
+          Астрален дизайн е една от най-популярните технологии в сферата на дизайн.
+        </p>
+      </section>
+      <section class="about-me flex flex-row items-center justify-between gap-8">
+        <p>Астрален дизайн е една от най-популярните технологии в сферата на дизайн.</p>
+        <div class="h-80 w-80">
+          <Image
+            class="h-80 w-80 rounded drop-shadow-2xl"
+            src={authorImg}
+            alt="Picture of Dilyana"
+          />
+        </div>
+      </section>
+    </div>
+  </div>
 </Layout>
