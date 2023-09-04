@@ -23,6 +23,20 @@ module.exports = {
       },
       gridTemplateRows: {
         layout: "auto 1fr auto",
+      },
+      keyframes: {
+        fadeFromRight: {
+          '0%': {opacity: 0,transform: 'translateX(-30%)'},
+          '100%': {opacity: 1,transform: 'translateX(0)'}
+        },
+        fadeToLeft: {
+          '0%': {opacity: 1,transform: 'translateX(0)'},
+          '100%': {opacity: 0,transform: 'translateX(-30%)'},
+        },
+      },
+      animation : {
+        'fade-from-right' : 'fadeFromRight 1s linear',
+        'fade-to-left' : 'fadeToLeft 1s linear',
       }
     },
   },

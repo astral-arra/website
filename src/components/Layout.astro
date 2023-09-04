@@ -1,8 +1,9 @@
 ---
 import { ViewTransitions } from "astro:transitions";
 import "../styles.css";
-import MainNav from "../components/MainNav.astro";
-import Footer from "../components/Footer.astro";
+import MainNav from "./MainNav.astro";
+import Footer from "./Footer.astro";
+import SocialLinks from "./SocialLinks.astro";
 const { title, activeUrl, isHero = false } = Astro.props;
 ---
 
@@ -28,6 +29,7 @@ const { title, activeUrl, isHero = false } = Astro.props;
       <main class="container mx-auto">
         <slot />
       </main>
+      <SocialLinks />
       <Footer isHero={isHero} />
     </div>
   </body>
