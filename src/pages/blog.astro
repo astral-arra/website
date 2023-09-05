@@ -1,15 +1,31 @@
 ---
-import { Image } from "astro:assets";
-import underConstructionImg from "../assets/images/under-construction.png";
+import { getCollection } from "astro:content";
+const blogConfig = await getCollection("blog");
+
 import Layout from "../layouts/RegularLayout.astro";
 ---
 
 <Layout title="Astral Arra" activeUrl="/blog">
-  <div class="flex h-full">
-    <Image
-      class="mx-auto place-self-center"
-      src={underConstructionImg}
-      alt="Image showing that this page is under construction"
-    />
-  </div>
+  <h1 class="py-4 text-3xl uppercase">Статии</h1>
+  <ul class="space-y-4">
+    {
+      blogConfig.map((post) => {
+        return (
+          <li>
+            <h2 class="text-2xl">
+              <a href={`/blog/${post.slug}`} title={post.data.title}>
+                {post.data.title}
+              </a>
+            </h2>
+            <div class="flex gap-2 text-sm text-stone-400">
+              <span>Категории: </span>
+              {post.data.categories.map((category) => {
+                return <a href={`/blog/categories/${category}`}>{category}</a>;
+              })}
+            </div>
+          </li>
+        );
+      })
+    }
+  </ul>
 </Layout>

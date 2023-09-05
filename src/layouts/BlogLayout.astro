@@ -1,10 +1,10 @@
 ---
+import Footer from "../components/Footer.astro";
+import MainNav from "../components/MainNav.astro";
 import { ViewTransitions } from "astro:transitions";
 import "../styles.css";
-import MainNav from "./MainNav.astro";
-import Footer from "./Footer.astro";
-import SocialLinks from "./SocialLinks.astro";
-const { title, activeUrl, isHero = false } = Astro.props;
+
+const { frontmatter } = Astro.props;
 ---
 
 <!doctype html>
@@ -21,16 +21,24 @@ const { title, activeUrl, isHero = false } = Astro.props;
       rel="stylesheet"
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <title>{title}</title>
+    <title>{frontmatter.title}</title>
   </head>
-  <body class={`${isHero ? "bg-hero bg-cover bg-no-repeat" : ""}`}>
+  <body class="">
     <div class="wrapper grid-rows-layout grid h-full w-full grid-cols-1">
-      <MainNav url={activeUrl} isHero={isHero} />
+      <MainNav url={"/blog"} />
       <main class="container mx-auto">
-        <slot />
+        <article
+          class="prose lg:prose-xl prose-stone dark:prose-invert prose-blockquote:text-right prose-p:text-justify mx-auto my-16"
+        >
+          <h1>{frontmatter.title}</h1>
+          <p class="p-0 text-sm text-stone-500">От: {frontmatter.author}</p>
+          <slot />
+          <p class="p-0 text-sm text-stone-500">
+            публикувано на: {new Date(frontmatter.date).toLocaleDateString()}
+          </p>
+        </article>
       </main>
-      {activeUrl !== "/blog" && <SocialLinks />}
-      <Footer isHero={isHero} />
+      <Footer />
     </div>
   </body>
 </html>

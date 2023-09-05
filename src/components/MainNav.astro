@@ -1,37 +1,26 @@
 ---
 import { Image } from "astro:assets";
 import logoImg from "../assets/images/arra.jpg";
-const navItems = [
-  {
-    title: "Какво е астрален дизайн",
-    url: "/about",
-  },
-  {
-    title: "Блог",
-    url: "/blog",
-  },
-  {
-    title: "Генерирай карта",
-    url: "/map",
-  },
-  {
-    title: "Консултации",
-    url: "/consult",
-  },
-  {
-    title: "Магазин",
-    url: "/shop",
-  },
-  {
-    title: "Библиотека",
-    url: "/library",
-  },
-  {
-    title: "Портал",
-    url: "/todo",
-  },
-];
+import { getCollection } from "astro:content";
+const navConfig = await getCollection("nav");
+const blogConfig = await getCollection("blog");
+const navItems = navConfig[0].data;
 
+const blogCategories = blogConfig.reduce((categories, post) => {
+  let blogCategories = post.data.categories;
+  if (!blogCategories || blogCategories.length === 0) {
+    return categories;
+  }
+  if (!Array.isArray(blogCategories)) {
+    blogCategories = [blogCategories];
+  }
+  blogCategories.forEach((category) => {
+    if (!categories.includes(category)) {
+      categories.push(category);
+    }
+  });
+  return categories;
+}, []);
 const { url = "", isHero = false } = Astro.props;
 ---
 
@@ -49,20 +38,39 @@ const { url = "", isHero = false } = Astro.props;
   </div>
   <div>
     <nav class="w-full uppercase">
-      <ul class="flex flex-row items-center justify-around p-4" role="menu">
+      <ul class="text-cloud-burst-50 flex flex-row items-center justify-around p-4" role="menu">
         {
-          navItems.map((item) => (
-            <li role="none">
-              <a
-                href={item.url}
-                class={`${
-                  url === item.url ? "font-bold underline" : ""
-                } text-cloud-burst-50 hover:bg-cloud-burst-400/50 flex h-12 items-center justify-center rounded-lg bg-transparent px-4 py-2 text-center transition duration-500 hover:shadow-2xl`}
-              >
-                {item.title}
-              </a>
-            </li>
-          ))
+          navItems.map((item) => {
+            const hasBlogCategories = item.url === "/blog" && blogCategories.length > 0;
+            return (
+              <li role="none" class="group relative">
+                <a
+                  href={item.url}
+                  class={`${url === item.url ? "font-bold " : ""} 
+                  ${hasBlogCategories ? "group-hover:rounded-b-none" : ""}
+                  ${isHero ? "group-hover:bg-cloud-burst-400/50" : "group-hover:bg-cloud-burst-400"}
+                   flex h-12 items-center justify-center rounded-lg bg-transparent px-4 py-2 text-center transition duration-500 hover:shadow-2xl`}
+                >
+                  {item.title}&nbsp;
+                  {hasBlogCategories ? <span class="group-hover:rotate-180"> ▾ </span> : " "}
+                </a>
+
+                {hasBlogCategories && (
+                  <ul
+                    class={`${
+                      isHero ? "bg-cloud-burst-400/20" : "bg-cloud-burst-400"
+                    } border-cloud-burst-400/50 absolute left-0 flex min-w-[200px] -translate-y-full flex-col space-y-2 rounded-b-lg rounded-tr-lg border-2 p-4 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100`}
+                  >
+                    {blogCategories.map((category) => (
+                      <li role="none" class="w-full text-left">
+                        <a href={`${item.url}/categories/${category}`}>{category}</a>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            );
+          })
         }
       </ul>
     </nav>
