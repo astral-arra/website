@@ -1,37 +1,26 @@
 ---
 import { Image } from "astro:assets";
 import logoImg from "../assets/images/arra.jpg";
-const navItems = [
-  {
-    title: "Какво е астрален дизайн",
-    url: "/about",
-  },
-  {
-    title: "Блог",
-    url: "/blog",
-  },
-  {
-    title: "Генерирай карта",
-    url: "/map",
-  },
-  {
-    title: "Консултации",
-    url: "/consult",
-  },
-  {
-    title: "Магазин",
-    url: "/shop",
-  },
-  {
-    title: "Библиотека",
-    url: "/library",
-  },
-  {
-    title: "Синхромистичен портал",
-    url: "/todo",
-  },
-];
+import { getCollection } from "astro:content";
+const navConfig = await getCollection("nav");
+const blogConfig = await getCollection("blog");
+const navItems = navConfig[0].data;
 
+const blogCategories = blogConfig.reduce((categories, post) => {
+  let blogCategories = post.data.categories;
+  if (!blogCategories || blogCategories.length === 0) {
+    return categories;
+  }
+  if (!Array.isArray(blogCategories)) {
+    blogCategories = [blogCategories];
+  }
+  blogCategories.forEach((category) => {
+    if (!categories.includes(category)) {
+      categories.push(category);
+    }
+  });
+  return categories;
+}, []);
 const { url = "", isHero = false } = Astro.props;
 ---
 
@@ -60,7 +49,16 @@ const { url = "", isHero = false } = Astro.props;
                 } text-cloud-burst-50 hover:bg-cloud-burst-400/50 flex h-12 items-center justify-center rounded-lg bg-transparent px-4 py-2 text-center transition duration-500 hover:shadow-2xl`}
               >
                 {item.title}
-              </a>
+              </a>{" "}
+              {item.url === "/blog" && blogCategories.length > 0 && (
+                <ul class="mt-4">
+                  {blogCategories.map((category) => (
+                    <li role="none" class="w-full text-left">
+                      <a href={`${item.url}/${category}`}>{category}</a>
+                    </li>
+                  ))}
+                </ul>
+              )}
             </li>
           ))
         }
