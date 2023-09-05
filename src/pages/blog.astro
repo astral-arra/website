@@ -17,7 +17,7 @@ import Layout from "../layouts/RegularLayout.astro";
                 {post.data.title}
               </a>
             </h2>
-            <div class="flex gap-2 text-sm text-stone-400">
+            <div class="flex gap-2 text-sm text-stone-500">
               <span>Категории: </span>
               {post.data.categories.map((category) => {
                 return <a href={`/blog/categories/${category}`}>{category}</a>;
