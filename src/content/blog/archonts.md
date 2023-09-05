@@ -6,7 +6,6 @@ categories:
    - архонти
    - езотерика
    - гностизицъм
-   - таро
 layout: "../../layouts/BlogLayout.astro"
 ---
 
