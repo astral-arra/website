@@ -1,0 +1,37 @@
+---
+import Footer from "../components/Footer.astro";
+import MainNav from "../components/MainNav.astro";
+import { ViewTransitions } from "astro:transitions";
+import "../styles.css";
+
+const { frontmatter } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <ViewTransitions />
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astral arra" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <title>{frontmatter.title}</title>
+  </head>
+  <body class="">
+    <div class="wrapper grid-rows-layout grid h-full w-full grid-cols-1">
+      <MainNav url={"/blog"} />
+      <main class="container mx-auto">
+        <h1>{frontmatter.title}</h1>
+        <h2>Post author: {frontmatter.author}</h2>
+        <slot />
+      </main>
+      <Footer />
+    </div>
+  </body>
+</html>

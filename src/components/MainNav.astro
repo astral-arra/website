@@ -46,19 +46,24 @@ const { url = "", isHero = false } = Astro.props;
               <li role="none" class="group relative">
                 <a
                   href={item.url}
-                  class={`${url === item.url ? "font-bold underline" : ""} 
+                  class={`${url === item.url ? "font-bold " : ""} 
                   ${hasBlogCategories ? "group-hover:rounded-b-none" : ""}
-                  group-hover:bg-cloud-burst-400/50 flex h-12 items-center justify-center rounded-lg bg-transparent px-4 py-2 text-center transition duration-500 hover:shadow-2xl`}
+                  ${isHero ? "group-hover:bg-cloud-burst-400/50" : "group-hover:bg-cloud-burst-400"}
+                   flex h-12 items-center justify-center rounded-lg bg-transparent px-4 py-2 text-center transition duration-500 hover:shadow-2xl`}
                 >
                   {item.title}&nbsp;
                   {hasBlogCategories ? <span class="group-hover:rotate-180"> ▾ </span> : " "}
                 </a>
 
                 {hasBlogCategories && (
-                  <ul class="border-cloud-burst-400/50 bg-cloud-burst-400/20 absolute left-0 flex min-w-[200px] -translate-y-full flex-col space-y-2 rounded-b-lg rounded-tr-lg border-2 p-4 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+                  <ul
+                    class={`${
+                      isHero ? "bg-cloud-burst-400/20" : "bg-cloud-burst-400"
+                    } border-cloud-burst-400/50 absolute left-0 flex min-w-[200px] -translate-y-full flex-col space-y-2 rounded-b-lg rounded-tr-lg border-2 p-4 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100`}
+                  >
                     {blogCategories.map((category) => (
                       <li role="none" class="w-full text-left">
-                        <a href={`${item.url}/${category}`}>{category}</a>
+                        <a href={`${item.url}/categories/${category}`}>{category}</a>
                       </li>
                     ))}
                   </ul>
