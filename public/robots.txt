@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://astralarra.com/sitemap-index.xml
