@@ -43,19 +43,21 @@ import instaImg from "../assets/images/instagram.svg";
 
   const socialMedia = document.getElementById("social-media");
   const socialLinks = document.getElementById("social-links");
-  socialMediaToggle.addEventListener("click", () => {
-    const expand = socialMediaToggle.getAttribute("aria-expanded");
-    if (expand === "false") {
-      socialMedia.classList.replace("translate-x-0", "-translate-x-1/2");
-      socialLinks.classList.add("opacity-0");
-      socialMediaToggle.classList.remove("opacity-0");
-      socialMediaToggle.classList.add("rotate-180", "translate-x-2");
-    } else {
-      socialLinks.classList.remove("opacity-0");
-      socialMedia.classList.replace("-translate-x-1/2", "translate-x-0");
-      socialMediaToggle.classList.add("opacity-0");
-      socialMediaToggle.classList.remove("rotate-180", "translate-x-2");
-    }
-    socialMediaToggle.setAttribute("aria-expanded", expand === "false" ? "true" : "false");
-  });
+  if (socialMediaToggle) {
+    socialMediaToggle.addEventListener("click", () => {
+      const expand = socialMediaToggle.getAttribute("aria-expanded");
+      if (expand === "false") {
+        socialMedia.classList.replace("translate-x-0", "-translate-x-1/2");
+        socialLinks.classList.add("opacity-0");
+        socialMediaToggle.classList.remove("opacity-0");
+        socialMediaToggle.classList.add("rotate-180", "translate-x-2");
+      } else {
+        socialLinks.classList.remove("opacity-0");
+        socialMedia.classList.replace("-translate-x-1/2", "translate-x-0");
+        socialMediaToggle.classList.add("opacity-0");
+        socialMediaToggle.classList.remove("rotate-180", "translate-x-2");
+      }
+      socialMediaToggle.setAttribute("aria-expanded", expand === "false" ? "true" : "false");
+    });
+  }
 </script>

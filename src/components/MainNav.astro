@@ -32,8 +32,14 @@ const { url = "", isHero = false } = Astro.props;
   } main-nav hidden w-full md:flex flex-row justify-between items-center`}
 >
   <div class="logo">
-    <a class="home" href="/">
-      <Image class="rounded-full sepia" src={logoImg} alt="Astral Arra Logo" width="80" />
+    <a class="home block h-24 w-24" href="/">
+      <Image
+        class="rounded-full sepia"
+        src={logoImg}
+        alt="Astral Arra Logo"
+        width={96}
+        height={96}
+      />
     </a>
   </div>
   <div>
@@ -45,6 +51,7 @@ const { url = "", isHero = false } = Astro.props;
             return (
               <li role="none" class="group relative">
                 <a
+                  role="menuitem"
                   href={item.url}
                   class={`${url === item.url ? "font-bold " : ""} 
                   ${hasBlogCategories ? "group-hover:rounded-b-none" : ""}
@@ -57,13 +64,16 @@ const { url = "", isHero = false } = Astro.props;
 
                 {hasBlogCategories && (
                   <ul
+                    role="menu"
                     class={`${
                       isHero ? "bg-cloud-burst-400/20" : "bg-cloud-burst-400"
                     } border-cloud-burst-400/50 absolute left-0 flex min-w-[200px] -translate-y-full flex-col space-y-2 rounded-b-lg rounded-tr-lg border-2 p-4 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100`}
                   >
                     {blogCategories.map((category) => (
                       <li role="none" class="w-full text-left">
-                        <a href={`${item.url}/categories/${category}`}>{category}</a>
+                        <a role="menuitem" href={`${item.url}/categories/${category}`}>
+                          {category}
+                        </a>
                       </li>
                     ))}
                   </ul>
