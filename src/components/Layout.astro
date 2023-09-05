@@ -29,7 +29,7 @@ const { title, activeUrl, isHero = false } = Astro.props;
       <main class="container mx-auto">
         <slot />
       </main>
-      <SocialLinks />
+      {activeUrl !== "/blog" && <SocialLinks />}
       <Footer isHero={isHero} />
     </div>
   </body>

@@ -41,14 +41,14 @@ const { posts } = Astro.props;
   <ul>
     {
       posts.map((post) => (
-        <div>
-          <h2 class="text-lg">
+        <li>
+          <h2 class="text-2xl">
             <a href={`/blog/${post.slug}`} title={post.data.title}>
               {post.data.title}
             </a>
           </h2>
-          <p class="text-cloud-burst-500 text-sm">{post.data.author}</p>
-        </div>
+          <p class="text-sm text-stone-400">от: {post.data.author}</p>
+        </li>
       ))
     }
   </ul>
