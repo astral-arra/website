@@ -27,9 +27,16 @@ const { frontmatter } = Astro.props;
     <div class="wrapper grid-rows-layout grid h-full w-full grid-cols-1">
       <MainNav url={"/blog"} />
       <main class="container mx-auto">
-        <h1>{frontmatter.title}</h1>
-        <h2>Post author: {frontmatter.author}</h2>
-        <slot />
+        <article
+          class="prose lg:prose-xl prose-stone dark:prose-invert prose-blockquote:text-right prose-p:text-justify mx-auto my-16"
+        >
+          <h1>{frontmatter.title}</h1>
+          <p class="p-0 text-sm text-stone-500">От: {frontmatter.author}</p>
+          <slot />
+          <p class="p-0 text-sm text-stone-500">
+            публикувано на: {new Date(frontmatter.date).toLocaleDateString()}
+          </p>
+        </article>
       </main>
       <Footer />
     </div>
