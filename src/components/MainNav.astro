@@ -4,6 +4,8 @@ import logoImg from "../assets/images/arra.jpg";
 import { getCollection } from "astro:content";
 const navConfig = await getCollection("nav");
 const blogConfig = await getCollection("blog");
+// const siteConfig = await getCollection("site");
+
 const navItems = navConfig[0].data;
 
 const blogCategories = blogConfig.reduce((categories, post) => {
@@ -44,7 +46,7 @@ const { url = "", isHero = false } = Astro.props;
   </div>
   <div>
     <nav class="w-full uppercase">
-      <ul class="text-cloud-burst-50 flex flex-row items-center justify-around p-4" role="menu">
+      <ul class="flex flex-row items-center justify-around p-4 text-cloud-burst-50" role="menu">
         {
           navItems.map((item) => {
             const hasBlogCategories = item.url === "/blog" && blogCategories.length > 0;
@@ -67,7 +69,7 @@ const { url = "", isHero = false } = Astro.props;
                     role="menu"
                     class={`${
                       isHero ? "bg-cloud-burst-400/20" : "bg-cloud-burst-400"
-                    } border-cloud-burst-400/50 absolute left-0 flex min-w-[200px] -translate-y-full flex-col space-y-2 rounded-b-lg rounded-tr-lg border-2 p-4 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100`}
+                    } absolute left-0 flex min-w-[200px] -translate-y-full flex-col space-y-2 rounded-b-lg rounded-tr-lg border-2 border-cloud-burst-400/50 p-4 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100`}
                   >
                     {blogCategories.map((category) => (
                       <li role="none" class="w-full text-left">
@@ -86,7 +88,7 @@ const { url = "", isHero = false } = Astro.props;
     </nav>
   </div>
   <div
-    class="mobile-nav from-cloud-burst-900/60 to-cloud-burst-900 shadow-cloud-burst-100 h-full w-[98%] rounded-r-lg bg-gradient-to-r shadow-2xl transition duration-500 md:hidden"
+    class="mobile-nav h-full w-[98%] rounded-r-lg bg-gradient-to-r from-cloud-burst-900/60 to-cloud-burst-900 shadow-2xl shadow-cloud-burst-100 transition duration-500 md:hidden"
   >
     <nav class="h-full uppercase">
       <ul class="flex flex-col items-start justify-center p-4" role="menu">
@@ -97,7 +99,7 @@ const { url = "", isHero = false } = Astro.props;
                 href={item.url}
                 class={`${
                   url === item.url ? "font-bold underline" : ""
-                } text-cloud-burst-50 hover:bg-cloud-burst-400/50 flex h-12 w-full items-center rounded-lg bg-transparent px-4 py-2 text-center transition duration-500 hover:shadow-2xl`}
+                } flex h-12 w-full items-center rounded-lg bg-transparent px-4 py-2 text-center text-cloud-burst-50 transition duration-500 hover:bg-cloud-burst-400/50 hover:shadow-2xl`}
               >
                 {item.title}
               </a>

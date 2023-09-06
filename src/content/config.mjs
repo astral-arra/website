@@ -29,6 +29,17 @@ const navItems = {
   ),
 };
 
+/**
+ * @type {CollectionConfig}
+ */
+const siteItems = {
+  type: "data",
+  schema: z.object({
+    title: z.string(),
+    blogUrl: z.string(),
+  }),
+};
+
 const blogCollection = defineCollection(posts);
 // 3. Export a single `collections` object to register your collection(s)
 //    This key should match your collection directory name in "src/content"

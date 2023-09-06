@@ -23,13 +23,20 @@ const { frontmatter } = Astro.props;
     />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <title>{frontmatter.title}</title>
+    {frontmatter.title && <meta property="og:title" content={frontmatter.title} />}
+    {
+      frontmatter.description && (
+        <meta property="og:description" content={frontmatter.description} />
+      )
+    }
+    {frontmatter.image && <meta property="og:image" content={frontmatter.image} />}
   </head>
   <body class="">
-    <div class="wrapper grid-rows-layout grid h-full w-full grid-cols-1">
+    <div class="wrapper grid h-full w-full grid-cols-1 grid-rows-layout">
       <MainNav url={"/blog"} />
       <main class="container mx-auto">
         <article
-          class="prose lg:prose-xl prose-stone dark:prose-invert prose-blockquote:text-right prose-p:text-justify mx-auto my-16"
+          class="prose prose-stone mx-auto my-16 dark:prose-invert lg:prose-xl prose-p:text-justify prose-blockquote:text-right"
         >
           <h1>{frontmatter.title}</h1>
           <p class="p-0 text-sm text-stone-500">От: {frontmatter.author}</p>
