@@ -1,13 +1,15 @@
 ---
-import { getCollection } from "astro:content";
+import { getEntry, getCollection } from "astro:content";
 const blogConfig = await getCollection("blog");
+const siteConfig = await getEntry("site", "data");
+const { blogUrl = "" } = siteConfig.data;
 
 import Layout from "../layouts/RegularLayout.astro";
 ---
 
 <Layout title="Astral Arra" activeUrl="/blog">
-  <h1 class="py-4 text-3xl uppercase">Статии</h1>
-  <ul class="space-y-4">
+  <h1 class="p-4 text-3xl uppercase">Статии</h1>
+  <ul class="space-y-4 p-4">
     {
       blogConfig.map((post) => {
         return (
@@ -20,7 +22,7 @@ import Layout from "../layouts/RegularLayout.astro";
             <div class="flex gap-2 text-sm text-stone-500">
               <span>Категории: </span>
               {post.data.categories.map((category) => {
-                return <a href={`/blog/categories/${category}`}>{category}</a>;
+                return <a href={`${blogUrl}/categories/${category}`}>{category}</a>;
               })}
             </div>
           </li>

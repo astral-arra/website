@@ -23,6 +23,7 @@ module.exports = {
       },
       gridTemplateRows: {
         layout: "auto 1fr auto",
+        "mobile-layout": "1fr auto",
       },
       keyframes: {
         fadeFromRight: {

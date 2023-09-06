@@ -1,4 +1,35 @@
 {
   "title": "Astral ARЯA",
-  "blogUrl": "/blog"
+  "blogUrl": "/blog",
+  "about": {
+    "url": "/about",
+    "title": "Какво е Астрален дизайн?",
+    "text": "Астрален дизайн е една от най-популярните технологии в сферата на дизайн.",
+    "author": "Астрален дизайн е една от най-популярните технологии в сферата на дизайн."
+  },
+  "index": {
+    "url": "/",
+    "title": "Astral ARЯA",
+    "content": "Овладей съдбата си"
+  },
+  "consult": {
+    "title": "Astral ARЯA",
+    "url": "/consult"
+  },
+  "library": {
+    "title": "Astral ARЯA",
+    "url": "/library"
+  },
+  "map": {
+    "title": "Astral ARЯA",
+    "url": "/map"
+  },
+  "shop": {
+    "title": "Astral ARЯA",
+    "url": "/shop"
+  },
+  "todo": {
+    "title": "Astral ARЯA",
+    "url": "/todo"
+  }
 }

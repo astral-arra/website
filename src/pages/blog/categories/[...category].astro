@@ -1,5 +1,7 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
+const siteConfig = await getEntry("site", "data");
+const { blogUrl = "" } = siteConfig.data;
 import Layout from "../../../layouts/RegularLayout.astro";
 export async function getStaticPaths() {
   const blogConfig = await getCollection("blog");
@@ -20,7 +22,7 @@ export async function getStaticPaths() {
     return categories;
   }, {});
 
-  const result = Object.entries(blogCategories).map(([category, posts]) => {
+  return Object.entries(blogCategories).map(([category, posts]) => {
     return {
       params: {
         category,
@@ -30,7 +32,6 @@ export async function getStaticPaths() {
       },
     };
   });
-  return result;
 }
 const { category } = Astro.params;
 const { posts } = Astro.props;
@@ -43,7 +44,7 @@ const { posts } = Astro.props;
       posts.map((post) => (
         <li>
           <h2 class="text-2xl">
-            <a href={`/blog/${post.slug}`} title={post.data.title}>
+            <a href={`${blogUrl}/${post.slug}`} title={post.data.title}>
               {post.data.title}
             </a>
           </h2>

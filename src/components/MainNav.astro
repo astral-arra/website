@@ -1,10 +1,11 @@
 ---
 import { Image } from "astro:assets";
 import logoImg from "../assets/images/arra.jpg";
-import { getCollection } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 const navConfig = await getCollection("nav");
 const blogConfig = await getCollection("blog");
-// const siteConfig = await getCollection("site");
+const siteConfig = await getEntry("site", "data");
+const { blogUrl = "" } = siteConfig.data;
 
 const navItems = navConfig[0].data;
 
@@ -49,7 +50,7 @@ const { url = "", isHero = false } = Astro.props;
       <ul class="flex flex-row items-center justify-around p-4 text-cloud-burst-50" role="menu">
         {
           navItems.map((item) => {
-            const hasBlogCategories = item.url === "/blog" && blogCategories.length > 0;
+            const hasBlogCategories = item.url === blogUrl && blogCategories.length > 0;
             return (
               <li role="none" class="group relative">
                 <a
@@ -87,29 +88,94 @@ const { url = "", isHero = false } = Astro.props;
       </ul>
     </nav>
   </div>
-  <div
-    class="mobile-nav h-full w-[98%] rounded-r-lg bg-gradient-to-r from-cloud-burst-900/60 to-cloud-burst-900 shadow-2xl shadow-cloud-burst-100 transition duration-500 md:hidden"
-  >
-    <nav class="h-full uppercase">
-      <ul class="flex flex-col items-start justify-center p-4" role="menu">
-        {
-          navItems.map((item) => (
-            <li role="none" class="w-full text-left">
-              <a
-                href={item.url}
-                class={`${
-                  url === item.url ? "font-bold underline" : ""
-                } flex h-12 w-full items-center rounded-lg bg-transparent px-4 py-2 text-center text-cloud-burst-50 transition duration-500 hover:bg-cloud-burst-400/50 hover:shadow-2xl`}
-              >
-                {item.title}
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </nav>
+</div>
+<div
+  class={`${
+    isHero
+      ? ""
+      : "from-cloud-burst-900/60 to-cloud-burst-900/70 shadow-cloud-burst-100 bg-gradient-to-b shadow-2xl"
+  } mobile-header flex flex-row items-center justify-between md:hidden`}
+>
+  <div class="logo">
+    <a class="home block h-12 w-12" href="/">
+      <Image
+        class="rounded-full sepia"
+        src={logoImg}
+        alt="Astral Arra Logo"
+        width={48}
+        height={48}
+      />
+    </a>
+  </div>
+  <div class="menu p-4 text-cloud-burst-50">
+    <button role="button" id="menu-toggle" type="button" class="m-0 bg-none p-0">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 50 50"
+        class="h-6 w-6 cursor-pointer fill-current stroke-current text-cloud-burst-50 transition duration-500"
+      >
+        <path
+          d="M 0 7.5 L 0 12.5 L 50 12.5 L 50 7.5 Z M 0 22.5 L 0 27.5 L 50 27.5 L 50 22.5 Z M 0 37.5 L 0 42.5 L 50 42.5 L 50 37.5 Z"
+        ></path>
+      </svg>
+    </button>
   </div>
 </div>
+<div
+  aria-expanded="false"
+  id="mobile-nav"
+  class="mobile-nav absolute z-40 h-full w-full -translate-x-full bg-gradient-to-r from-cloud-burst-900/60 to-cloud-burst-900 transition duration-500 md:hidden"
+>
+  <nav class="h-full uppercase">
+    <ul class="flex flex-col items-start justify-center p-4" role="menu">
+      {
+        navItems.map((item) => (
+          <li role="none" class="w-full text-left">
+            <a
+              href={item.url}
+              class={`${
+                url === item.url ? "font-bold underline" : ""
+              } flex h-12 w-full items-center rounded-lg bg-transparent px-4 py-2 text-center text-cloud-burst-50 transition duration-500 hover:bg-cloud-burst-400/50 hover:shadow-2xl`}
+            >
+              {item.title}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </nav>
+</div>
+
+<script is:inline>
+  const menuToggle = document.querySelector("#menu-toggle");
+  const mobileNav = document.querySelector("#mobile-nav");
+  const mobileLinks = mobileNav.querySelectorAll("a");
+  console.log({ mobileLinks, menuToggle });
+  if (mobileLinks.length > 0) {
+    mobileLinks.forEach((link) => {
+      link.addEventListener("click", () => {
+        console.log("link clicked");
+        mobileNav.classList.add("-translate-x-full");
+        mobileNav.setAttribute("aria-expanded", "false");
+      });
+    });
+  }
+
+  if (menuToggle) {
+    menuToggle.addEventListener("click", () => {
+      console.log("menu toggle clicked");
+      const expanded = mobileNav.getAttribute("aria-expanded");
+      console.log({ expanded });
+      if (expanded === "false") {
+        mobileNav.classList.remove("-translate-x-full");
+        mobileNav.setAttribute("aria-expanded", "true");
+      } else {
+        mobileNav.classList.add("-translate-x-full");
+        mobileNav.setAttribute("aria-expanded", "false");
+      }
+    });
+  }
+</script>
 
 <style>
   .logo {
