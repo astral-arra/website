@@ -1,12 +1,17 @@
 ---
+import { getEntry } from "astro:content";
+const siteConfig = await getEntry("site", "data");
+const { index = {} } = siteConfig.data;
+console.log(index);
 import Layout from "../layouts/HeroLayout.astro";
 ---
 
-<Layout title="Astral Arra" activeUrl="/">
+<Layout title={index.title} activeUrl={index.url}>
   <div class="flex h-full flex-row items-center justify-start pl-20">
-    <h1 class="text-cloud-burst-50 text-left text-8xl font-bold drop-shadow">
-      Овладей<br />
-       съдбата си
+    <h1
+      class="w-full text-left text-6xl/[1.3] font-bold text-cloud-burst-50 drop-shadow md:w-[550px] md:text-8xl"
+    >
+      {index.content}
     </h1>
   </div>
 </Layout>

@@ -10,7 +10,6 @@ const { title, activeUrl, isHero = false } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
-    <ViewTransitions />
     <meta charset="UTF-8" />
     <meta name="description" content="Astral arra" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -26,13 +25,13 @@ const { title, activeUrl, isHero = false } = Astro.props;
     <title>{title}</title>
   </head>
   <body class={`${isHero ? "bg-hero bg-cover bg-no-repeat" : ""}`}>
-    <div class="wrapper grid-rows-layout grid h-full w-full grid-cols-1">
-      <MainNav url={activeUrl} isHero={isHero} />
+    <div class="wrapper grid h-full w-full grid-cols-1 grid-rows-layout">
+      <MainNav url={activeUrl} {isHero} />
       <main class="container mx-auto">
         <slot />
       </main>
       {activeUrl !== "/blog" && <SocialLinks />}
-      <Footer isHero={isHero} />
+      <Footer {isHero} />
     </div>
   </body>
 </html>
