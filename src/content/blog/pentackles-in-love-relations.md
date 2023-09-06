@@ -1,7 +1,7 @@
 ---
 title: Пентаклите В Любовните Взаимоотношения
 date: 2023-09-05T08:06:56.743Z
-author: Dilyana 
+author: ARЯA 
 image: "../images/pentacles1.png"
 categories: 
    - таро
