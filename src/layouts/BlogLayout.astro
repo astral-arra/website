@@ -36,7 +36,7 @@ const { frontmatter } = Astro.props;
       <MainNav url={"/blog"} />
       <main class="container mx-auto">
         <article
-          class="prose prose-stone mx-auto my-16 dark:prose-invert lg:prose-xl prose-p:text-justify prose-blockquote:text-right"
+          class="prose prose-stone mx-auto my-16 max-w-4xl dark:prose-invert lg:prose-xl prose-p:text-justify prose-blockquote:text-right"
         >
           <h1>{frontmatter.title}</h1>
           <p class="p-0 text-sm text-stone-500">От: {frontmatter.author}</p>

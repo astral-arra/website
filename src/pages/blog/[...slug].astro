@@ -42,8 +42,6 @@ const { Content } = await post.render();
     return matcher(idOrUrl);
   }
 
-  // const videoId = extractID(id);
-  // const posterURL = poster || `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
   const youtubeLinks = document.querySelectorAll('a[href^="https://www.youtube.com/"]');
 
   youtubeLinks.forEach((link) => {
@@ -68,5 +66,10 @@ const { Content } = await post.render();
     )}?${params.toString()}`;
     link.insertAdjacentElement("beforebegin", embed);
     link.classList.add("hidden");
+  });
+
+  const imges = document.querySelectorAll("img");
+  imges.forEach((img) => {
+    img.classList.add("mx-auto");
   });
 </script>
