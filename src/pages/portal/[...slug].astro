@@ -2,7 +2,7 @@
 import { getCollection } from "astro:content";
 
 export async function getStaticPaths() {
-  const blogConfig = await getCollection("blog");
+  const blogConfig = await getCollection("portal");
 
   return blogConfig.map((post) => ({
     params: {
@@ -42,11 +42,12 @@ const { Content } = await post.render();
     return matcher(idOrUrl);
   }
 
-  const youtubeLinks = document.querySelectorAll('a[href^="https://www.youtube.com/"]');
+  const youtubeLinks = document.querySelectorAll("a");
 
   youtubeLinks.forEach((link) => {
     const youtubeUrl = link.href;
     const id = extractID(youtubeUrl);
+    if (!id) return;
     const params = new URL(youtubeUrl).searchParams;
     // const parent = link.parentElement;
     const embed = document.createElement("iframe");

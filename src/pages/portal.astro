@@ -1,22 +1,21 @@
 ---
 import { getEntry, getCollection } from "astro:content";
-const blogConfig = await getCollection("blog");
-const siteConfig = await getEntry("site", "data");
-const { blogUrl = "" } = siteConfig.data;
+const portalConfig = await getCollection("portal");
+const blogUrl = "/portal";
 
 import Layout from "../layouts/RegularLayout.astro";
 ---
 
-<Layout title="Astral Arra" activeUrl="/blog">
-  <h1 class="p-4 text-3xl uppercase">Блог</h1>
+<Layout title="Astral Arra" activeUrl="/portal">
+  <h1 class="p-4 text-3xl uppercase">Портал</h1>
   <h2 class="px-4 py-2 text-xl">Статии</h2>
   <ul class="space-y-4 p-4">
     {
-      blogConfig.map((post) => {
+      portalConfig.map((post) => {
         return (
           <li>
             <h2 class="text-2xl">
-              <a href={`/blog/${post.slug}`} title={post.data.title}>
+              <a href={`${blogUrl}/${post.slug}`} title={post.data.title}>
                 {post.data.title}
               </a>
             </h2>

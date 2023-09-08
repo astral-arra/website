@@ -1,0 +1,56 @@
+---
+import { getCollection, getEntry } from "astro:content";
+const siteConfig = await getEntry("site", "data");
+const { blogUrl = "" } = siteConfig.data;
+import Layout from "../../../layouts/RegularLayout.astro";
+export async function getStaticPaths() {
+  const blogConfig = await getCollection("blog");
+  const blogTags = blogConfig.reduce((tags, post) => {
+    let blogTags = post.data.tags;
+    if (!blogTags || blogTags.length === 0) {
+      return tags;
+    }
+    if (!Array.isArray(blogTags)) {
+      blogTags = [blogTags];
+    }
+    blogTags.forEach((category) => {
+      if (!tags[category]) {
+        tags[category] = [];
+      }
+      tags[category].push(post);
+    });
+    return tags;
+  }, {});
+
+  return Object.entries(blogTags).map(([tag, posts]) => {
+    return {
+      params: {
+        tag,
+      },
+      props: {
+        posts,
+      },
+    };
+  });
+}
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<Layout title="Astral Arra" activeUrl="/blog">
+  <h1 class="py-4 text-3xl uppercase">{tag}</h1>
+  <ul>
+    {
+      posts.map((post) => (
+        <li>
+          <h2 class="text-2xl">
+            <a href={`${blogUrl}/${post.slug}`} title={post.data.title}>
+              {post.data.title}
+            </a>
+          </h2>
+          <p class="text-sm text-stone-400">от: {post.data.author}</p>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>
