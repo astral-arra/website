@@ -1,0 +1,33 @@
+{
+  "title": "Astral ARЯA",
+  "blogUrl": "/blog",
+  "about": {
+    "url": "/about",
+    "title": "Какво е Астрален дизайн?"
+  },
+  "index": {
+    "url": "/",
+    "title": "Astral ARЯA",
+    "content": "Овладей съдбата си"
+  },
+  "consult": {
+    "title": "Astral ARЯA",
+    "url": "/consult"
+  },
+  "library": {
+    "title": "Astral ARЯA",
+    "url": "/library"
+  },
+  "map": {
+    "title": "Astral ARЯA",
+    "url": "/map"
+  },
+  "shop": {
+    "title": "Astral ARЯA",
+    "url": "/shop"
+  },
+  "portal": {
+    "title": "Astral ARЯA",
+    "url": "/portal"
+  }
+}

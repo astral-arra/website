@@ -5,27 +5,27 @@ const { blogUrl = "" } = siteConfig.data;
 import Layout from "../../../layouts/RegularLayout.astro";
 export async function getStaticPaths() {
   const blogConfig = await getCollection("blog");
-  const blogCategories = blogConfig.reduce((categories, post) => {
-    let blogCategories = post.data.categories;
-    if (!blogCategories || blogCategories.length === 0) {
-      return categories;
+  const blogTags = blogConfig.reduce((tags, post) => {
+    let blogTags = post.data.tags;
+    if (!blogTags || blogTags.length === 0) {
+      return tags;
     }
-    if (!Array.isArray(blogCategories)) {
-      blogCategories = [blogCategories];
+    if (!Array.isArray(blogTags)) {
+      blogTags = [blogTags];
     }
-    blogCategories.forEach((category) => {
-      if (!categories[category]) {
-        categories[category] = [];
+    blogTags.forEach((category) => {
+      if (!tags[category]) {
+        tags[category] = [];
       }
-      categories[category].push(post);
+      tags[category].push(post);
     });
-    return categories;
+    return tags;
   }, {});
 
-  return Object.entries(blogCategories).map(([category, posts]) => {
+  return Object.entries(blogTags).map(([tag, posts]) => {
     return {
       params: {
-        category,
+        tag,
       },
       props: {
         posts,
@@ -33,12 +33,12 @@ export async function getStaticPaths() {
     };
   });
 }
-const { category } = Astro.params;
+const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
 
 <Layout title="Astral Arra" activeUrl="/blog">
-  <h1 class="py-4 text-3xl uppercase">{category}</h1>
+  <h1 class="py-4 text-3xl uppercase">{tag}</h1>
   <ul>
     {
       posts.map((post) => (
