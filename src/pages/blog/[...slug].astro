@@ -19,3 +19,54 @@ const { Content } = await post.render();
 ---
 
 <Content />
+
+<script>
+  // Thanks to eleventy-plugin-youtube-embed
+  // https://github.com/gfscott/eleventy-plugin-youtube-embed/blob/main/lib/extractMatches.js
+  const urlPattern =
+    /(?=(\s*))\1(?:<a [^>]*?>)??(?=(\s*))\2(?:https?:\/\/)??(?:w{3}\.)??(?:youtube\.com|youtu\.be)\/(?:watch\?v=|embed\/)??([A-Za-z0-9-_]{11})(?:[^\s<>]*)(?=(\s*))\4(?:<\/a>)??(?=(\s*))\5/;
+
+  /**
+   * Extract a YouTube ID from a URL if it matches the pattern.
+   * @param url URL to test
+   * @returns A YouTube video ID or undefined if none matched
+   */
+  function matcher(url = "") {
+    const match = url.match(urlPattern);
+    return match?.[3];
+  }
+  const idRegExp = /^[A-Za-z0-9-_]+$/;
+
+  function extractID(idOrUrl = "") {
+    if (idRegExp.test(idOrUrl)) return idOrUrl;
+    return matcher(idOrUrl);
+  }
+
+  // const videoId = extractID(id);
+  // const posterURL = poster || `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
+  const youtubeLinks = document.querySelectorAll('a[href^="https://www.youtube.com/"]');
+
+  youtubeLinks.forEach((link) => {
+    const youtubeUrl = link.href;
+    const id = extractID(youtubeUrl);
+    const params = new URL(youtubeUrl).searchParams;
+    // const parent = link.parentElement;
+    const embed = document.createElement("iframe");
+    // embed.setAttribute("width", "560");
+    // embed.setAttribute("height", "315");
+    embed.setAttribute("title", "YouTube video player");
+    embed.setAttribute("frameborder", "0");
+    embed.classList.add("w-full");
+    embed.classList.add("h-96");
+    embed.setAttribute(
+      "allow",
+      "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share",
+    );
+    embed.setAttribute("allowfullscreen", "");
+    embed.src = `https://www.youtube-nocookie.com/embed/${encodeURIComponent(
+      id,
+    )}?${params.toString()}`;
+    link.insertAdjacentElement("beforebegin", embed);
+    link.classList.add("hidden");
+  });
+</script>
