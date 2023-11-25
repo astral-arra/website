@@ -5,7 +5,7 @@ author: Astral ARRA
 tags:
   - архонти
   - езотерика
-  - гностизицъм
+  - гностицизъм
 layout: "../../layouts/BlogLayout.astro"
 ---
 
