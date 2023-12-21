@@ -1,11 +1,14 @@
 ---
-
+import { Image } from "astro:assets";
+import Layout from "../layouts/RegularLayout.astro";
+import shopImg from "../assets/images/shop.png";
 ---
 
-<Layout title="Astral Arra" activeUrl="/shop">
+<Layout title="Astral Arra" activeUrl="/map">
   <div class="flex h-full">
     <Image
       class="mx-auto place-self-center"
+      src={shopImg}
     />
   </div>
 </Layout>
