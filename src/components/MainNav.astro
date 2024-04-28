@@ -87,6 +87,7 @@ const { url = "", isHero = false } = Astro.props;
         }
       </ul>
     </nav>
+    <div id="search"></div>
   </div>
 </div>
 <div
@@ -175,6 +176,12 @@ const { url = "", isHero = false } = Astro.props;
       }
     });
   }
+</script>
+
+<script>
+  window.addEventListener("DOMContentLoaded", (event) => {
+    new PagefindUI({ element: "#search", showSubResults: true });
+  });
 </script>
 
 <style>

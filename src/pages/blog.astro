@@ -3,6 +3,8 @@ import { getEntry, getCollection } from "astro:content";
 const blogConfig = await getCollection("blog");
 const siteConfig = await getEntry("site", "data");
 const { blogUrl = "" } = siteConfig.data;
+// TODO:  fix me
+// BUG: todos dont work
 
 import Layout from "../layouts/RegularLayout.astro";
 ---
