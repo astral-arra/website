@@ -7,10 +7,14 @@ const { isHero = false } = Astro.props;
     ? ""
     : "from-cloud-burst-900/60 to-cloud-burst-900/70 shadow-cloud-burst-100 bg-gradient-to-b shadow-2xl"}
 >
-  <div class="text-cloud-burst-100 w-full p-4 text-right text-sm">
+  <div class="w-full p-4 text-right text-sm text-cloud-burst-100">
     Copyright © <span id="copyright-year">2023</span> All rights reserved - AstralARЯA
   </div>
 </footer>
 <script>
-  document.querySelector("#copyright-year").textContent = new Date().getFullYear().toString();
+  const cpElement = document.querySelector("#copyright-year");
+
+  if (cpElement) {
+    cpElement.textContent = new Date().getFullYear().toString();
+  }
 </script>
