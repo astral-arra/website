@@ -5,7 +5,7 @@ author: Astral ARRA
 tags:
   - архонти
   - езотерика
-  - гностизицъм
+  - гностицизъм
 layout: "../../layouts/BlogLayout.astro"
 ---
 
@@ -70,6 +70,6 @@ END OF STORY.
 
 For Now…
 
-P.S. По-късно имах синхронизация с ето това видео, слочаеносс, не мисла... ❤️ :
+P.S. По-късно имах синхронизация с ето това видео ❤️ :
 
 https://youtu.be/Z-bohBW8BmQ

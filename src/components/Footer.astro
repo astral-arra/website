@@ -12,5 +12,9 @@ const { isHero = false } = Astro.props;
   </div>
 </footer>
 <script>
-  document.querySelector("#copyright-year").textContent = new Date().getFullYear().toString();
+  const cpElement = document.querySelector("#copyright-year");
+
+  if (cpElement) {
+    cpElement.textContent = new Date().getFullYear().toString();
+  }
 </script>

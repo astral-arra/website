@@ -1,7 +1,6 @@
 ---
 import Footer from "../components/Footer.astro";
 import MainNav from "../components/MainNav.astro";
-import { ViewTransitions } from "astro:transitions";
 import "../styles.css";
 
 const { frontmatter } = Astro.props;
@@ -10,7 +9,6 @@ const { frontmatter } = Astro.props;
 <!doctype html>
 <html lang="en">
   <head>
-    <ViewTransitions />
     <meta charset="UTF-8" />
     <meta name="description" content={`${frontmatter.title} by ${frontmatter.author}`} />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -30,13 +28,15 @@ const { frontmatter } = Astro.props;
       )
     }
     {frontmatter.image && <meta property="og:image" content={frontmatter.image} />}
+    <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
+    <script src="/pagefind/pagefind-ui.js" is:inline></script>
   </head>
   <body class="">
     <div class="wrapper grid h-full w-full grid-cols-1 grid-rows-layout">
       <MainNav url={"/blog"} />
       <main class="container mx-auto">
         <article
-          class="prose prose-stone mx-auto my-16 max-w-4xl dark:prose-invert lg:prose-xl prose-p:text-justify prose-blockquote:text-right"
+          class="prose prose-stone mx-auto my-16 max-w-4xl lg:prose-xl prose-p:text-justify prose-blockquote:text-right"
         >
           <h1>{frontmatter.title}</h1>
           <p class="p-0 text-sm text-stone-500">От: {frontmatter.author}</p>
