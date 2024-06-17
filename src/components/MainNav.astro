@@ -151,11 +151,9 @@ const { url = "", isHero = false } = Astro.props;
   const menuToggle = document.querySelector("#menu-toggle");
   const mobileNav = document.querySelector("#mobile-nav");
   const mobileLinks = mobileNav.querySelectorAll("a");
-  console.log({ mobileLinks, menuToggle });
   if (mobileLinks.length > 0) {
     mobileLinks.forEach((link) => {
       link.addEventListener("click", () => {
-        console.log("link clicked");
         mobileNav.classList.add("-translate-x-full");
         mobileNav.setAttribute("aria-expanded", "false");
       });
@@ -164,9 +162,7 @@ const { url = "", isHero = false } = Astro.props;
 
   if (menuToggle) {
     menuToggle.addEventListener("click", () => {
-      console.log("menu toggle clicked");
       const expanded = mobileNav.getAttribute("aria-expanded");
-      console.log({ expanded });
       if (expanded === "false") {
         mobileNav.classList.remove("-translate-x-full");
         mobileNav.setAttribute("aria-expanded", "true");

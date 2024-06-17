@@ -2,7 +2,6 @@
 import { getEntry } from "astro:content";
 const siteConfig = await getEntry("site", "data");
 const { index = {} } = siteConfig.data;
-console.log(index);
 import Layout from "../layouts/HeroLayout.astro";
 ---
 
