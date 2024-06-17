@@ -4,7 +4,7 @@ module.exports = {
   theme: {
     extend: {
       backgroundImage: {
-        'hero': "url('/images/oracle-girl.jpg')"
+        'hero': "url('/images/oracle-girl.png')"
       },
       colors: {
         'cloud-burst': {
