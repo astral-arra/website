@@ -9,7 +9,7 @@ tags:
 layout: "../../layouts/BlogLayout.astro"
 ---
 
-### (добър знак ли е черна котка да Ви мине пътя?)
+### 
 
 ![image of an eye](../images/synchronistic_experiences_pt_1_1.png)
 
