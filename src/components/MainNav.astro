@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import logoImg from "../assets/images/arra.jpg";
 import { getCollection, getEntry } from "astro:content";
 const navConfig = await getCollection("nav");
 const blogConfig = await getCollection("blog");
@@ -35,15 +34,7 @@ const { url = "", isHero = false } = Astro.props;
   } main-nav hidden w-full md:flex flex-row justify-between items-center`}
 >
   <div class="logo">
-    <a class="home block h-24 w-24" href="/">
-      <Image
-        class="rounded-full sepia"
-        src={logoImg}
-        alt="Astral Arra Logo"
-        width={96}
-        height={96}
-      />
-    </a>
+    <a class="home block h-24 w-24" href="/"> </a>
   </div>
   <div>
     <nav class="w-full uppercase">
