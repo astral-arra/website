@@ -2,7 +2,6 @@
 import "../styles.css";
 import MainNav from "./MainNav.astro";
 import Footer from "./Footer.astro";
-import SocialLinks from "./SocialLinks.astro";
 const { title, activeUrl, isHero = false } = Astro.props;
 ---
 
@@ -29,7 +28,6 @@ const { title, activeUrl, isHero = false } = Astro.props;
       <main class="container mx-auto">
         <slot />
       </main>
-      {activeUrl !== "/blog" && <SocialLinks />}
       <Footer {isHero} />
     </div>
   </body>
