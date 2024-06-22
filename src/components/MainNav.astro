@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import { getCollection, getEntry } from "astro:content";
 const navConfig = await getCollection("nav");
 const blogConfig = await getCollection("blog");
@@ -89,15 +88,7 @@ const { url = "", isHero = false } = Astro.props;
   } mobile-header flex flex-row items-center justify-between md:hidden`}
 >
   <div class="logo">
-    <a class="home block h-12 w-12" href="/">
-      <Image
-        class="rounded-full sepia"
-        src={logoImg}
-        alt="Astral Arra Logo"
-        width={48}
-        height={48}
-      />
-    </a>
+    <a class="home block h-12 w-12" href="/"> </a>
   </div>
   <div class="menu p-4 text-cloud-burst-50">
     <button role="button" id="menu-toggle" type="button" class="m-0 bg-none p-0">
