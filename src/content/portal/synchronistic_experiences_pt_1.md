@@ -4,8 +4,7 @@ date: 2023-09-08T08:06:56.743Z
 author: Astral ARRA
 tags:
   - архонти
-  - езотерика
-  - гностицизъм
+  
 layout: "../../layouts/BlogLayout.astro"
 ---
 
