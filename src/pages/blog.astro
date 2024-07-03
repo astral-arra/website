@@ -17,6 +17,7 @@ import Layout from "../layouts/RegularLayout.astro";
           <li>
             <h2 class="text-2xl">
               <a href={`/blog/${post.slug}`} title={post.data.title}>
+                {post.data.image && <img src={post.data.image} alt={post.data.title} />}
                 {post.data.title}
               </a>
             </h2>
