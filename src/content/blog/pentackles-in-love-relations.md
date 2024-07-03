@@ -2,7 +2,7 @@
 title: Пентаклите В Любовните Взаимоотношения
 date: 2023-09-05T08:06:56.743Z
 author: Astral ARRA 
-image: "src/content/images/pentacles1.png"
+image: "../images/pentacles1.png"
 tags: 
    - таро
 layout: "../../layouts/BlogLayout.astro"

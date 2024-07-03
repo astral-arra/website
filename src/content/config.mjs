@@ -6,14 +6,19 @@ import { z, defineCollection } from "astro:content";
  */
 const posts = {
   type: "content",
-  schema: z.object({
-    title: z.string(),
-    author: z.string(),
-    date: z.date().optional(),
-    tags: z.array(z.string()).optional(),
-    categories: z.array(z.string()).optional(),
-    image: z.string().optional(),
-  }),
+  schema: ({ image }) =>
+    z.object({
+      title: z.string(),
+      author: z.string(),
+      date: z.date().optional(),
+      tags: z.array(z.string()).optional(),
+      categories: z.array(z.string()).optional(),
+      image: image()
+        .refine((img) => img.width >= 480, {
+          message: "Cover image must be at least 480 pixels wide!",
+        })
+        .optional(),
+    }),
 };
 
 /**
