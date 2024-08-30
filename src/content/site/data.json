@@ -3,28 +3,19 @@
   "blogUrl": "/blog",
   "about": {
     "url": "/about",
-    "title": "Какво е Астрален дизайн?"
+    "title": "Коя е Астрал Арра?"
   },
   "index": {
     "url": "/",
     "title": "Astral AЯRA",
     "content": "Овладей съдбата си"
   },
-  "consult": {
-    "title": "Astral AЯRA",
-    "url": "/consult"
-  },
-  "library": {
-    "title": "Astral AЯRA",
-    "url": "/library"
-  },
+
   "map": {
     "title": "Astral AЯRA",
     "url": "/map"
   },
-  "shop": {
-    "title": "Astral AЯRA",
-    "url": "/shop"
+ 
   },
   "portal": {
     "title": "Astral AЯRA",
