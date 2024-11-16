@@ -3,20 +3,17 @@
   "blogUrl": "/blog",
   "about": {
     "url": "/about",
-    "title": "Астрал Арра?"
-  }
+    "title": "ASTRAL ARRA"
+  },
   "index": {
     "url": "/",
-    "title": "Astral AЯRA",
+    "title": "ASTRAL AЯRA",
     "content": "Овладей съдбата си"
-  }
-
+  },
   "map": {
     "title": "Astral AЯRA",
     "url": "/map"
-  }
- 
-  }
+  },
   "portal": {
     "title": "Astral AЯRA",
     "url": "/portal"
