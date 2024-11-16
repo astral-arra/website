@@ -31,10 +31,26 @@ const { frontmatter } = Astro.props;
     <link href="/pagefind/pagefind-ui.css" rel="stylesheet" />
     <script src="/pagefind/pagefind-ui.js" is:inline></script>
   </head>
-  <body class="">
+  <body class="bg-white text-gray-900">
     <div class="wrapper grid h-full w-full grid-cols-1 grid-rows-layout">
-      <MainNav url={"/blog"} />
-      <main class="container mx-auto">
+      <!-- Smaller Menu -->
+      <MainNav url={"/blog"} class="text-sm py-2 bg-transparent" />
+      
+      <main class="container mx-auto px-4">
+        <!-- Article Preview Structure -->
+        <section class="articles">
+          <div class="article-preview flex items-start space-x-4 border-b pb-4 mb-4">
+            <img src="/path/to/preview-image.jpg" alt="Preview Image" class="w-32 h-auto rounded-md" />
+            <div>
+              <h2 class="article-header text-xl font-bold">{frontmatter.title}</h2>
+              <p class="text-sm text-gray-700">Short preview text goes here...</p>
+              <p class="article-tags text-xs text-gray-500">Tags: tag1, tag2, tag3</p>
+            </div>
+          </div>
+          <!-- Repeat above block for each article -->
+        </section>
+        
+        <!-- Individual Article -->
         <article
           class="prose prose-stone mx-auto my-16 max-w-4xl lg:prose-xl prose-p:text-justify prose-blockquote:text-right"
         >
@@ -46,7 +62,9 @@ const { frontmatter } = Astro.props;
           </p>
         </article>
       </main>
-      <Footer />
+      
+      <!-- Footer -->
+      <Footer class="bg-transparent" />
     </div>
   </body>
 </html>
