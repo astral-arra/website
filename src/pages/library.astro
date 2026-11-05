@@ -1,15 +1,12 @@
 ---
-import { Image } from "astro:assets";
-import Layout from "../layouts/RegularLayout.astro";
-import biblioImg from "../assets/images/biblio.png";
+import ComingSoon from "../components/ComingSoon.astro";
+import img from "../assets/images/biblio.png";
 ---
 
-<Layout title="Astral Arra" activeUrl="/library">
-  <div class="flex h-full">
-    <Image
-      class="mx-auto place-self-center"
-      src={biblioImg}
-      alt="Image showing that this page is under construction"
-    />
-  </div>
-</Layout>
+<ComingSoon
+  title="Библиотека"
+  intro="Подбрани книги и материали за езотерика, митология, астрология и Хюман дизайн."
+  status="Библиотеката се подрежда. Скоро тук ще намериш списъци с източници и препоръки за четене."
+  image={img}
+  activeUrl="/library"
+/>

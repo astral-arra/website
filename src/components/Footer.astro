@@ -1,20 +1,12 @@
 ---
-const { isHero = false } = Astro.props;
+const year = new Date().getFullYear();
 ---
 
-<footer
-  class={isHero
-    ? ""
-    : "from-cloud-burst-900/60 to-cloud-burst-900/70 shadow-cloud-burst-100 bg-gradient-to-b shadow-2xl"}
->
-  <div class="text-cloud-burst-100 w-full p-4 text-right text-sm">
-    Copyright © <span id="copyright-year">2023</span> All rights reserved - AstralAЯRA
+<footer class="border-t border-night-line/70">
+  <div
+    class="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-8 text-sm text-pearl-dim md:flex-row md:items-center md:justify-between md:px-8"
+  >
+    <p class="font-display text-lg text-pearl">Astral AЯRA</p>
+    <p>© 2023–{year} Astral ARRA. Всички права запазени.</p>
   </div>
 </footer>
-<script>
-  const cpElement = document.querySelector("#copyright-year");
-
-  if (cpElement) {
-    cpElement.textContent = new Date().getFullYear().toString();
-  }
-</script>

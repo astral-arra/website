@@ -1,15 +1,12 @@
 ---
-import { Image } from "astro:assets";
-import Layout from "../layouts/RegularLayout.astro";
-import consultationImg from "../assets/images/consultation.png";
+import ComingSoon from "../components/ComingSoon.astro";
+import img from "../assets/images/consultation.png";
 ---
 
-<Layout title="Astral Arra" activeUrl="/consult">
-  <div class="flex h-full">
-    <Image
-      class="mx-auto place-self-center"
-      src={consultationImg}
-      alt="Image showing that this page is under construction"
-    />
-  </div>
-</Layout>
+<ComingSoon
+  title="Консултации"
+  intro="Лични консултации по астрология и Хюман дизайн."
+  status="Страницата се подготвя. Скоро тук ще намериш видовете консултации и как да запазиш час."
+  image={img}
+  activeUrl="/consult"
+/>

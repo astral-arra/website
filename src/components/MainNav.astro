@@ -1,124 +1,80 @@
 ---
-import { getCollection, getEntry } from "astro:content";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import logo from "../assets/images/logo-pearl.png";
+
 const navConfig = await getCollection("nav");
-const blogConfig = await getCollection("blog");
-const siteConfig = await getEntry("site", "data");
-const { blogUrl = "" } = siteConfig.data;
-
 const navItems = navConfig[0].data;
-
-const blogCategories = blogConfig.reduce((categories, post) => {
-  let blogCategories = post.data.categories;
-  if (!blogCategories || blogCategories.length === 0) {
-    return categories;
-  }
-  if (!Array.isArray(blogCategories)) {
-    blogCategories = [blogCategories];
-  }
-  blogCategories.forEach((category = "") => {
-    if (!categories.includes(category)) {
-      categories.push(category);
-    }
-  });
-  return categories;
-}, []);
 const { url = "", isHero = false } = Astro.props;
+
+const isActive = (href: string) => url === href || (href !== "/" && url.startsWith(`${href}/`));
 ---
 
-<div
-  class={`${
+<header
+  class:list={[
+    "z-30 w-full",
     isHero
-      ? ""
-      : "from-cloud-burst-900/60 to-cloud-burst-900/70 shadow-cloud-burst-100 bg-gradient-to-b shadow-2xl"
-  } main-nav hidden w-full md:flex flex-row justify-between items-center`}
+      ? "absolute inset-x-0 top-0"
+      : "relative border-b border-night-line/70 bg-night-deep/60 backdrop-blur",
+  ]}
 >
-  <div class="logo">
-    <a class="home block h-24 w-24" href="/"> </a>
-  </div>
-  <div>
-    <nav class="w-full uppercase">
-      <ul class="flex flex-row items-center justify-around p-4 text-cloud-burst-50" role="menu">
-        {
-          navItems.map((item) => {
-            const hasBlogCategories = item.url === blogUrl && blogCategories.length > 0;
-            return (
-              <li role="none" class="group relative">
-                <a
-                  role="menuitem"
-                  href={item.url}
-                  class={`${url === item.url ? "font-bold " : ""}
-                  ${hasBlogCategories ? "group-hover:rounded-b-none" : ""}
-                  ${isHero ? "group-hover:bg-cloud-burst-400/50" : "group-hover:bg-cloud-burst-400"}
-                   flex h-12 items-center justify-center rounded-lg bg-transparent px-4 py-2 text-center transition duration-500 hover:shadow-2xl`}
-                >
-                  {item.title}&nbsp;
-                  {hasBlogCategories ? <span class="group-hover:rotate-180"> ▾ </span> : " "}
-                </a>
+  <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-3 md:px-8">
+    <a href="/" class:list={["block shrink-0", isHero && "invisible"]} aria-label="Astral ARRA, начало">
+      <Image src={logo} alt="" class="h-14 w-auto md:h-16" loading="eager" widths={[64, 128]} sizes="64px" />
+    </a>
 
-                {hasBlogCategories && (
-                  <ul
-                    role="menu"
-                    class={`${
-                      isHero ? "bg-cloud-burst-400/20" : "bg-cloud-burst-400"
-                    } absolute left-0 flex min-w-[200px] -translate-y-full flex-col space-y-2 rounded-b-lg rounded-tr-lg border-2 border-cloud-burst-400/50 p-4 opacity-0 transition duration-300 group-hover:translate-y-0 group-hover:opacity-100`}
-                  >
-                    {blogCategories.map((category) => (
-                      <li role="none" class="w-full text-left">
-                        <a role="menuitem" href={`${item.url}/categories/${category}`}>
-                          {category}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </li>
-            );
-          })
+    <nav aria-label="Основно меню" class="hidden md:block">
+      <ul class="flex items-center gap-1 text-[0.95rem]">
+        {
+          navItems.map((item) => (
+            <li>
+              <a
+                href={item.url}
+                aria-current={isActive(item.url) ? "page" : undefined}
+                class:list={[
+                  "block px-3 py-2 text-pearl-muted hover:text-neon",
+                  isActive(item.url) &&
+                    "text-pearl underline decoration-gold decoration-1 underline-offset-[10px]",
+                ]}
+              >
+                {item.title}
+              </a>
+            </li>
+          ))
         }
       </ul>
     </nav>
-    <div id="search"></div>
-  </div>
-</div>
-<div
-  class={`${
-    isHero
-      ? ""
-      : "from-cloud-burst-900/60 to-cloud-burst-900/70 shadow-cloud-burst-100 bg-gradient-to-b shadow-2xl"
-  } mobile-header flex flex-row items-center justify-between md:hidden`}
->
-  <div class="logo">
-    <a class="home block h-12 w-12" href="/"> </a>
-  </div>
-  <div class="menu p-4 text-cloud-burst-50">
-    <button role="button" id="menu-toggle" type="button" class="m-0 bg-none p-0">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 50 50"
-        class="h-6 w-6 cursor-pointer fill-current stroke-current text-cloud-burst-50 transition duration-500"
-      >
-        <path
-          d="M 0 7.5 L 0 12.5 L 50 12.5 L 50 7.5 Z M 0 22.5 L 0 27.5 L 50 27.5 L 50 22.5 Z M 0 37.5 L 0 42.5 L 50 42.5 L 50 37.5 Z"
-        ></path>
+
+    <button
+      id="menu-toggle"
+      type="button"
+      class="p-2 text-pearl hover:text-neon md:hidden"
+      aria-controls="mobile-nav"
+      aria-expanded="false"
+    >
+      <span class="sr-only">Отвори менюто</span>
+      <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M3 7h18M3 12h18M3 17h18"></path>
       </svg>
     </button>
   </div>
-</div>
-<div
-  aria-expanded="false"
-  id="mobile-nav"
-  class="mobile-nav absolute z-40 h-full w-full -translate-x-full bg-gradient-to-r from-cloud-burst-900/60 to-cloud-burst-900 transition duration-500 md:hidden"
->
-  <nav class="h-full uppercase">
-    <ul class="flex flex-col items-start justify-center p-4" role="menu">
+
+  <nav
+    id="mobile-nav"
+    aria-label="Основно меню"
+    class="hidden border-t border-night-line bg-night-deep/95 backdrop-blur md:hidden"
+  >
+    <ul class="flex flex-col px-5 py-4">
       {
         navItems.map((item) => (
-          <li role="none" class="w-full text-left">
+          <li>
             <a
               href={item.url}
-              class={`${
-                url === item.url ? "font-bold underline" : ""
-              } flex h-12 w-full items-center rounded-lg bg-transparent px-4 py-2 text-center text-cloud-burst-50 transition duration-500 hover:bg-cloud-burst-400/50 hover:shadow-2xl`}
+              aria-current={isActive(item.url) ? "page" : undefined}
+              class:list={[
+                "block py-3 font-display text-2xl hover:text-neon",
+                isActive(item.url) ? "text-gold" : "text-pearl",
+              ]}
             >
               {item.title}
             </a>
@@ -127,43 +83,17 @@ const { url = "", isHero = false } = Astro.props;
       }
     </ul>
   </nav>
-</div>
-
-<script is:inline>
-  const menuToggle = document.querySelector("#menu-toggle");
-  const mobileNav = document.querySelector("#mobile-nav");
-  const mobileLinks = mobileNav.querySelectorAll("a");
-  if (mobileLinks.length > 0) {
-    mobileLinks.forEach((link) => {
-      link.addEventListener("click", () => {
-        mobileNav.classList.add("-translate-x-full");
-        mobileNav.setAttribute("aria-expanded", "false");
-      });
-    });
-  }
-
-  if (menuToggle) {
-    menuToggle.addEventListener("click", () => {
-      const expanded = mobileNav.getAttribute("aria-expanded");
-      if (expanded === "false") {
-        mobileNav.classList.remove("-translate-x-full");
-        mobileNav.setAttribute("aria-expanded", "true");
-      } else {
-        mobileNav.classList.add("-translate-x-full");
-        mobileNav.setAttribute("aria-expanded", "false");
-      }
-    });
-  }
-</script>
+</header>
 
 <script>
-  window.addEventListener("DOMContentLoaded", () => {
-    new PagefindUI({ element: "#search", showSubResults: true });
+  const toggle = document.querySelector<HTMLButtonElement>("#menu-toggle");
+  const panel = document.querySelector<HTMLElement>("#mobile-nav");
+  const label = toggle?.querySelector(".sr-only");
+
+  toggle?.addEventListener("click", () => {
+    const open = toggle.getAttribute("aria-expanded") === "true";
+    toggle.setAttribute("aria-expanded", String(!open));
+    panel?.classList.toggle("hidden", open);
+    if (label) label.textContent = open ? "Отвори менюто" : "Затвори менюто";
   });
 </script>
-
-<style>
-  .logo {
-    @apply flex items-center justify-center p-4;
-  }
-</style>

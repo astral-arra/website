@@ -5,7 +5,6 @@ author: Astral ARRA
 tags:
   - архонти
   
-layout: "../../layouts/BlogLayout.astro"
 ---
 
 ### 

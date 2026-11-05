@@ -1,48 +1,21 @@
 ---
-import { Image } from "astro:assets";
-import { getEntry, getCollection } from "astro:content";
-const blogConfig = await getCollection("blog");
-const siteConfig = await getEntry("site", "data");
-const { blogUrl = "" } = siteConfig.data;
-// TODO:  fix me
-// BUG: todos dont work
+import { getCollection } from "astro:content";
+import Layout from "../components/Layout.astro";
+import PostList from "../components/PostList.astro";
 
-import Layout from "../layouts/RegularLayout.astro";
+const posts = await getCollection("blog");
 ---
 
-<Layout title="Astral Arra" activeUrl="/blog">
-  <ul class="space-y-4 p-4">
-    {
-      blogConfig.map((post) => {
-        return (
-          <li>
-            <h2 class="text-2xl">
-              <a href={`/blog/${post.slug}`} title={post.data.title}>
-                {post.data.image && (
-                  <Image class="object-cover" src={post.data.image} alt={post.data.title} />
-                )}
-                {post.data.title}
-              </a>
-            </h2>
-            {post.data.categories && (
-              <div class="flex gap-2 text-sm text-stone-500">
-                <span>Категории: </span>
-                {post.data.categories.map((category) => {
-                  return <a href={`${blogUrl}/categories/${category}`}>{category}</a>;
-                })}
-              </div>
-            )}
-            {post.data.tags && (
-              <div class="flex gap-2 text-sm text-stone-500">
-                <span>Тагове: </span>
-                {post.data.tags.map((tag) => {
-                  return <a href={`${blogUrl}/tags/${tag}`}>{tag}</a>;
-                })}
-              </div>
-            )}
-          </li>
-        );
-      })
-    }
-  </ul>
+<Layout
+  title="Статии"
+  description="Статии на Astral ARRA за езотерика, гностицизъм, астрология и Хюман дизайн."
+  activeUrl="/blog"
+>
+  <h1 class="text-5xl md:text-6xl">Статии</h1>
+  <p class="mt-4 max-w-prose text-lg text-pearl-muted">
+    Текстове за езотерика, гностицизъм, астрология и Хюман дизайн.
+  </p>
+  <div class="mt-12">
+    <PostList posts={posts} baseUrl="/blog" />
+  </div>
 </Layout>

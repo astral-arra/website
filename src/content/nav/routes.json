@@ -1,18 +1,7 @@
 [
-  {
-    "title": "ASTRAL ARRA",
-    "url": "/about"
-  },
-  {
-    "title": "Статии",
-    "url": "/blog"
-  },
-  {
-    "title": "Контакт с мен",
-    "url": "/library"
-  },
-  {
-    "title": "Синхромистичен портал",
-    "url": "/portal"
-  }
+  { "title": "За мен", "url": "/about" },
+  { "title": "Статии", "url": "/blog" },
+  { "title": "Синхромистичен портал", "url": "/portal" },
+  { "title": "Консултации", "url": "/consult" },
+  { "title": "Библиотека", "url": "/library" }
 ]

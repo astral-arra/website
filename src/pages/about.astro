@@ -1,26 +1,43 @@
 ---
-import Layout from "../layouts/RegularLayout.astro";
+import { Image } from "astro:assets";
+import Layout from "../components/Layout.astro";
+import logo from "../assets/images/logo-gold.png";
 ---
 
-<Layout title="Astral Arra" activeUrl="/about">
-  <div>
-    <h1 class="py-4 text-center text-4xl">Какво е Астрален дизайн?</h1>
-    <div class="mx-auto flex max-w-4xl flex-col gap-8 py-8 text-justify">
-      <section class="about">
-        <p class="py-2 text-lg"></p>
-        <p class="py-2 text-lg"></p>
-        <p class="py-2 text-lg">
-          <a href="/blog" class="font-bold underline">ASTRAL ARRA</a>
-          ✨
+<Layout
+  title="За мен"
+  description="Какво е Astral ARRA и коя стои зад него."
+  activeUrl="/about"
+>
+  <div class="grid gap-12 md:grid-cols-[1fr_220px] md:gap-16">
+    <div class="max-w-prose">
+      <h1 class="text-5xl md:text-6xl">Какво е Astral ARRA?</h1>
+      <div class="mt-8 space-y-5 text-lg text-pearl-muted">
+        <p>
+          Astral ARRA е мястото, където събирам наблюденията си от пътя навътре: синхроничности,
+          езотерика, митология, астрология и Хюман дизайн. Тук пиша за преживяванията си и за
+          знанието, което ги осветлява.
         </p>
-      </section>
-      <section class="about-me space-y-4 text-lg">
-        <h2 class="py-2 text-2xl font-bold">За мен</h2>
-        <p></p>
-        <p></p>
-        <p></p>
-        <p>Пътуването никога не свършва...</p>
-      </section>
+      </div>
+
+      <h2 class="mt-14 text-3xl md:text-4xl">За мен</h2>
+      <div class="mt-6 space-y-5 text-lg text-pearl-muted">
+        <p>
+          От години се занимавам с астрология. Изучавала съм религии и митологии, най-вече исляма,
+          Шумер и Древен Египет, както и арабски и иврит. Философията и езиците ми дадоха рамката,
+          а личните преживявания — посоката.
+        </p>
+        <p>По-късно в пътя ми влезе Хюман дизайн и подреди много от това, което вече знаех.</p>
+        <p class="font-display text-2xl text-ice-100">Пътуването никога не свършва...</p>
+      </div>
+
+      <div class="mt-10 flex flex-wrap gap-x-8 gap-y-4">
+        <a href="/blog" class="border-b border-neon pb-1 text-ice-100 hover:text-neon">Прочети статиите</a>
+        <a href="/consult" class="border-b border-gold/60 pb-1 text-pearl-muted hover:border-gold hover:text-gold-300">
+          Консултации
+        </a>
+      </div>
     </div>
+    <Image src={logo} alt="" widths={[220, 440]} sizes="220px" class="hidden w-[220px] opacity-90 md:block" />
   </div>
 </Layout>

@@ -2,98 +2,96 @@
 @tailwind components;
 @tailwind utilities;
 
-:root,
-html,
-body {
-    height: 100%;
-    padding: 0;
-    margin: 0;
-}
-
-html {
-    font-family: "Roboto Condensed", sans-serif;
-    font-weight: 400;
+@layer base {
+  html {
+    @apply bg-night font-body text-pearl antialiased;
     line-height: 1.65;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply min-h-screen;
+    background:
+      radial-gradient(1200px 600px at 85% -10%, rgba(127, 90, 240, 0.22), transparent 60%),
+      radial-gradient(900px 500px at -10% 110%, rgba(43, 210, 255, 0.08), transparent 60%),
+      theme("colors.night.DEFAULT");
+    background-attachment: fixed;
+  }
+
+  h1,
+  h2,
+  h3 {
+    @apply font-display font-normal text-pearl;
+    letter-spacing: 0.01em;
+  }
+
+  a {
+    @apply transition-colors duration-200;
+  }
+
+  :focus-visible {
+    @apply rounded-sm outline outline-2 outline-offset-4 outline-neon;
+  }
+
+  ::selection {
+    @apply bg-amethyst-500 text-pearl;
+  }
 }
 
-body {
-    margin: 0 auto;
-    max-width: 2000px;
-    background-color: #fff;
-    color: #333;
+@layer components {
+  /* Long-form reading: articles and portal entries */
+  .prose-arra {
+    --tw-prose-body: theme("colors.pearl.muted");
+    --tw-prose-headings: theme("colors.pearl.DEFAULT");
+    --tw-prose-lead: theme("colors.pearl.muted");
+    --tw-prose-links: theme("colors.ice.200");
+    --tw-prose-bold: theme("colors.pearl.DEFAULT");
+    --tw-prose-counters: theme("colors.gold.DEFAULT");
+    --tw-prose-bullets: theme("colors.gold.DEFAULT");
+    --tw-prose-hr: theme("colors.night.line");
+    --tw-prose-quotes: theme("colors.ice.100");
+    --tw-prose-quote-borders: theme("colors.neon.DEFAULT");
+    --tw-prose-captions: theme("colors.pearl.dim");
+    --tw-prose-code: theme("colors.ice.200");
+    --tw-prose-pre-code: theme("colors.ice.100");
+    --tw-prose-pre-bg: theme("colors.night.deep");
+    --tw-prose-th-borders: theme("colors.night.line");
+    --tw-prose-td-borders: theme("colors.night.line");
+  }
+
+  .prose-arra :where(h2, h3) {
+    @apply font-display font-normal;
+  }
+
+  .prose-arra :where(a) {
+    @apply decoration-ice-400/60 underline-offset-4 hover:text-neon hover:decoration-neon;
+  }
+
+  .prose-arra :where(blockquote) {
+    @apply not-italic;
+  }
+
+  .prose-arra :where(blockquote p:first-of-type)::before,
+  .prose-arra :where(blockquote p:last-of-type)::after {
+    content: none;
+  }
+
+  .prose-arra :where(img) {
+    @apply mx-auto rounded-sm;
+  }
+
+  /* Small gold line used to separate meta information */
+  .gold-rule {
+    @apply h-px w-16 bg-gradient-to-r from-gold to-transparent;
+  }
 }
 
-/* Navigation Bar */
-nav {
-    font-size: 0.875rem; /* Smaller font size */
-    padding: 0.5rem 1rem;
-    background-color: transparent; /* No background color */
-    border-bottom: 1px solid #ddd; /* Optional border for separation */
-}
-
-/* Article Previews */
-.articles {
-    display: flex;
-    flex-direction: column; /* Stack articles vertically */
-    gap: 1.5rem; /* Space between articles */
-    margin: 2rem auto;
-    padding: 0 1rem;
-}
-
-.article-preview {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start; /* Align image and text */
-    gap: 1rem;
-    border-bottom: 1px solid #ddd; /* Separator between rows */
-    padding-bottom: 1rem;
-}
-
-.article-preview img {
-    width: 150px; /* Smaller images */
-    height: auto; /* Maintain aspect ratio */
-    border-radius: 8px; /* Slightly rounded corners */
-}
-
-.article-header {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-}
-
-.article-description {
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #555; /* Slightly lighter color for the description */
-}
-
-.article-tags {
-    font-size: 0.875rem;
-    color: #888;
-    margin-top: 0.5rem;
-}
-
-/* Footer */
-footer {
-    background-color: transparent; /* Transparent footer */
-    text-align: center;
-    padding: 1rem 0;
-    font-size: 0.875rem;
-    color: #555;
-}
-
-/* Fade-in Animation */
-@keyframes fade-in {
-    0% {
-        opacity: 0;
-        transform: translateX(-30%);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.article-preview {
-    animation: fade-in 0.6s ease-out; /* Apply fade-in to article previews */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

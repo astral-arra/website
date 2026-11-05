@@ -1,0 +1,55 @@
+---
+import { Image } from "astro:assets";
+import type { CollectionEntry } from "astro:content";
+import { formatDate, sortByDate } from "../lib/posts";
+
+interface Props {
+  posts: CollectionEntry<"blog" | "portal">[];
+  baseUrl: string;
+}
+
+const { posts, baseUrl } = Astro.props;
+const sorted = sortByDate(posts);
+---
+
+{
+  sorted.length === 0 ? (
+    <p class="text-pearl-muted">Тук още няма публикации.</p>
+  ) : (
+    <ul class="divide-y divide-night-line/80 border-y border-night-line/80">
+      {sorted.map((post) => (
+        <li>
+          <a
+            href={`${baseUrl}/${post.slug}`}
+            class="group grid gap-5 py-8 sm:grid-cols-[200px_1fr] sm:items-center"
+          >
+            {post.data.image ? (
+              <Image
+                src={post.data.image}
+                alt=""
+                widths={[200, 400]}
+                sizes="200px"
+                class="aspect-[4/3] w-full rounded-sm object-cover opacity-90 transition group-hover:opacity-100"
+              />
+            ) : (
+              <span class="hidden sm:block" />
+            )}
+            <span class="block">
+              {post.data.date && (
+                <time datetime={post.data.date.toISOString()} class="text-sm text-gold">
+                  {formatDate(post.data.date)}
+                </time>
+              )}
+              <span class="mt-1 block font-display text-2xl leading-snug text-pearl group-hover:text-neon md:text-3xl">
+                {post.data.title}
+              </span>
+              {post.data.description && (
+                <span class="mt-2 block max-w-prose text-pearl-muted">{post.data.description}</span>
+              )}
+            </span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  )
+}
