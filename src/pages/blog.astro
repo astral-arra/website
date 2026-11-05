@@ -2,19 +2,21 @@
 import { getCollection } from "astro:content";
 import Layout from "../components/Layout.astro";
 import PostList from "../components/PostList.astro";
+import SectionNav from "../components/SectionNav.astro";
 
 const posts = await getCollection("blog");
 ---
 
 <Layout
   title="Статии"
-  description="Статии на Astral ARRA за езотерика, гностицизъм, астрология и Хюман дизайн."
+  description="Статии на Astral ARRA за таро, астрал, астрален дизайн, гностицизъм, магия и синхромистични анализи."
   activeUrl="/blog"
 >
   <h1 class="text-5xl md:text-6xl">Статии</h1>
   <p class="mt-4 max-w-prose text-lg text-pearl-muted">
-    Текстове за езотерика, гностицизъм, астрология и Хюман дизайн.
+    Таро, астрал, астрален дизайн, гностицизъм, магия и анализи.
   </p>
+  <SectionNav />
   <div class="mt-12">
     <PostList posts={posts} baseUrl="/blog" />
   </div>

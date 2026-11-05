@@ -1,7 +1,8 @@
 ---
 title: Архонти, органични портали и други противни съ(з)д(н)ания
 date: 2023-09-05T08:06:56.743Z
-author: Astral ARRA 
+author: Astral ARRA
+section: gnosticism
 image: "../images/archonts2.png"
 tags: 
    - архонти

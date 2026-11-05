@@ -2,8 +2,15 @@
 import { getCollection } from "astro:content";
 import Layout from "../components/Layout.astro";
 import PostList from "../components/PostList.astro";
+import UpcomingList from "../components/UpcomingList.astro";
+import { Content as Intro } from "../texts/portal-intro.md";
+import newMoon from "../content/images/sections/portal/05.jpg";
 
 const posts = await getCollection("portal");
+const upcoming = [
+  { title: "Витамини Б15 и Б16 - новата пандемия" },
+  { title: "Новолуние в дева, черна магия и таро разговор със стареца в парка...", image: newMoon },
+];
 ---
 
 <Layout
@@ -15,7 +22,11 @@ const posts = await getCollection("portal");
   <p class="mt-4 max-w-prose text-lg text-pearl-muted">
     Лични преживявания със синхроничности, времеви линии и знаци по пътя.
   </p>
+  <div class="article-body prose prose-lg prose-arra mt-10 max-w-3xl">
+    <Intro />
+  </div>
   <div class="mt-12">
     <PostList posts={posts} baseUrl="/portal" />
   </div>
+  <UpcomingList items={upcoming} />
 </Layout>

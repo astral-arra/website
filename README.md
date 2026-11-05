@@ -18,6 +18,9 @@ pnpm preview   # преглед на готовия сайт
 | Статии | `src/content/blog/*.md` |
 | Портал | `src/content/portal/*.md` |
 | Снимки към статиите | `src/content/images/` |
+| Раздели на статиите (Таро, Астрал...) и предстоящите теми | `src/content/sections/*.md` |
+| Въведение на портала | `src/texts/portal-intro.md` |
+| Пренасочвания от стария сайт | `vercel.json` |
 | Меню | `src/content/nav/routes.json` |
 | Заглавие и слоган | `src/content/site/data.json` |
 | Страници | `src/pages/` |
@@ -33,6 +36,7 @@ title: Заглавие на статията
 date: 2026-11-05
 description: Едно изречение за статията (показва се в Google и при споделяне).
 image: "../images/korica.png"
+section: taro        # taro, astral, astralen-dizain, gnosticism, magick, analizi
 tags:
   - астрология
 ---
@@ -41,6 +45,8 @@ tags:
 ```
 
 Линк към YouTube видео, оставен сам на ред, се показва като вграден плейър.
+
+Когато статия от „Предстоящи статии“ излезе, махни я от `upcoming` в нейния раздел.
 
 ## Цветове
 

@@ -1,0 +1,28 @@
+---
+title: "Magick"
+order: 5
+tagline: "\"By the power of truth, I, while living, have conquered the universe.\""
+image: "../images/sections/magick/00.jpg"
+upcoming:
+  - title: "Какво представлява Магията?"
+    teaser: "Мислиш, че знаеш какво е магия?"
+    image: "../images/sections/magick/00.jpg"
+  - title: "Какво е Дежа-вю?"
+    teaser: "Имаш ли усещането, че вече…"
+    image: "../images/sections/magick/02.jpg"
+  - title: "Правилно ли е да правим Любовна магия?"
+    image: "../images/sections/magick/04.jpg"
+  - title: "Коя е Арахнаидната кралица и как се работи с нея?"
+    image: "../images/sections/magick/05.jpg"
+  - title: "Махалото - работи или измама?"
+    image: "../images/sections/magick/06.jpg"
+  - title: "Как да манифестираме успешно"
+    image: "../images/sections/magick/07.jpg"
+  - title: "Мистерията на воала"
+    image: "../images/sections/magick/08.jpg"
+  - title: "Какво е Автомагията?"
+    teaser: "И как да я избегнем"
+    image: "../images/sections/magick/09.jpg"
+  - title: "Сатанинските измами, за които да внимаваме"
+    image: "../images/sections/magick/10.jpg"
+---

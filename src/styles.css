@@ -80,6 +80,59 @@
     @apply mx-auto rounded-sm;
   }
 
+  /* Article text: a wide, calm column. Justified with hyphenation from tablet up,
+     left-aligned on phones where justified text leaves gaps. */
+  .article-body {
+    font-size: 1.125rem;
+    line-height: 1.8;
+  }
+
+  .article-body :where(p, li) {
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    overflow-wrap: break-word;
+  }
+
+  @media (min-width: 768px) {
+    .article-body {
+      font-size: 1.1875rem;
+    }
+
+    .article-body :where(p, li) {
+      text-align: justify;
+      text-justify: inter-word;
+    }
+  }
+
+  .article-body.prose :where(h2) {
+    @apply mb-4 mt-14 text-3xl leading-snug md:text-4xl;
+  }
+
+  .article-body.prose :where(h3) {
+    @apply mb-3 mt-10 text-2xl leading-snug text-ice-100;
+  }
+
+  .article-body.prose :where(ol, ul) {
+    @apply pl-7;
+  }
+
+  .article-body.prose :where(li) {
+    @apply my-3 pl-1;
+  }
+
+  .article-body.prose :where(li > p) {
+    @apply my-2;
+  }
+
+  .article-body.prose :where(img) {
+    @apply mx-auto my-10 h-auto w-auto max-w-full;
+    max-height: 44rem;
+  }
+
+  .article-body.prose :where(iframe) {
+    @apply my-10;
+  }
+
   /* Small gold line used to separate meta information */
   .gold-rule {
     @apply h-px w-16 bg-gradient-to-r from-gold to-transparent;

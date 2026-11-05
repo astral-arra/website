@@ -2,24 +2,43 @@
 import { getCollection } from "astro:content";
 import Layout from "../../../components/Layout.astro";
 import PostList from "../../../components/PostList.astro";
-import { groupBy } from "../../../lib/posts";
+import SectionNav from "../../../components/SectionNav.astro";
+import UpcomingList from "../../../components/UpcomingList.astro";
 
 export async function getStaticPaths() {
-  const groups = groupBy(await getCollection("blog"), "categories");
-  return Object.entries(groups).map(([category, posts]) => ({
-    params: { category },
-    props: { posts },
+  const sections = await getCollection("sections");
+  const posts = await getCollection("blog");
+  return sections.map((section) => ({
+    params: { category: section.slug },
+    props: { section, posts: posts.filter((p) => p.data.section?.slug === section.slug) },
   }));
 }
 
-const { category } = Astro.params;
-const { posts } = Astro.props;
+const { section, posts } = Astro.props;
+const { Content } = await section.render();
+const { title, tagline, upcoming } = section.data;
 ---
 
-<Layout title={`${category} | Статии`} activeUrl="/blog">
+<Layout title={`${title} | Статии`} description={tagline} image={section.data.image?.src} activeUrl="/blog">
   <a href="/blog" class="text-sm text-ice-300 hover:text-neon">Статии</a>
-  <h1 class="mt-3 text-4xl md:text-5xl">{category}</h1>
-  <div class="mt-10">
-    <PostList posts={posts} baseUrl="/blog" />
-  </div>
+  <h1 class="mt-3 text-5xl md:text-6xl">{title}</h1>
+  <p class="mt-5 max-w-3xl font-display text-2xl leading-snug text-ice-100 md:text-3xl">{tagline}</p>
+  {
+    section.body.trim() && (
+      <div class="prose prose-lg prose-arra mt-8 max-w-3xl">
+        <Content />
+      </div>
+    )
+  }
+  <SectionNav current={section.slug} />
+
+  {
+    posts.length > 0 && (
+      <div class="mt-12">
+        <PostList posts={posts} baseUrl="/blog" />
+      </div>
+    )
+  }
+
+  <UpcomingList items={upcoming} />
 </Layout>

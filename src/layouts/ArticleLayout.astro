@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import type { CollectionEntry } from "astro:content";
+import { getEntry, type CollectionEntry } from "astro:content";
 import Layout from "../components/Layout.astro";
 import { formatDate } from "../lib/posts";
 
@@ -12,12 +12,26 @@ interface Props {
 const { post, section } = Astro.props;
 const { title, date, author, tags = [], image, description } = post.data;
 const { Content } = await post.render();
+const topic = post.data.section ? await getEntry(post.data.section) : undefined;
 ---
 
 <Layout title={title} description={description ?? title} image={image?.src} activeUrl={section.url}>
-  <article class="mx-auto max-w-[68ch]">
-    <a href={section.url} class="text-sm text-ice-300 hover:text-neon">{section.title}</a>
+  <article class="article mx-auto max-w-[52rem]">
+    <nav aria-label="Път до статията" class="flex flex-wrap gap-x-2 text-sm text-pearl-dim">
+      <a href={section.url} class="text-ice-300 hover:text-neon">{section.title}</a>
+      {
+        topic && (
+          <>
+            <span aria-hidden="true">/</span>
+            <a href={`/blog/categories/${topic.slug}`} class="text-ice-300 hover:text-neon">
+              {topic.data.title}
+            </a>
+          </>
+        )
+      }
+    </nav>
     <h1 class="mt-4 text-4xl leading-tight md:text-6xl">{title}</h1>
+    {post.data.subtitle && <p class="mt-4 font-display text-xl text-ice-100 md:text-2xl">{post.data.subtitle}</p>}
     <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-pearl-dim">
       <span>{author}</span>
       {date && <time datetime={date.toISOString()} class="text-gold">{formatDate(date)}</time>}
@@ -26,11 +40,11 @@ const { Content } = await post.render();
 
     {
       image && (
-        <Image src={image} alt="" widths={[680, 1360]} sizes="(min-width: 768px) 680px, 100vw" class="mt-10 w-full rounded-sm" />
+        <Image src={image} alt="" widths={[832, 1664]} sizes="(min-width: 900px) 832px, 100vw" class="mt-10 w-full rounded-sm" />
       )
     }
 
-    <div class="prose prose-lg prose-arra mt-10 max-w-none md:prose-xl">
+    <div class="article-body prose prose-lg prose-arra mt-10 max-w-none">
       <Content />
     </div>
 
@@ -59,9 +73,9 @@ const { Content } = await post.render();
   const idPattern =
     /(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([A-Za-z0-9_-]{11})/;
 
-  document.querySelectorAll<HTMLAnchorElement>(".prose a[href]").forEach((link) => {
+  document.querySelectorAll<HTMLAnchorElement>(".prose p > a[href]:only-child").forEach((link) => {
     const id = link.href.match(idPattern)?.[1];
-    if (!id) return;
+    if (!id || link.parentElement?.textContent?.trim() !== link.textContent?.trim()) return;
     const params = new URL(link.href).searchParams;
     params.delete("v");
     const embed = document.createElement("iframe");
