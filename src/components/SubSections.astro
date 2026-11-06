@@ -1,0 +1,51 @@
+---
+// A page made of a few named parts that are still being written.
+interface Props {
+  parts: { id: string; title: string; text: string; items?: string[] }[];
+}
+
+const { parts } = Astro.props;
+---
+
+{
+  parts.length > 1 && (
+    <nav aria-label="На тази страница" class="mt-8">
+      <ul class="flex flex-wrap gap-2 text-[0.95rem]">
+        {parts.map((p) => (
+          <li>
+            <a
+              href={`#${p.id}`}
+              class="block rounded-full border border-night-line px-4 py-1.5 text-pearl-muted hover:border-neon hover:text-neon"
+            >
+              {p.title}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  )
+}
+
+<div class="mt-14 divide-y divide-night-line/80 border-y border-night-line/80">
+  {
+    parts.map((p) => (
+      <section id={p.id} class="grid scroll-mt-24 gap-4 py-12 md:grid-cols-[18rem_1fr] md:gap-12">
+        <h2 class="text-3xl md:text-4xl">{p.title}</h2>
+        <div>
+          <p class="max-w-prose text-lg text-pearl-muted">{p.text}</p>
+          {p.items && p.items.length > 0 && (
+            <ul class="mt-6 space-y-3">
+              {p.items.map((item) => (
+                <li class="flex gap-3 font-display text-xl text-pearl">
+                  <span class="text-gold" aria-hidden="true">✦</span>
+                  {item}
+                </li>
+              ))}
+            </ul>
+          )}
+          <p class="mt-6 text-sm text-ice-300">Скоро</p>
+        </div>
+      </section>
+    ))
+  }
+</div>

@@ -23,8 +23,8 @@ const isActive = (href: string) => url === href || (href !== "/" && url.startsWi
       <Image src={logo} alt="" class="h-14 w-auto md:h-16" loading="eager" widths={[64, 128]} sizes="64px" />
     </a>
 
-    <nav aria-label="Основно меню" class="hidden md:block">
-      <ul class="flex items-center gap-1 text-[0.95rem]">
+    <nav aria-label="Основно меню" class="hidden lg:block">
+      <ul class="flex items-center text-[0.92rem] xl:text-[0.95rem]">
         {
           navItems.map((item) => (
             <li>
@@ -32,7 +32,7 @@ const isActive = (href: string) => url === href || (href !== "/" && url.startsWi
                 href={item.url}
                 aria-current={isActive(item.url) ? "page" : undefined}
                 class:list={[
-                  "block px-3 py-2 text-pearl-muted hover:text-neon",
+                  "block px-2.5 py-2 text-pearl-muted hover:text-neon xl:px-3",
                   isActive(item.url) &&
                     "text-pearl underline decoration-gold decoration-1 underline-offset-[10px]",
                 ]}
@@ -42,13 +42,14 @@ const isActive = (href: string) => url === href || (href !== "/" && url.startsWi
             </li>
           ))
         }
+        <li class="pl-2 text-lg" aria-hidden="true">🧿</li>
       </ul>
     </nav>
 
     <button
       id="menu-toggle"
       type="button"
-      class="p-2 text-pearl hover:text-neon md:hidden"
+      class="p-2 text-pearl hover:text-neon lg:hidden"
       aria-controls="mobile-nav"
       aria-expanded="false"
     >
@@ -62,7 +63,7 @@ const isActive = (href: string) => url === href || (href !== "/" && url.startsWi
   <nav
     id="mobile-nav"
     aria-label="Основно меню"
-    class="hidden border-t border-night-line bg-night-deep/95 backdrop-blur md:hidden"
+    class="hidden border-t border-night-line bg-night-deep/95 backdrop-blur lg:hidden"
   >
     <ul class="flex flex-col px-5 py-4">
       {
@@ -81,6 +82,7 @@ const isActive = (href: string) => url === href || (href !== "/" && url.startsWi
           </li>
         ))
       }
+      <li class="py-3 text-2xl" aria-hidden="true">🧿</li>
     </ul>
   </nav>
 </header>

@@ -22,6 +22,8 @@ pnpm preview   # преглед на готовия сайт
 | Въведение на портала | `src/texts/portal-intro.md` |
 | Пренасочвания от стария сайт | `vercel.json` |
 | Меню | `src/content/nav/routes.json` |
+| Имейл и социални мрежи | `src/lib/contact.ts` |
+| Книги, Магически кът, Съновник | `src/pages/books.astro`, `magic.astro`, `sonovnik.astro` |
 | Заглавие и слоган | `src/content/site/data.json` |
 | Страници | `src/pages/` |
 | Цветове и шрифтове | `tailwind.config.cjs`, `src/styles.css` |

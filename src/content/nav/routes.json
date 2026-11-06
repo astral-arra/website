@@ -2,6 +2,8 @@
   { "title": "За мен", "url": "/about" },
   { "title": "Статии", "url": "/blog" },
   { "title": "Синхромистичен портал", "url": "/portal" },
+  { "title": "Книги", "url": "/books" },
+  { "title": "Магически кът", "url": "/magic" },
   { "title": "Консултации", "url": "/consult" },
-  { "title": "Библиотека", "url": "/library" }
+  { "title": "Съновник", "url": "/sonovnik" }
 ]

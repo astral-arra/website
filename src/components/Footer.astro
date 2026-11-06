@@ -1,12 +1,32 @@
 ---
+import { EMAIL, SOCIAL as social, mailto } from "../lib/contact";
+
 const year = new Date().getFullYear();
 ---
 
 <footer class="border-t border-night-line/70">
-  <div
-    class="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-8 text-sm text-pearl-dim md:flex-row md:items-center md:justify-between md:px-8"
-  >
-    <p class="font-display text-lg text-pearl">Astral AЯRA</p>
-    <p>© 2023–{year} Astral ARRA. Всички права запазени.</p>
+  <div class="mx-auto grid max-w-6xl gap-8 px-5 py-10 md:grid-cols-[1fr_auto] md:items-end md:px-8">
+    <div>
+      <p class="font-display text-2xl text-pearl">Astral AЯRA</p>
+      <a href={mailto()} class="mt-2 inline-block text-ice-200 hover:text-neon">{EMAIL}</a>
+    </div>
+    <nav aria-label="Социални мрежи">
+      <ul class="flex flex-wrap gap-x-6 gap-y-2 text-pearl-muted">
+        {
+          social.map((s) => (
+            <li>
+              <a href={s.url} target="_blank" rel="noopener" class="hover:text-neon">
+                {s.name}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+  </div>
+  <div class="border-t border-night-line/40">
+    <p class="mx-auto max-w-6xl px-5 py-5 text-sm text-pearl-dim md:px-8">
+      © 2023–{year} Astral ARRA. Всички права запазени.
+    </p>
   </div>
 </footer>

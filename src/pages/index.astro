@@ -16,10 +16,15 @@ const latest = [
 ---
 
 <Layout isHero activeUrl="/">
-  <section class="relative isolate flex min-h-[100svh] items-center overflow-hidden">
-    <div class="absolute inset-0 -z-20 bg-hero bg-cover bg-[center_30%]"></div>
+  <section class="relative isolate flex min-h-[100svh] items-end overflow-hidden pb-14 md:items-center md:pb-0">
+    <div class="hero-stage -z-20" aria-hidden="true">
+      <img src="/images/oracle-girl.png" alt="" class="h-full w-full" fetchpriority="high" />
+      <div class="aura aura-breathe"></div>
+      <div class="aura aura-swirl"></div>
+      <div class="aura aura-star"></div>
+    </div>
     <div
-      class="absolute inset-0 -z-10 bg-gradient-to-t from-night via-night/75 to-night/30 md:bg-gradient-to-r md:from-night md:via-night/60 md:to-night/10"
+      class="absolute inset-0 -z-10 bg-gradient-to-t from-night from-40% via-night/70 to-night/0 md:from-0% md:bg-gradient-to-r md:from-night md:via-night/60 md:to-night/10"
     >
     </div>
     <div class="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-night to-transparent"></div>
@@ -73,6 +78,119 @@ const latest = [
 </Layout>
 
 <style>
+  /* The hero image sits on a stage with the image's own proportions, sized like
+     object-fit: cover, so the aura layers stay pinned to the figure at any screen size. */
+  .hero-stage {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 230vw;
+    aspect-ratio: 1344 / 768;
+    transform: translateX(-50%);
+  }
+
+  @media (min-width: 768px) {
+    /* Cover the whole hero, and move the figure right, away from the text;
+       the left edge is covered by the dark gradient. */
+    .hero-stage {
+      top: 50%;
+      left: calc(50% + 16vw);
+      width: max(100%, calc(100svh * 1.75));
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .aura {
+    position: absolute;
+    aspect-ratio: 1;
+    border-radius: 9999px;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Soft light around the head that slowly breathes */
+  .aura-breathe {
+    left: 50%;
+    top: 44%;
+    width: 58%;
+    background: radial-gradient(
+      circle,
+      rgba(143, 211, 255, 0.38) 0%,
+      rgba(127, 90, 240, 0.28) 34%,
+      rgba(43, 210, 255, 0.08) 52%,
+      transparent 66%
+    );
+    animation: aura-breathe 9s ease-in-out infinite;
+  }
+
+  /* Streaks of light that circle slowly through the aura */
+  .aura-swirl {
+    left: 50%;
+    top: 46%;
+    width: 66%;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      rgba(43, 210, 255, 0.55) 40deg,
+      transparent 95deg,
+      rgba(163, 139, 250, 0.5) 170deg,
+      transparent 235deg,
+      rgba(189, 232, 255, 0.45) 300deg,
+      transparent 360deg
+    );
+    -webkit-mask: radial-gradient(circle, transparent 36%, #000 46%, #000 58%, transparent 70%);
+    mask: radial-gradient(circle, transparent 36%, #000 46%, #000 58%, transparent 70%);
+    filter: blur(14px);
+    opacity: 0.7;
+    animation: aura-turn 48s linear infinite;
+  }
+
+  /* The star at her heart pulses gently */
+  .aura-star {
+    left: 49.2%;
+    top: 87%;
+    width: 15%;
+    background: radial-gradient(circle, rgba(228, 246, 255, 0.85) 0%, rgba(43, 210, 255, 0.45) 22%, transparent 62%);
+    animation: aura-pulse 4.5s ease-in-out infinite;
+  }
+
+  @keyframes aura-breathe {
+    0%,
+    100% {
+      opacity: 0.55;
+      transform: translate(-50%, -50%) scale(0.94);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.06);
+    }
+  }
+
+  @keyframes aura-turn {
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+
+  @keyframes aura-pulse {
+    0%,
+    100% {
+      opacity: 0.45;
+      transform: translate(-50%, -50%) scale(0.85);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.12);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aura {
+      animation: none !important;
+    }
+  }
+
   /* The one bright moment of the site: the ARRA mark lights up like neon. */
   .arra-glow {
     filter: drop-shadow(0 0 1px #bde8ff) drop-shadow(0 0 8px rgba(43, 210, 255, 0.85))

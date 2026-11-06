@@ -1,0 +1,59 @@
+---
+// Typographic placeholder cover, used until a book has its real cover.
+interface Props {
+  title: string;
+  subtitle?: string;
+  motif: "glow" | "sigil" | "web";
+}
+
+const { title, subtitle, motif } = Astro.props;
+---
+
+<div
+  class="relative aspect-[2/3] w-full overflow-hidden rounded-[3px] bg-night-deep shadow-[0_30px_60px_-30px_rgba(43,210,255,0.35)] ring-1 ring-gold/40"
+>
+  {
+    motif === "glow" && (
+      <div class="absolute inset-0 bg-[radial-gradient(circle_at_50%_38%,rgba(189,232,255,0.55),rgba(127,90,240,0.45)_32%,transparent_68%)]" />
+    )
+  }
+  {
+    motif === "sigil" && (
+      <svg viewBox="0 0 200 300" class="absolute inset-0 h-full w-full" aria-hidden="true">
+        <g fill="none" stroke="#D9B45A" stroke-opacity="0.55" stroke-width="0.8">
+          <circle cx="100" cy="118" r="62"></circle>
+          <circle cx="100" cy="118" r="48" stroke-dasharray="2 4"></circle>
+          <path d="M100 56 L154 149 L46 149 Z"></path>
+          <path d="M100 180 L46 87 L154 87 Z"></path>
+        </g>
+        <circle cx="100" cy="118" r="26" fill="#7F5AF0" fill-opacity="0.35"></circle>
+      </svg>
+    )
+  }
+  {
+    motif === "web" && (
+      <svg viewBox="0 0 200 300" class="absolute inset-0 h-full w-full" aria-hidden="true">
+        <g fill="none" stroke="#BDE8FF" stroke-opacity="0.45" stroke-width="0.7">
+          {Array.from({ length: 12 }, (_, i) => {
+            const a = (i / 12) * Math.PI * 2;
+            return <line x1="100" y1="118" x2={100 + Math.cos(a) * 140} y2={118 + Math.sin(a) * 140} />;
+          })}
+          {[18, 34, 52, 72, 94].map((r) => (
+            <polygon
+              points={Array.from({ length: 12 }, (_, i) => {
+                const a = (i / 12) * Math.PI * 2;
+                return `${100 + Math.cos(a) * r},${118 + Math.sin(a) * r}`;
+              }).join(" ")}
+            />
+          ))}
+        </g>
+      </svg>
+    )
+  }
+  <div class="absolute inset-3 rounded-[2px] border border-gold/50"></div>
+  <div class="absolute inset-x-6 bottom-8 text-center">
+    <p class="font-display text-3xl leading-tight text-pearl">{title}</p>
+    {subtitle && <p class="mt-2 text-sm text-ice-100">{subtitle}</p>}
+    <p class="mt-5 text-xs text-gold">Astral AЯRA</p>
+  </div>
+</div>
