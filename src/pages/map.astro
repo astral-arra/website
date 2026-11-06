@@ -1,15 +1,12 @@
 ---
-import { Image } from "astro:assets";
-import Layout from "../layouts/RegularLayout.astro";
-import mapImg from "../assets/images/map.png";
+import ComingSoon from "../components/ComingSoon.astro";
+import img from "../assets/images/map.png";
 ---
 
-<Layout title="Astral Arra" activeUrl="/map">
-  <div class="flex h-full">
-    <Image
-      class="mx-auto place-self-center"
-      src={mapImg}
-      alt="Image showing that this page is under construction"
-    />
-  </div>
-</Layout>
+<ComingSoon
+  title="Карта"
+  intro="Карта на пътя през Astral ARRA."
+  status="Страницата се подготвя."
+  image={img}
+  activeUrl="/map"
+/>

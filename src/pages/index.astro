@@ -1,16 +1,221 @@
 ---
-import { getEntry } from "astro:content";
-const siteConfig = await getEntry("site", "data");
-const { index = {} } = siteConfig.data;
-import Layout from "../layouts/HeroLayout.astro";
+import { Image } from "astro:assets";
+import { getCollection, getEntry } from "astro:content";
+import Layout from "../components/Layout.astro";
+import { formatDate, sortByDate } from "../lib/posts";
+import logo from "../assets/images/logo-pearl.png";
+
+const site = await getEntry("site", "data");
+const [latestArticle] = sortByDate(await getCollection("blog"));
+const [latestPortal] = sortByDate(await getCollection("portal"));
+
+const latest = [
+  latestArticle && { label: "Последна статия", base: "/blog", all: "Всички статии", post: latestArticle },
+  latestPortal && { label: "Последно от портала", base: "/portal", all: "Към портала", post: latestPortal },
+].filter(Boolean);
 ---
 
-<Layout title={index.title} activeUrl={index.url}>
-  <div class="flex h-full flex-row items-center justify-start pl-10">
-    <h1
-      class="w-full text-left text-6xl/[1.3] font-bold text-cloud-burst-50 drop-shadow md:w-[550px] md:text-8xl"
+<Layout isHero activeUrl="/">
+  <section class="relative isolate flex min-h-[100svh] items-end overflow-hidden pb-14 md:items-center md:pb-0">
+    <div class="hero-stage -z-20" aria-hidden="true">
+      <img src="/images/oracle-girl.png" alt="" class="h-full w-full" fetchpriority="high" />
+      <div class="aura aura-breathe"></div>
+      <div class="aura aura-swirl"></div>
+      <div class="aura aura-star"></div>
+    </div>
+    <div
+      class="absolute inset-0 -z-10 bg-gradient-to-t from-night from-40% via-night/70 to-night/0 md:from-0% md:bg-gradient-to-r md:from-night md:via-night/60 md:to-night/10"
     >
-      {index.content}
-    </h1>
-  </div>
+    </div>
+    <div class="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-night to-transparent"></div>
+
+    <div class="mx-auto w-full max-w-6xl px-5 pt-24 md:px-8">
+      <Image
+        src={logo}
+        alt="Astral AЯRA"
+        widths={[240, 480]}
+        sizes="(min-width: 768px) 240px, 168px"
+        loading="eager"
+        class="arra-glow w-[168px] md:w-[240px]"
+      />
+      <h1 class="mt-10 max-w-[11ch] text-6xl leading-[1.05] md:text-8xl">{site.data.tagline}</h1>
+      {site.data.motto && <p class="mt-6 max-w-md font-display text-xl text-ice-100 md:text-2xl">{site.data.motto}</p>}
+      <div class="mt-10 flex flex-wrap gap-x-8 gap-y-4 text-lg">
+        <a href="/portal" class="border-b border-neon pb-1 text-ice-100 hover:text-neon">
+          Влез в портала
+        </a>
+        <a href="/blog" class="border-b border-gold/60 pb-1 text-pearl-muted hover:border-gold hover:text-gold-300">
+          Прочети статиите
+        </a>
+      </div>
+    </div>
+  </section>
+
+  {
+    latest.length > 0 && (
+      <section class="mx-auto grid max-w-6xl gap-12 px-5 pb-24 pt-8 md:grid-cols-2 md:px-8">
+        {latest.map(({ label, base, all, post }) => (
+          <div class="border-t border-night-line pt-6">
+            <p class="text-sm text-gold">{label}</p>
+            <a href={`${base}/${post.slug}`} class="group mt-3 block">
+              <span class="block font-display text-3xl leading-snug text-pearl group-hover:text-neon md:text-4xl">
+                {post.data.title}
+              </span>
+              {post.data.date && (
+                <time datetime={post.data.date.toISOString()} class="mt-2 block text-sm text-pearl-dim">
+                  {formatDate(post.data.date)}
+                </time>
+              )}
+            </a>
+            <a href={base} class="mt-6 inline-block text-sm text-ice-300 hover:text-neon">
+              {all}
+            </a>
+          </div>
+        ))}
+      </section>
+    )
+  }
 </Layout>
+
+<style>
+  /* The hero image sits on a stage with the image's own proportions, sized like
+     object-fit: cover, so the aura layers stay pinned to the figure at any screen size. */
+  .hero-stage {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 230vw;
+    aspect-ratio: 1344 / 768;
+    transform: translateX(-50%);
+  }
+
+  @media (min-width: 768px) {
+    /* Cover the whole hero, and move the figure right, away from the text;
+       the left edge is covered by the dark gradient. */
+    .hero-stage {
+      top: 50%;
+      left: calc(50% + 16vw);
+      width: max(100%, calc(100svh * 1.75));
+      transform: translate(-50%, -50%);
+    }
+  }
+
+  .aura {
+    position: absolute;
+    aspect-ratio: 1;
+    border-radius: 9999px;
+    pointer-events: none;
+    mix-blend-mode: screen;
+    transform: translate(-50%, -50%);
+  }
+
+  /* Soft light around the head that slowly breathes */
+  .aura-breathe {
+    left: 50%;
+    top: 44%;
+    width: 58%;
+    background: radial-gradient(
+      circle,
+      rgba(143, 211, 255, 0.38) 0%,
+      rgba(127, 90, 240, 0.28) 34%,
+      rgba(43, 210, 255, 0.08) 52%,
+      transparent 66%
+    );
+    animation: aura-breathe 9s ease-in-out infinite;
+  }
+
+  /* Streaks of light that circle slowly through the aura */
+  .aura-swirl {
+    left: 50%;
+    top: 46%;
+    width: 66%;
+    background: conic-gradient(
+      from 0deg,
+      transparent 0deg,
+      rgba(43, 210, 255, 0.55) 40deg,
+      transparent 95deg,
+      rgba(163, 139, 250, 0.5) 170deg,
+      transparent 235deg,
+      rgba(189, 232, 255, 0.45) 300deg,
+      transparent 360deg
+    );
+    -webkit-mask: radial-gradient(circle, transparent 36%, #000 46%, #000 58%, transparent 70%);
+    mask: radial-gradient(circle, transparent 36%, #000 46%, #000 58%, transparent 70%);
+    filter: blur(14px);
+    opacity: 0.7;
+    animation: aura-turn 48s linear infinite;
+  }
+
+  /* The star at her heart pulses gently */
+  .aura-star {
+    left: 49.2%;
+    top: 87%;
+    width: 15%;
+    background: radial-gradient(circle, rgba(228, 246, 255, 0.85) 0%, rgba(43, 210, 255, 0.45) 22%, transparent 62%);
+    animation: aura-pulse 4.5s ease-in-out infinite;
+  }
+
+  @keyframes aura-breathe {
+    0%,
+    100% {
+      opacity: 0.55;
+      transform: translate(-50%, -50%) scale(0.94);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.06);
+    }
+  }
+
+  @keyframes aura-turn {
+    to {
+      transform: translate(-50%, -50%) rotate(360deg);
+    }
+  }
+
+  @keyframes aura-pulse {
+    0%,
+    100% {
+      opacity: 0.45;
+      transform: translate(-50%, -50%) scale(0.85);
+    }
+    50% {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1.12);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aura {
+      animation: none !important;
+    }
+  }
+
+  /* The one bright moment of the site: the ARRA mark lights up like neon. */
+  .arra-glow {
+    filter: drop-shadow(0 0 1px #bde8ff) drop-shadow(0 0 8px rgba(43, 210, 255, 0.85))
+      drop-shadow(0 0 28px rgba(43, 210, 255, 0.45));
+    animation: arra-ignite 1.8s ease-out both;
+  }
+
+  @keyframes arra-ignite {
+    0% {
+      opacity: 0;
+      filter: none;
+    }
+    35% {
+      opacity: 1;
+      filter: drop-shadow(0 0 1px #bde8ff);
+    }
+    45% {
+      filter: drop-shadow(0 0 1px #bde8ff) drop-shadow(0 0 12px rgba(43, 210, 255, 0.9));
+    }
+    52% {
+      filter: drop-shadow(0 0 1px #bde8ff);
+    }
+    100% {
+      filter: drop-shadow(0 0 1px #bde8ff) drop-shadow(0 0 8px rgba(43, 210, 255, 0.85))
+        drop-shadow(0 0 28px rgba(43, 210, 255, 0.45));
+    }
+  }
+</style>

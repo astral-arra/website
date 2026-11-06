@@ -1,0 +1,23 @@
+---
+import Layout from "../components/Layout.astro";
+import SubSections from "../components/SubSections.astro";
+
+const parts = [
+  {
+    id: "visokovibracionen-portal",
+    title: "Високовибрационен портал",
+    text: "Практики и материали за повдигане на вибрацията. Подготвя се.",
+  },
+  {
+    id: "zashtita",
+    title: "Защита",
+    text: "Практики и материали за енергийна и астрална защита. Подготвя се.",
+  },
+];
+---
+
+<Layout title="Магически кът" description="Магическият кът на Astral ARRA: Високовибрационен портал и Защита." activeUrl="/magic">
+  <h1 class="text-5xl md:text-6xl">Магически кът</h1>
+  <p class="mt-4 max-w-prose text-lg text-pearl-muted">Високовибрационен портал и защита.</p>
+  <SubSections parts={parts} />
+</Layout>

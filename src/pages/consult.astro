@@ -1,15 +1,34 @@
 ---
 import { Image } from "astro:assets";
-import Layout from "../layouts/RegularLayout.astro";
-import consultationImg from "../assets/images/consultation.png";
+import Layout from "../components/Layout.astro";
+import { EMAIL, mailto } from "../lib/contact";
+import img from "../assets/images/consultation.png";
 ---
 
-<Layout title="Astral Arra" activeUrl="/consult">
-  <div class="flex h-full">
+<Layout title="Консултации" description="Лични таро консултации с Astral ARRA. Информация при запитване по имейл." activeUrl="/consult">
+  <div class="grid items-center gap-10 md:grid-cols-[1fr_1.1fr] md:gap-14">
+    <div>
+      <h1 class="text-5xl md:text-6xl">Консултации</h1>
+      <p class="mt-6 max-w-prose font-display text-2xl leading-snug text-ice-100 md:text-3xl">
+        Правя лични таро консултации.
+      </p>
+      <p class="mt-5 max-w-prose text-lg text-pearl-muted">
+        За информация, цени и свободни часове ми пиши на <a href={mailto("Таро консултация")} class="text-ice-200 underline decoration-ice-400/60 underline-offset-4 hover:text-neon">{EMAIL}</a>.
+      </p>
+      <div class="gold-rule mt-8"></div>
+      <a
+        href={mailto("Таро консултация")}
+        class="mt-8 inline-block rounded-full border border-neon px-6 py-3 text-ice-100 shadow-neon hover:bg-neon/10 hover:text-pearl"
+      >
+        Пиши ми за консултация
+      </a>
+    </div>
     <Image
-      class="mx-auto place-self-center"
-      src={consultationImg}
-      alt="Image showing that this page is under construction"
+      src={img}
+      alt=""
+      widths={[560, 1120]}
+      sizes="(min-width: 768px) 560px, 100vw"
+      class="w-full rounded-sm ring-1 ring-night-line"
     />
   </div>
 </Layout>

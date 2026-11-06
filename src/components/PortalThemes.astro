@@ -1,0 +1,81 @@
+---
+// What the portal covers, as a small infographic: a glyph, the theme and what it holds.
+const themes = [
+  { glyph: "sync", title: "Синхроничности", text: "Повтарящи се числа, символи, събития" },
+  { glyph: "timelines", title: "Времеви линии", text: "Пресичания, разклонения, алтернативни сценарии" },
+  { glyph: "eye", title: "Посланици на Програмата", text: "Архетипи, символи, същности и образи" },
+  { glyph: "code", title: "Кодове на Матрицата", text: "Повтарящи се модели и закономерности" },
+  { glyph: "focus", title: "Магическо възприятие", text: "Състояния на съзнанието и фокус" },
+  { glyph: "pendulum", title: "Синхромистични експерименти", text: "Лични наблюдения и практически опити" },
+];
+---
+
+<section class="mt-20" aria-labelledby="themes-heading">
+  <h2 id="themes-heading" class="text-3xl md:text-4xl">Какво ще откриете в портала</h2>
+  <ul
+    class="mt-10 grid overflow-hidden rounded-sm border border-night-line/90 bg-night-line/90 sm:grid-cols-2 lg:grid-cols-3"
+    style="gap: 1px;"
+  >
+    {
+      themes.map((t) => (
+        <li class="flex gap-5 bg-night p-6 md:p-8">
+          <span class="theme-glyph flex h-14 w-14 shrink-0 items-center justify-center rounded-full border border-ice-400/40 text-ice-200">
+            <svg viewBox="0 0 32 32" class="h-7 w-7" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              {t.glyph === "sync" && (
+                <>
+                  <circle cx="12" cy="16" r="7" />
+                  <circle cx="20" cy="16" r="7" />
+                  <path d="M16 10.5v11" stroke="#D9B45A" />
+                </>
+              )}
+              {t.glyph === "timelines" && (
+                <>
+                  <path d="M4 16h9" />
+                  <path d="M13 16c4 0 5-8 15-8M13 16h15M13 16c4 0 5 8 15 8" />
+                  <circle cx="13" cy="16" r="1.6" fill="#D9B45A" stroke="#D9B45A" />
+                </>
+              )}
+              {t.glyph === "eye" && (
+                <>
+                  <path d="M3 16s5-8 13-8 13 8 13 8-5 8-13 8S3 16 3 16Z" />
+                  <circle cx="16" cy="16" r="4" />
+                  <circle cx="16" cy="16" r="1.2" fill="#D9B45A" stroke="#D9B45A" />
+                </>
+              )}
+              {t.glyph === "code" && (
+                <>
+                  {[8, 16, 24].map((y) => [8, 16, 24].map((x) => <circle cx={x} cy={y} r="1.3" />))}
+                  <path d="M8 24 16 8 24 24" stroke="#D9B45A" />
+                </>
+              )}
+              {t.glyph === "focus" && (
+                <>
+                  <circle cx="16" cy="16" r="12" />
+                  <circle cx="16" cy="16" r="7" stroke-dasharray="2 2.5" />
+                  <circle cx="16" cy="16" r="2.2" fill="#D9B45A" stroke="#D9B45A" />
+                </>
+              )}
+              {t.glyph === "pendulum" && (
+                <>
+                  <path d="M10 4h12" />
+                  <path d="M16 4v13" />
+                  <path d="M16 17l-4 5 4 6 4-6-4-5Z" stroke="#D9B45A" />
+                </>
+              )}
+            </svg>
+          </span>
+          <div>
+            <h3 class="font-display text-2xl leading-snug text-pearl">{t.title}</h3>
+            <p class="mt-2 text-pearl-muted">{t.text}</p>
+          </div>
+        </li>
+      ))
+    }
+  </ul>
+</section>
+
+<style>
+  .theme-glyph {
+    box-shadow: 0 0 18px rgba(43, 210, 255, 0.15), inset 0 0 12px rgba(43, 210, 255, 0.12);
+  }
+</style>

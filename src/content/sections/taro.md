@@ -1,0 +1,47 @@
+---
+title: "Таро"
+order: 1
+tagline: "Научи се да владееш Бъдещето и Миналото...СЕГА!"
+image: "../images/sections/taro/00.jpg"
+upcoming:
+  - title: "АМИ СЕГА? Картите винаги ли познават?"
+    image: "../images/sections/taro/00.jpg"
+  - title: "Можем ли сами да си гледаме на Таро?"
+    image: "../images/sections/taro/02.jpg"
+  - title: "Честите грешки, които допускате в гаданията си"
+    image: "../images/sections/taro/04.jpg"
+  - title: "Колко важна е интуицията в Тарото?"
+    image: "../images/sections/taro/05.jpg"
+  - title: "Тарото от дявола ли е?"
+    image: "../images/sections/taro/06.jpg"
+  - title: "Особености на Таро гледането с клиенти"
+    image: "../images/sections/taro/07.jpg"
+  - title: "Защо гаданията не се сбъдват?"
+    image: "../images/sections/taro/08.jpg"
+  - title: "Време ли е да промените подхода си в гледането на Таро?"
+    image: "../images/sections/taro/10.jpg"
+  - title: "Тройка мечове - не, не е толкова зле."
+    image: "../images/sections/taro/11.jpg"
+  - title: "Нов поглед към карта Любовниците. Кой е архангел Рафаил?"
+    image: "../images/sections/taro/12.jpg"
+  - title: "МЕЧОВЕТЕ в любовно гадание за бъдеще"
+    image: "../images/sections/taro/14.jpg"
+  - title: "ЧАШИТЕ в любовно гадание за бъдеще"
+    image: "../images/sections/taro/15.jpg"
+  - title: "ЖЕЗЛИТЕ в любовно гадание за бъдеще"
+    image: "../images/sections/taro/16.jpg"
+  - title: "ГОЛЕМИТЕ АРКАНИ в любовно гадание за бъдеще"
+    image: "../images/sections/taro/17.jpg"
+  - title: "САМО ЗА НАПРЕДНАЛИ - Времевите линии в гадание - ч.1"
+    image: "../images/sections/taro/18.jpg"
+  - title: "САМО ЗА НАПРЕДНАЛИ - Времевите линии в гадание - ч.2"
+    image: "../images/sections/taro/19.jpg"
+  - title: "САМО ЗА НАПРЕДНАЛИ - Времеви техники"
+    image: "../images/sections/taro/20.jpg"
+  - title: "ТЕХНИКА ЗА НАПРЕДНАЛИ - Отваряне на Портали"
+    image: "../images/sections/taro/21.jpg"
+---
+
+Таро не е просто инструмент за Гадание.
+
+То е и средство за изследване на реалността, за усъвършенстване на съзнанието, за създаване на действителност и овладяване на Матрицата.

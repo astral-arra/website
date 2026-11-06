@@ -1,21 +1,5 @@
 {
   "title": "Astral AЯRA",
-  "blogUrl": "/blog",
-  "about": {
-    "url": "/about",
-    "title": "ASTRAL ARRA"
-  },
-  "index": {
-    "url": "/",
-    "title": "ASTRAL AЯRA",
-    "content": "Овладей съдбата си"
-  },
-  "map": {
-    "title": "Astral AЯRA",
-    "url": "/map"
-  },
-  "portal": {
-    "title": "Astral AЯRA",
-    "url": "/portal"
-  }
+  "tagline": "Овладей съдбата си",
+  "motto": "Мъдрият управлява своите звезди, глупакът им се подчинява"
 }

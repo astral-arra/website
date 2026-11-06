@@ -1,18 +1,9 @@
 [
-  {
-    "title": "ASTRAL ARRA",
-    "url": "/about"
-  },
-  {
-    "title": "Статии",
-    "url": "/blog"
-  },
-  {
-    "title": "Контакт с мен",
-    "url": "/library"
-  },
-  {
-    "title": "Синхромистичен портал",
-    "url": "/portal"
-  }
+  { "title": "За мен", "url": "/about" },
+  { "title": "Статии", "url": "/blog" },
+  { "title": "Синхромистичен портал", "url": "/portal" },
+  { "title": "Книги", "url": "/books" },
+  { "title": "Магически кът", "url": "/magic" },
+  { "title": "Консултации", "url": "/consult" },
+  { "title": "Съновник", "url": "/sonovnik" }
 ]

@@ -1,34 +1,60 @@
 ---
+import "@fontsource/forum/cyrillic.css";
+import "@fontsource/forum/latin.css";
+import "@fontsource-variable/literata/opsz.css";
+import "@fontsource-variable/literata/opsz-italic.css";
 import "../styles.css";
 import MainNav from "./MainNav.astro";
 import Footer from "./Footer.astro";
-const { title, activeUrl, isHero = false } = Astro.props;
+
+interface Props {
+  title?: string;
+  description?: string;
+  image?: string;
+  activeUrl?: string;
+  isHero?: boolean;
+}
+
+const siteName = "Astral ARRA";
+const {
+  title,
+  description = "Astral ARRA: синхроничности, езотерика, астрология и Хюман дизайн.",
+  image,
+  activeUrl = "",
+  isHero = false,
+} = Astro.props;
+
+const fullTitle = title && title !== siteName ? `${title} | ${siteName}` : siteName;
+const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="bg">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astral arra" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={title ?? siteName} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    {image && <meta property="og:image" content={new URL(image, Astro.site)} />}
+    <meta name="theme-color" content="#120A2E" />
+    <link rel="icon" href="/favicon.ico" sizes="48x48" />
+    <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <link
-      media="screen print"
-      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
-    <title>{title}</title>
   </head>
-  <body class={`${isHero ? "bg-hero bg-cover bg-no-repeat" : ""}`}>
-    <div class="wrapper grid h-full w-full grid-cols-1 grid-rows-layout">
-      <MainNav url={activeUrl} {isHero} />
-      <main class="container mx-auto">
+  <body>
+    <div class="grid min-h-screen grid-rows-layout">
+      <MainNav url={activeUrl} isHero={isHero} />
+      <main class:list={["w-full", isHero ? "" : "mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-20"]}>
         <slot />
       </main>
-      <Footer {isHero} />
+      <Footer />
     </div>
   </body>
 </html>

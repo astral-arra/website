@@ -1,0 +1,524 @@
+{
+  "redirects": [
+    {
+      "source": "/page",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/page/",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/%D0%BA%D0%BD%D0%B8%D0%B3%D0%B8",
+      "destination": "/books",
+      "permanent": true
+    },
+    {
+      "source": "/книги",
+      "destination": "/books",
+      "permanent": true
+    },
+    {
+      "source": "/%D0%BA%D0%BD%D0%B8%D0%B3%D0%B8/",
+      "destination": "/books",
+      "permanent": true
+    },
+    {
+      "source": "/книги/",
+      "destination": "/books",
+      "permanent": true
+    },
+    {
+      "source": "/%D0%BA%D0%BD%D0%B8%D0%B3%D0%B8/spider-gnosis",
+      "destination": "/books",
+      "permanent": true
+    },
+    {
+      "source": "/книги/spider-gnosis",
+      "destination": "/books",
+      "permanent": true
+    },
+    {
+      "source": "/%D0%BA%D0%BD%D0%B8%D0%B3%D0%B8/spider-gnosis/",
+      "destination": "/books",
+      "permanent": true
+    },
+    {
+      "source": "/книги/spider-gnosis/",
+      "destination": "/books",
+      "permanent": true
+    },
+    {
+      "source": "/%D0%BA%D0%BD%D0%B8%D0%B3%D0%B8/%D0%B5%D1%83%D1%84%D0%BE%D1%80%D0%B8%D1%8F",
+      "destination": "/books",
+      "permanent": true
+    },
+    {
+      "source": "/книги/еуфория",
+      "destination": "/books",
+      "permanent": true
+    },
+    {
+      "source": "/%D0%BA%D0%BD%D0%B8%D0%B3%D0%B8/%D0%B5%D1%83%D1%84%D0%BE%D1%80%D0%B8%D1%8F/",
+      "destination": "/books",
+      "permanent": true
+    },
+    {
+      "source": "/книги/еуфория/",
+      "destination": "/books",
+      "permanent": true
+    },
+    {
+      "source": "/%D0%BA%D0%BD%D0%B8%D0%B3%D0%B8/%D1%81%D0%B2%D1%8F%D1%82-%D0%BD%D0%B0%D1%81%D0%B5%D0%BB%D0%B5%D0%BD-%D1%81-%D0%B4%D0%B5%D0%BC%D0%BE%D0%BD%D0%B8",
+      "destination": "/books",
+      "permanent": true
+    },
+    {
+      "source": "/книги/свят-населен-с-демони",
+      "destination": "/books",
+      "permanent": true
+    },
+    {
+      "source": "/%D0%BA%D0%BD%D0%B8%D0%B3%D0%B8/%D1%81%D0%B2%D1%8F%D1%82-%D0%BD%D0%B0%D1%81%D0%B5%D0%BB%D0%B5%D0%BD-%D1%81-%D0%B4%D0%B5%D0%BC%D0%BE%D0%BD%D0%B8/",
+      "destination": "/books",
+      "permanent": true
+    },
+    {
+      "source": "/книги/свят-населен-с-демони/",
+      "destination": "/books",
+      "permanent": true
+    },
+    {
+      "source": "/%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%82%D0%B0%D1%86%D0%B8%D0%B8",
+      "destination": "/consult",
+      "permanent": true
+    },
+    {
+      "source": "/консултации",
+      "destination": "/consult",
+      "permanent": true
+    },
+    {
+      "source": "/%D0%BA%D0%BE%D0%BD%D1%81%D1%83%D0%BB%D1%82%D0%B0%D1%86%D0%B8%D0%B8/",
+      "destination": "/consult",
+      "permanent": true
+    },
+    {
+      "source": "/консултации/",
+      "destination": "/consult",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D0%B8%D0%BD%D1%85%D1%80%D0%BE%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%B5%D0%BD-%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D0%BB",
+      "destination": "/portal",
+      "permanent": true
+    },
+    {
+      "source": "/синхромистичен-портал",
+      "destination": "/portal",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D0%B8%D0%BD%D1%85%D1%80%D0%BE%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%B5%D0%BD-%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D0%BB/",
+      "destination": "/portal",
+      "permanent": true
+    },
+    {
+      "source": "/синхромистичен-портал/",
+      "destination": "/portal",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D0%B8%D0%BD%D1%85%D1%80%D0%BE%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%B5%D0%BD-%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D0%BB/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8%D1%82%D0%B5-%D0%B7%D0%B0-%D1%81%D0%B8%D0%BD%D1%80%D0%BE%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%BD%D0%B8%D1%8F-%D0%BF%D0%BE%D1%80%D1%82%D0%B0",
+      "destination": "/portal",
+      "permanent": true
+    },
+    {
+      "source": "/синхромистичен-портал/статиите-за-синромистичния-порта",
+      "destination": "/portal",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D0%B8%D0%BD%D1%85%D1%80%D0%BE%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%B5%D0%BD-%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D0%BB/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8%D1%82%D0%B5-%D0%B7%D0%B0-%D1%81%D0%B8%D0%BD%D1%80%D0%BE%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%BD%D0%B8%D1%8F-%D0%BF%D0%BE%D1%80%D1%82%D0%B0/",
+      "destination": "/portal",
+      "permanent": true
+    },
+    {
+      "source": "/синхромистичен-портал/статиите-за-синромистичния-порта/",
+      "destination": "/portal",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D0%B8%D0%BD%D1%85%D1%80%D0%BE%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%B5%D0%BD-%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D0%BB/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8%D1%82%D0%B5-%D0%B7%D0%B0-%D1%81%D0%B8%D0%BD%D1%80%D0%BE%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%BD%D0%B8%D1%8F-%D0%BF%D0%BE%D1%80%D1%82%D0%B0/randonatica-the-beginning",
+      "destination": "/portal/randonautica-the-beginning",
+      "permanent": true
+    },
+    {
+      "source": "/синхромистичен-портал/статиите-за-синромистичния-порта/randonatica-the-beginning",
+      "destination": "/portal/randonautica-the-beginning",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D0%B8%D0%BD%D1%85%D1%80%D0%BE%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%B5%D0%BD-%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D0%BB/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8%D1%82%D0%B5-%D0%B7%D0%B0-%D1%81%D0%B8%D0%BD%D1%80%D0%BE%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%BD%D0%B8%D1%8F-%D0%BF%D0%BE%D1%80%D1%82%D0%B0/randonatica-the-beginning/",
+      "destination": "/portal/randonautica-the-beginning",
+      "permanent": true
+    },
+    {
+      "source": "/синхромистичен-портал/статиите-за-синромистичния-порта/randonatica-the-beginning/",
+      "destination": "/portal/randonautica-the-beginning",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D0%B8%D0%BD%D1%85%D1%80%D0%BE%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%B5%D0%BD-%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D0%BB/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8%D1%82%D0%B5-%D0%B7%D0%B0-%D1%81%D0%B8%D0%BD%D1%80%D0%BE%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%BD%D0%B8%D1%8F-%D0%BF%D0%BE%D1%80%D1%82%D0%B0/venus-nerve",
+      "destination": "/portal/venus-nerve",
+      "permanent": true
+    },
+    {
+      "source": "/синхромистичен-портал/статиите-за-синромистичния-порта/venus-nerve",
+      "destination": "/portal/venus-nerve",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D0%B8%D0%BD%D1%85%D1%80%D0%BE%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%B5%D0%BD-%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D0%BB/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8%D1%82%D0%B5-%D0%B7%D0%B0-%D1%81%D0%B8%D0%BD%D1%80%D0%BE%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%BD%D0%B8%D1%8F-%D0%BF%D0%BE%D1%80%D1%82%D0%B0/venus-nerve/",
+      "destination": "/portal/venus-nerve",
+      "permanent": true
+    },
+    {
+      "source": "/синхромистичен-портал/статиите-за-синромистичния-порта/venus-nerve/",
+      "destination": "/portal/venus-nerve",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D0%B8%D0%BD%D1%85%D1%80%D0%BE%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%B5%D0%BD-%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D0%BB/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8%D1%82%D0%B5-%D0%B7%D0%B0-%D1%81%D0%B8%D0%BD%D1%80%D0%BE%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%BD%D0%B8%D1%8F-%D0%BF%D0%BE%D1%80%D1%82%D0%B0/%D0%BF%D1%80%D0%B5%D0%B6%D0%B8%D0%B2%D1%8F%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-%D0%B2-%D1%81%D0%B8%D0%BD%D1%85%D1%80%D0%BE%D0%BD%D0%B8%D1%87%D0%BD%D0%BE%D1%81%D1%82%D0%B8-pt-1",
+      "destination": "/portal/synchronistic_experiences_pt_1",
+      "permanent": true
+    },
+    {
+      "source": "/синхромистичен-портал/статиите-за-синромистичния-порта/преживявания-в-синхроничности-pt-1",
+      "destination": "/portal/synchronistic_experiences_pt_1",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D0%B8%D0%BD%D1%85%D1%80%D0%BE%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%B5%D0%BD-%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D0%BB/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8%D1%82%D0%B5-%D0%B7%D0%B0-%D1%81%D0%B8%D0%BD%D1%80%D0%BE%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%BD%D0%B8%D1%8F-%D0%BF%D0%BE%D1%80%D1%82%D0%B0/%D0%BF%D1%80%D0%B5%D0%B6%D0%B8%D0%B2%D1%8F%D0%B2%D0%B0%D0%BD%D0%B8%D1%8F-%D0%B2-%D1%81%D0%B8%D0%BD%D1%85%D1%80%D0%BE%D0%BD%D0%B8%D1%87%D0%BD%D0%BE%D1%81%D1%82%D0%B8-pt-1/",
+      "destination": "/portal/synchronistic_experiences_pt_1",
+      "permanent": true
+    },
+    {
+      "source": "/синхромистичен-портал/статиите-за-синромистичния-порта/преживявания-в-синхроничности-pt-1/",
+      "destination": "/portal/synchronistic_experiences_pt_1",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D0%B8%D0%BD%D1%85%D1%80%D0%BE%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%B5%D0%BD-%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D0%BB/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8%D1%82%D0%B5-%D0%B7%D0%B0-%D1%81%D0%B8%D0%BD%D1%80%D0%BE%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%BD%D0%B8%D1%8F-%D0%BF%D0%BE%D1%80%D1%82%D0%B0/%D1%81%D0%B8%D0%BD%D1%85%D1%80%D0%BE%D0%BD%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-25-04-2022",
+      "destination": "/portal/sinhronizaciya-25-04-2022",
+      "permanent": true
+    },
+    {
+      "source": "/синхромистичен-портал/статиите-за-синромистичния-порта/синхронизация-25-04-2022",
+      "destination": "/portal/sinhronizaciya-25-04-2022",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D0%B8%D0%BD%D1%85%D1%80%D0%BE%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%B5%D0%BD-%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D0%BB/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8%D1%82%D0%B5-%D0%B7%D0%B0-%D1%81%D0%B8%D0%BD%D1%80%D0%BE%D0%BC%D0%B8%D1%81%D1%82%D0%B8%D1%87%D0%BD%D0%B8%D1%8F-%D0%BF%D0%BE%D1%80%D1%82%D0%B0/%D1%81%D0%B8%D0%BD%D1%85%D1%80%D0%BE%D0%BD%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F-25-04-2022/",
+      "destination": "/portal/sinhronizaciya-25-04-2022",
+      "permanent": true
+    },
+    {
+      "source": "/синхромистичен-портал/статиите-за-синромистичния-порта/синхронизация-25-04-2022/",
+      "destination": "/portal/sinhronizaciya-25-04-2022",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/статии",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/статии/",
+      "destination": "/blog",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/magick",
+      "destination": "/blog/categories/magick",
+      "permanent": true
+    },
+    {
+      "source": "/статии/magick",
+      "destination": "/blog/categories/magick",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/magick/",
+      "destination": "/blog/categories/magick",
+      "permanent": true
+    },
+    {
+      "source": "/статии/magick/",
+      "destination": "/blog/categories/magick",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/magick/%D1%82%D0%B5%D0%BB%D0%B5%D1%81%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%BD%D0%B8-%D0%BE%D0%B1%D0%B5%D0%BA%D1%82%D0%B8",
+      "destination": "/blog/telesmatichni-obekti",
+      "permanent": true
+    },
+    {
+      "source": "/статии/magick/телесматични-обекти",
+      "destination": "/blog/telesmatichni-obekti",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/magick/%D1%82%D0%B5%D0%BB%D0%B5%D1%81%D0%BC%D0%B0%D1%82%D0%B8%D1%87%D0%BD%D0%B8-%D0%BE%D0%B1%D0%B5%D0%BA%D1%82%D0%B8/",
+      "destination": "/blog/telesmatichni-obekti",
+      "permanent": true
+    },
+    {
+      "source": "/статии/magick/телесматични-обекти/",
+      "destination": "/blog/telesmatichni-obekti",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/ta%D1%80%D0%BE",
+      "destination": "/blog/categories/taro",
+      "permanent": true
+    },
+    {
+      "source": "/статии/taро",
+      "destination": "/blog/categories/taro",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/ta%D1%80%D0%BE/",
+      "destination": "/blog/categories/taro",
+      "permanent": true
+    },
+    {
+      "source": "/статии/taро/",
+      "destination": "/blog/categories/taro",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/ta%D1%80%D0%BE/%D0%BA%D0%B0%D0%BA-%D0%B4%D0%B0-%D1%81%D0%B8-%D0%B2%D0%BE%D0%B4%D0%B8%D0%BC-%D1%82%D0%B0%D1%80%D0%BE-%D0%B4%D0%BD%D0%B5%D0%B2%D0%BD%D0%B8%D0%BA",
+      "destination": "/blog/kak-da-si-vodim-taro-dnevnik",
+      "permanent": true
+    },
+    {
+      "source": "/статии/taро/как-да-си-водим-таро-дневник",
+      "destination": "/blog/kak-da-si-vodim-taro-dnevnik",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/ta%D1%80%D0%BE/%D0%BA%D0%B0%D0%BA-%D0%B4%D0%B0-%D1%81%D0%B8-%D0%B2%D0%BE%D0%B4%D0%B8%D0%BC-%D1%82%D0%B0%D1%80%D0%BE-%D0%B4%D0%BD%D0%B5%D0%B2%D0%BD%D0%B8%D0%BA/",
+      "destination": "/blog/kak-da-si-vodim-taro-dnevnik",
+      "permanent": true
+    },
+    {
+      "source": "/статии/taро/как-да-си-водим-таро-дневник/",
+      "destination": "/blog/kak-da-si-vodim-taro-dnevnik",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/ta%D1%80%D0%BE/%D0%BD%D1%8F%D0%BA%D0%BE%D0%BB%D0%BA%D0%BE-%D0%BA%D1%80%D0%B0%D1%82%D0%BA%D0%B8-%D1%82%D1%80%D0%B8%D0%BA%D0%B0-%D0%B7%D0%B0-%D0%B5%D1%84%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D0%BE-%D0%B3%D0%BB%D0%B5%D0%B4%D0%B0%D0%BD%D0%B5-%D0%BD%D0%B0-%D1%82%D0%B0%D1%80%D0%BE",
+      "destination": "/blog/trikove-za-efektivno-gledane-na-taro",
+      "permanent": true
+    },
+    {
+      "source": "/статии/taро/няколко-кратки-трика-за-ефективно-гледане-на-таро",
+      "destination": "/blog/trikove-za-efektivno-gledane-na-taro",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/ta%D1%80%D0%BE/%D0%BD%D1%8F%D0%BA%D0%BE%D0%BB%D0%BA%D0%BE-%D0%BA%D1%80%D0%B0%D1%82%D0%BA%D0%B8-%D1%82%D1%80%D0%B8%D0%BA%D0%B0-%D0%B7%D0%B0-%D0%B5%D1%84%D0%B5%D0%BA%D1%82%D0%B8%D0%B2%D0%BD%D0%BE-%D0%B3%D0%BB%D0%B5%D0%B4%D0%B0%D0%BD%D0%B5-%D0%BD%D0%B0-%D1%82%D0%B0%D1%80%D0%BE/",
+      "destination": "/blog/trikove-za-efektivno-gledane-na-taro",
+      "permanent": true
+    },
+    {
+      "source": "/статии/taро/няколко-кратки-трика-за-ефективно-гледане-на-таро/",
+      "destination": "/blog/trikove-za-efektivno-gledane-na-taro",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/ta%D1%80%D0%BE/%D0%BF%D0%B5%D0%BD%D1%82%D0%B0%D0%BA%D0%BB%D0%B8%D1%82%D0%B5-%D0%B2-%D0%BB%D1%8E%D0%B1%D0%BE%D0%B2%D0%BD%D0%BE-%D0%B3%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D0%B7%D0%B0-%D0%B1%D1%8A%D0%B4%D0%B5%D1%89%D0%B5",
+      "destination": "/blog/pentaklite-v-lyubovno-gadanie",
+      "permanent": true
+    },
+    {
+      "source": "/статии/taро/пентаклите-в-любовно-гадание-за-бъдеще",
+      "destination": "/blog/pentaklite-v-lyubovno-gadanie",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/ta%D1%80%D0%BE/%D0%BF%D0%B5%D0%BD%D1%82%D0%B0%D0%BA%D0%BB%D0%B8%D1%82%D0%B5-%D0%B2-%D0%BB%D1%8E%D0%B1%D0%BE%D0%B2%D0%BD%D0%BE-%D0%B3%D0%B0%D0%B4%D0%B0%D0%BD%D0%B8%D0%B5-%D0%B7%D0%B0-%D0%B1%D1%8A%D0%B4%D0%B5%D1%89%D0%B5/",
+      "destination": "/blog/pentaklite-v-lyubovno-gadanie",
+      "permanent": true
+    },
+    {
+      "source": "/статии/taро/пентаклите-в-любовно-гадание-за-бъдеще/",
+      "destination": "/blog/pentaklite-v-lyubovno-gadanie",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%D0%B8",
+      "destination": "/blog/categories/analizi",
+      "permanent": true
+    },
+    {
+      "source": "/статии/анализи",
+      "destination": "/blog/categories/analizi",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/%D0%B0%D0%BD%D0%B0%D0%BB%D0%B8%D0%B7%D0%B8/",
+      "destination": "/blog/categories/analizi",
+      "permanent": true
+    },
+    {
+      "source": "/статии/анализи/",
+      "destination": "/blog/categories/analizi",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/%D0%B0%D1%80%D1%85%D0%BE%D0%BD%D1%82%D0%B8-%D0%B3%D0%BD%D0%BE%D1%81%D1%82%D0%B8%D1%86%D0%B8%D0%B7%D1%8A%D0%BC/%D0%B0%D1%80%D1%85%D0%BE%D0%BD%D1%82%D0%B8-%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D0%B8%D1%87%D0%BD%D0%B8-%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D0%BB%D0%B8-%D0%B8-%D0%B4%D1%80%D1%83%D0%B3%D0%B8-%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2%D0%BD%D0%B8-%D1%81%D1%8A%D0%B7%D0%B4%D0%BD%D0%B0%D0%BD%D0%B8%D1%8F",
+      "destination": "/blog/archonts",
+      "permanent": true
+    },
+    {
+      "source": "/статии/архонти-гностицизъм/архонти-органични-портали-и-други-противни-създнания",
+      "destination": "/blog/archonts",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/%D0%B0%D1%80%D1%85%D0%BE%D0%BD%D1%82%D0%B8-%D0%B3%D0%BD%D0%BE%D1%81%D1%82%D0%B8%D1%86%D0%B8%D0%B7%D1%8A%D0%BC/%D0%B0%D1%80%D1%85%D0%BE%D0%BD%D1%82%D0%B8-%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D0%B8%D1%87%D0%BD%D0%B8-%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D0%BB%D0%B8-%D0%B8-%D0%B4%D1%80%D1%83%D0%B3%D0%B8-%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2%D0%BD%D0%B8-%D1%81%D1%8A%D0%B7%D0%B4%D0%BD%D0%B0%D0%BD%D0%B8%D1%8F/",
+      "destination": "/blog/archonts",
+      "permanent": true
+    },
+    {
+      "source": "/статии/архонти-гностицизъм/архонти-органични-портали-и-други-противни-създнания/",
+      "destination": "/blog/archonts",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/%D0%B0%D1%81%D1%82%D1%80%D0%B0%D0%BB",
+      "destination": "/blog/categories/astral",
+      "permanent": true
+    },
+    {
+      "source": "/статии/астрал",
+      "destination": "/blog/categories/astral",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/%D0%B0%D1%81%D1%82%D1%80%D0%B0%D0%BB/",
+      "destination": "/blog/categories/astral",
+      "permanent": true
+    },
+    {
+      "source": "/статии/астрал/",
+      "destination": "/blog/categories/astral",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/%D0%B0%D1%81%D1%82%D1%80%D0%B0%D0%BB%D0%B5%D0%BD-%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD",
+      "destination": "/blog/categories/astralen-dizain",
+      "permanent": true
+    },
+    {
+      "source": "/статии/астрален-дизайн",
+      "destination": "/blog/categories/astralen-dizain",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/%D0%B0%D1%81%D1%82%D1%80%D0%B0%D0%BB%D0%B5%D0%BD-%D0%B4%D0%B8%D0%B7%D0%B0%D0%B9%D0%BD/",
+      "destination": "/blog/categories/astralen-dizain",
+      "permanent": true
+    },
+    {
+      "source": "/статии/астрален-дизайн/",
+      "destination": "/blog/categories/astralen-dizain",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/%D0%B3%D0%BD%D0%BE%D1%81%D1%82%D0%B8%D1%86%D0%B8%D0%B7%D1%8A%D0%BC",
+      "destination": "/blog/categories/gnosticism",
+      "permanent": true
+    },
+    {
+      "source": "/статии/гностицизъм",
+      "destination": "/blog/categories/gnosticism",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/%D0%B3%D0%BD%D0%BE%D1%81%D1%82%D0%B8%D1%86%D0%B8%D0%B7%D1%8A%D0%BC/",
+      "destination": "/blog/categories/gnosticism",
+      "permanent": true
+    },
+    {
+      "source": "/статии/гностицизъм/",
+      "destination": "/blog/categories/gnosticism",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/%D0%B3%D0%BD%D0%BE%D1%81%D1%82%D0%B8%D1%86%D0%B8%D0%B7%D1%8A%D0%BC/%D0%B0%D1%80%D1%85%D0%BE%D0%BD%D1%82%D0%B8-%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D0%B8%D1%87%D0%BD%D0%B8-%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D0%BB%D0%B8-%D0%B8-%D0%B4%D1%80%D1%83%D0%B3%D0%B8-%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2%D0%BD%D0%B8-%D1%81%D1%8A%D0%B7%D0%B4%D0%BD%D0%B0%D0%BD%D0%B8%D1%8F",
+      "destination": "/blog/archonts",
+      "permanent": true
+    },
+    {
+      "source": "/статии/гностицизъм/архонти-органични-портали-и-други-противни-създнания",
+      "destination": "/blog/archonts",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%82%D0%B0%D1%82%D0%B8%D0%B8/%D0%B3%D0%BD%D0%BE%D1%81%D1%82%D0%B8%D1%86%D0%B8%D0%B7%D1%8A%D0%BC/%D0%B0%D1%80%D1%85%D0%BE%D0%BD%D1%82%D0%B8-%D0%BE%D1%80%D0%B3%D0%B0%D0%BD%D0%B8%D1%87%D0%BD%D0%B8-%D0%BF%D0%BE%D1%80%D1%82%D0%B0%D0%BB%D0%B8-%D0%B8-%D0%B4%D1%80%D1%83%D0%B3%D0%B8-%D0%BF%D1%80%D0%BE%D1%82%D0%B8%D0%B2%D0%BD%D0%B8-%D1%81%D1%8A%D0%B7%D0%B4%D0%BD%D0%B0%D0%BD%D0%B8%D1%8F/",
+      "destination": "/blog/archonts",
+      "permanent": true
+    },
+    {
+      "source": "/статии/гностицизъм/архонти-органични-портали-и-други-противни-създнания/",
+      "destination": "/blog/archonts",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%8A%D0%BD%D0%BE%D0%B2%D0%BD%D0%B8%D0%BA",
+      "destination": "/sonovnik",
+      "permanent": true
+    },
+    {
+      "source": "/съновник",
+      "destination": "/sonovnik",
+      "permanent": true
+    },
+    {
+      "source": "/%D1%81%D1%8A%D0%BD%D0%BE%D0%B2%D0%BD%D0%B8%D0%BA/",
+      "destination": "/sonovnik",
+      "permanent": true
+    },
+    {
+      "source": "/съновник/",
+      "destination": "/sonovnik",
+      "permanent": true
+    },
+    {
+      "source": "/library",
+      "destination": "/books",
+      "permanent": true
+    },
+    {
+      "source": "/shop",
+      "destination": "/books",
+      "permanent": true
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+---
+import { getCollection } from "astro:content";
+
+interface Props {
+  current?: string;
+}
+
+const { current } = Astro.props;
+const sections = (await getCollection("sections")).sort((a, b) => a.data.order - b.data.order);
+---
+
+<nav aria-label="Раздели" class="mt-8">
+  <ul class="flex flex-wrap gap-2 text-[0.95rem]">
+    <li>
+      <a
+        href="/blog"
+        aria-current={!current ? "page" : undefined}
+        class:list={[
+          "block rounded-full border px-4 py-1.5",
+          !current
+            ? "border-gold text-gold-300"
+            : "border-night-line text-pearl-muted hover:border-neon hover:text-neon",
+        ]}
+      >
+        Всички
+      </a>
+    </li>
+    {
+      sections.map((s) => (
+        <li>
+          <a
+            href={`/blog/categories/${s.slug}`}
+            aria-current={current === s.slug ? "page" : undefined}
+            class:list={[
+              "block rounded-full border px-4 py-1.5",
+              current === s.slug
+                ? "border-gold text-gold-300"
+                : "border-night-line text-pearl-muted hover:border-neon hover:text-neon",
+            ]}
+          >
+            {s.data.title}
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</nav>

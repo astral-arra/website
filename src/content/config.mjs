@@ -1,55 +1,62 @@
-// 1. Import utilities from `astro:content`
-import { z, defineCollection } from "astro:content";
-// 2. Define your collection(s)
-/**
- * @type {CollectionConfig}
- */
-const posts = {
+import { z, defineCollection, reference } from "astro:content";
+
+// Articles ("Статии") and portal entries ("Синхромистичен портал") share one shape.
+const posts = defineCollection({
   type: "content",
   schema: ({ image }) =>
     z.object({
       title: z.string(),
-      author: z.string(),
+      subtitle: z.string().optional(),
+      author: z.string().default("Astral ARRA"),
       date: z.date().optional(),
+      description: z.string().optional(),
+      section: reference("sections").optional(),
       tags: z.array(z.string()).optional(),
       categories: z.array(z.string()).optional(),
-      image: image()
-        .refine((img) => img.width >= 480, {
-          message: "Cover image must be at least 480 pixels wide!",
-        })
-        .optional(),
+      image: image().optional(),
     }),
-};
+});
 
-/**
- * @type {CollectionConfig}
- */
-const navItems = {
-  type: "data",
-  schema: z.array(
+// The topic sections of "Статии" (Таро, Астрал, Magick...), with their intro
+// and the articles that are announced but not written yet.
+const sections = defineCollection({
+  type: "content",
+  schema: ({ image }) =>
     z.object({
       title: z.string(),
-      url: z.string(),
+      order: z.number(),
+      tagline: z.string(),
+      image: image().optional(),
+      upcoming: z
+        .array(
+          z.object({
+            title: z.string(),
+            teaser: z.string().optional(),
+            image: image().optional(),
+          }),
+        )
+        .default([]),
     }),
-  ),
-};
+});
 
-/**
- * @type {CollectionConfig}
- */
-const siteItems = {
+const nav = defineCollection({
+  type: "data",
+  schema: z.array(z.object({ title: z.string(), url: z.string() })),
+});
+
+const site = defineCollection({
   type: "data",
   schema: z.object({
     title: z.string(),
-    blogUrl: z.string(),
+    tagline: z.string(),
+    motto: z.string().optional(),
   }),
-};
+});
 
-const blogCollection = defineCollection(posts);
-// 3. Export a single `collections` object to register your collection(s)
-//    This key should match your collection directory name in "src/content"
 export const collections = {
-  blog: blogCollection,
-  portal: blogCollection,
-  nav: navItems,
+  blog: posts,
+  portal: posts,
+  sections,
+  nav,
+  site,
 };

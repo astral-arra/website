@@ -1,43 +1,48 @@
 ---
-import { getEntry, getCollection } from "astro:content";
-const portalConfig = await getCollection("portal");
-const blogUrl = "/portal";
+import { getCollection } from "astro:content";
+import Layout from "../components/Layout.astro";
+import PostList from "../components/PostList.astro";
+import UpcomingList from "../components/UpcomingList.astro";
+import PortalGate from "../components/PortalGate.astro";
+import PortalThemes from "../components/PortalThemes.astro";
+import { Content as Intro } from "../texts/portal-intro.md";
+import newMoon from "../content/images/sections/portal/05.jpg";
 
-import Layout from "../layouts/RegularLayout.astro";
+const posts = await getCollection("portal");
+const upcoming = [
+  { title: "Витамини Б15 и Б16 - новата пандемия" },
+  { title: "Новолуние в дева, черна магия и таро разговор със стареца в парка...", image: newMoon },
+];
 ---
 
-<Layout title="Astral Arra" activeUrl="/portal">
-  <h1 class="p-4 text-3xl uppercase">Портал</h1>
-  <h2 class="px-4 py-2 text-xl">Статии</h2>
-  <ul class="space-y-4 p-4">
-    {
-      portalConfig.map((post) => {
-        return (
-          <li>
-            <h2 class="text-2xl">
-              <a href={`${blogUrl}/${post.slug}`} title={post.data.title}>
-                {post.data.title}
-              </a>
-            </h2>
-            {post.data.categories && (
-              <div class="flex gap-2 text-sm text-stone-500">
-                <span>Категории: </span>
-                {post.data.categories.map((category) => {
-                  return <a href={`${blogUrl}/categories/${category}`}>{category}</a>;
-                })}
-              </div>
-            )}
-            {post.data.tags && (
-              <div class="flex gap-2 text-sm text-stone-500">
-                <span>Тагове: </span>
-                {post.data.tags.map((tag) => {
-                  return <a href={`${blogUrl}/tags/${tag}`}>{tag}</a>;
-                })}
-              </div>
-            )}
-          </li>
-        );
-      })
-    }
-  </ul>
+<Layout
+  title="Синхромистичен портал"
+  description="Лични преживявания със синхроничности, времеви линии и знаци по пътя."
+  activeUrl="/portal"
+>
+  <div class="grid items-center gap-10 md:grid-cols-[1fr_minmax(0,26rem)] md:gap-14">
+    <div class="order-2 md:order-1">
+      <h1 class="text-5xl leading-tight md:text-7xl">Синхромистичен портал</h1>
+      <p class="mt-5 max-w-md font-display text-xl text-ice-100 md:text-2xl">
+        Лични преживявания със синхроничности, времеви линии и знаци по пътя.
+      </p>
+    </div>
+    <div class="order-1 px-6 md:order-2 md:px-0">
+      <PortalGate />
+    </div>
+  </div>
+
+  <div class="article-body prose prose-lg prose-arra mt-16 max-w-[52rem]">
+    <Intro />
+  </div>
+
+  <PortalThemes />
+
+  <section class="mt-20" aria-labelledby="posts-heading">
+    <h2 id="posts-heading" class="text-3xl md:text-4xl">Публикации</h2>
+    <div class="mt-8">
+      <PostList posts={posts} baseUrl="/portal" />
+    </div>
+  </section>
+  <UpcomingList items={upcoming} />
 </Layout>

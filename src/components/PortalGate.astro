@@ -1,0 +1,185 @@
+---
+// Animated portal for the top of "Синхромистичен портал": a light vortex inside
+// slowly turning rings of ticks, zodiac signs and a hexagram.
+const C = 200;
+const ticks = Array.from({ length: 72 }, (_, i) => {
+  const a = (i * 5 * Math.PI) / 180;
+  const long = i % 6 === 0;
+  const r1 = 186;
+  const r2 = long ? 172 : 179;
+  return {
+    x1: C + Math.cos(a) * r1,
+    y1: C + Math.sin(a) * r1,
+    x2: C + Math.cos(a) * r2,
+    y2: C + Math.sin(a) * r2,
+    long,
+  };
+});
+// U+FE0E keeps the signs as text glyphs instead of emoji.
+const signs = "♈♉♊♋♌♍♎♏♐♑♒♓".split("").map((g, i) => {
+  const a = ((i * 30 - 90) * Math.PI) / 180;
+  return { g: g + "︎", x: C + Math.cos(a) * 152, y: C + Math.sin(a) * 152 };
+});
+const tri = (start: number) =>
+  [0, 120, 240]
+    .map((d) => {
+      const a = ((d + start) * Math.PI) / 180;
+      return `${C + Math.cos(a) * 118},${C + Math.sin(a) * 118}`;
+    })
+    .join(" ");
+---
+
+<div class="portal-gate relative mx-auto aspect-square w-full max-w-[26rem]" aria-hidden="true">
+  <div class="portal-vortex"></div>
+  <div class="portal-core"></div>
+  <svg viewBox="0 0 400 400" class="absolute inset-0 h-full w-full overflow-visible">
+    <defs>
+      <filter id="portal-glow" x="-20%" y="-20%" width="140%" height="140%">
+        <feGaussianBlur stdDeviation="3" result="b"></feGaussianBlur>
+        <feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+      </filter>
+    </defs>
+
+    <g class="ring ring-ticks">
+      <circle cx={C} cy={C} r="190" fill="none" stroke="#D9B45A" stroke-opacity="0.55" stroke-width="0.8"></circle>
+      {
+        ticks.map((t) => (
+          <line
+            x1={t.x1}
+            y1={t.y1}
+            x2={t.x2}
+            y2={t.y2}
+            stroke="#D9B45A"
+            stroke-opacity={t.long ? 0.85 : 0.4}
+            stroke-width={t.long ? 1.2 : 0.7}
+          />
+        ))
+      }
+    </g>
+
+    <g class="ring ring-signs">
+      <circle cx={C} cy={C} r="166" fill="none" stroke="#8FD3FF" stroke-opacity="0.25" stroke-width="0.6"></circle>
+      <circle cx={C} cy={C} r="138" fill="none" stroke="#8FD3FF" stroke-opacity="0.25" stroke-width="0.6"></circle>
+      {
+        signs.map((s) => (
+          <text
+            x={s.x}
+            y={s.y}
+            fill="#BDE8FF"
+            fill-opacity="0.8"
+            font-size="17"
+            text-anchor="middle"
+            dominant-baseline="central"
+          >
+            {s.g}
+          </text>
+        ))
+      }
+    </g>
+
+    <g class="ring ring-hex">
+      <polygon points={tri(-90)} fill="none" stroke="#A38BFA" stroke-opacity="0.45" stroke-width="0.8"></polygon>
+      <polygon points={tri(90)} fill="none" stroke="#A38BFA" stroke-opacity="0.45" stroke-width="0.8"></polygon>
+    </g>
+
+    <g class="ring ring-dash">
+      <circle
+        cx={C}
+        cy={C}
+        r="104"
+        fill="none"
+        stroke="#2BD2FF"
+        stroke-width="1.6"
+        stroke-dasharray="2 9"
+        stroke-linecap="round"
+        filter="url(#portal-glow)"></circle>
+    </g>
+
+    <circle cx={C} cy={C} r="92" fill="none" stroke="#BDE8FF" stroke-width="1.2" stroke-opacity="0.9" filter="url(#portal-glow)"></circle>
+  </svg>
+</div>
+
+<style>
+  .portal-gate .ring {
+    transform-origin: 200px 200px;
+  }
+
+  .ring-ticks {
+    animation: portal-turn 180s linear infinite;
+  }
+
+  .ring-signs {
+    animation: portal-turn 120s linear infinite reverse;
+  }
+
+  .ring-hex {
+    animation: portal-turn 90s linear infinite;
+  }
+
+  .ring-dash {
+    animation: portal-turn 30s linear infinite reverse;
+  }
+
+  /* The vortex: streaks of blue and violet light spinning inside the gate */
+  .portal-vortex {
+    position: absolute;
+    inset: 27%;
+    border-radius: 9999px;
+    background: conic-gradient(
+      from 0deg,
+      #120a2e,
+      #2bd2ff 12%,
+      #4c2fa8 25%,
+      #120a2e 36%,
+      #8fd3ff 48%,
+      #7f5af0 62%,
+      #120a2e 72%,
+      #bde8ff 86%,
+      #120a2e
+    );
+    filter: blur(10px) saturate(1.2);
+    opacity: 0.9;
+    animation: portal-turn 9s linear infinite;
+  }
+
+  .portal-core {
+    position: absolute;
+    inset: 33%;
+    border-radius: 9999px;
+    background: radial-gradient(
+      circle,
+      rgba(246, 242, 255, 0.95) 0%,
+      rgba(189, 232, 255, 0.7) 18%,
+      rgba(43, 210, 255, 0.25) 45%,
+      transparent 70%
+    );
+    mix-blend-mode: screen;
+    animation: portal-breathe 6s ease-in-out infinite;
+  }
+
+  @keyframes portal-turn {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  @keyframes portal-breathe {
+    0%,
+    100% {
+      opacity: 0.55;
+      transform: scale(0.82);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.08);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .portal-gate *,
+    .portal-vortex,
+    .portal-core {
+      animation: none !important;
+    }
+  }
+</style>

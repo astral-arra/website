@@ -1,0 +1,41 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  items: { title: string; teaser?: string; image?: ImageMetadata }[];
+}
+
+const { items } = Astro.props;
+---
+
+{
+  items.length > 0 && (
+    <section class="mt-20" aria-labelledby="upcoming-heading">
+      <h2 id="upcoming-heading" class="text-3xl md:text-4xl">
+        Предстоящи статии
+      </h2>
+      <p class="mt-3 max-w-prose text-pearl-muted">Тези текстове се пишат и ще излязат тук.</p>
+      <ul class="mt-8 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+        {items.map((item) => (
+          <li class="flex flex-col">
+            {item.image ? (
+              <Image
+                src={item.image}
+                alt=""
+                widths={[360, 720]}
+                sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
+                class="aspect-[4/3] w-full rounded-sm object-cover opacity-75 saturate-[0.8]"
+              />
+            ) : (
+              <div class="aspect-[4/3] w-full rounded-sm bg-gradient-to-br from-amethyst-700/40 via-night-raised to-ice-400/10" />
+            )}
+            <h3 class="mt-4 font-display text-xl leading-snug text-pearl">{item.title}</h3>
+            {item.teaser && <p class="mt-2 text-[0.95rem] leading-relaxed text-pearl-muted">{item.teaser}</p>}
+            <p class="mt-3 text-sm text-ice-300">Скоро</p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}

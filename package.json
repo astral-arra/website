@@ -1,5 +1,5 @@
 {
-  "name": "a",
+  "name": "astral-arra",
   "type": "module",
   "version": "0.0.1",
   "scripts": {
@@ -12,6 +12,8 @@
   "dependencies": {
     "@astrojs/sitemap": "^3.1.5",
     "@astrojs/tailwind": "^5.1.0",
+    "@fontsource-variable/literata": "^5.3.0",
+    "@fontsource/forum": "^5.3.0",
     "astro": "^4.10.2"
   },
   "devDependencies": {
@@ -20,9 +22,20 @@
     "prettier": "^3.3.2",
     "prettier-plugin-astro": "^0.12.3",
     "prettier-plugin-tailwindcss": "^0.5.14",
-    "sharp": "^0.32.6",
+    "sharp": "^0.33.5",
+    "simple-icons": "^16.36.0",
     "tailwindcss": "^3.4.4",
     "tsx": "^4.15.4",
     "typescript": "^5.4.5"
+  },
+  "private": true,
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "sharp"
+    ]
+  },
+  "engines": {
+    "node": "22.x"
   }
 }

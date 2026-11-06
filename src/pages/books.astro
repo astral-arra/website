@@ -1,0 +1,38 @@
+---
+import Layout from "../components/Layout.astro";
+import BookCover from "../components/BookCover.astro";
+import { mailto } from "../lib/contact";
+
+const books = [
+  { title: "Еуфория", subtitle: "Книгата на живота", motif: "glow" as const },
+  { title: "Свят населен с демони", motif: "sigil" as const },
+  { title: "Spider Gnosis", motif: "web" as const },
+];
+---
+
+<Layout title="Книги" description="Книгите на Astral ARRA: Еуфория, Свят населен с демони и Spider Gnosis." activeUrl="/books">
+  <h1 class="text-5xl md:text-6xl">Книги</h1>
+  <p class="mt-4 max-w-prose text-lg text-pearl-muted">
+    Книгите на Astral ARRA. Скоро ще можеш да ги поръчаш оттук. Дотогава ми пиши, ако искаш да научиш повече
+    или да запазиш екземпляр.
+  </p>
+
+  <ul class="mt-14 grid gap-x-10 gap-y-14 sm:grid-cols-2 lg:grid-cols-3">
+    {
+      books.map((book) => (
+        <li>
+          <BookCover {...book} />
+          <h2 class="mt-6 text-3xl">{book.title}</h2>
+          {book.subtitle && <p class="mt-1 text-ice-100">{book.subtitle}</p>}
+          <p class="mt-3 text-sm text-gold">Скоро в продажба</p>
+          <a
+            href={mailto(`Книга: ${book.title}`)}
+            class="mt-4 inline-block border-b border-neon pb-1 text-ice-100 hover:text-neon"
+          >
+            Попитай за книгата
+          </a>
+        </li>
+      ))
+    }
+  </ul>
+</Layout>

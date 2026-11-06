@@ -1,57 +1,66 @@
-# Astro Starter Kit: Basics
+# Astral ARRA
 
-```
-npm create astro@latest -- --template basics
-```
+Сайтът [astralarra.com](https://astralarra.com): статии, Синхромистичен портал, консултации и библиотека. Направен е с [Astro](https://astro.build) и Tailwind CSS.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Работа локално
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
-
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```sh
+pnpm install
+pnpm dev       # сайтът е на http://localhost:4321
+pnpm build     # готовият сайт отива в ./dist
+pnpm preview   # преглед на готовия сайт
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file
-name.
+## Къде какво е
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact
-components.
+| Какво | Къде |
+| --- | --- |
+| Статии | `src/content/blog/*.md` |
+| Портал | `src/content/portal/*.md` |
+| Снимки към статиите | `src/content/images/` |
+| Раздели на статиите (Таро, Астрал...) и предстоящите теми | `src/content/sections/*.md` |
+| Въведение на портала | `src/texts/portal-intro.md` |
+| Пренасочвания от стария сайт | `vercel.json` |
+| Меню | `src/content/nav/routes.json` |
+| Имейл и социални мрежи | `src/lib/contact.ts` |
+| Книги, Магически кът, Съновник | `src/pages/books.astro`, `magic.astro`, `sonovnik.astro` |
+| Заглавие и слоган | `src/content/site/data.json` |
+| Страници | `src/pages/` |
+| Цветове и шрифтове | `tailwind.config.cjs`, `src/styles.css` |
 
-Any static assets, like images, can be placed in the `public/` directory.
+### Нова статия
 
-## 🧞 Commands
+Създай файл в `src/content/blog/` (или `src/content/portal/`) с това начало:
 
-All commands are run from the root of the project, from a terminal:
+```md
+---
+title: Заглавие на статията
+date: 2026-11-05
+description: Едно изречение за статията (показва се в Google и при споделяне).
+image: "../images/korica.png"
+section: taro        # taro, astral, astralen-dizain, gnosticism, magick, analizi
+tags:
+  - астрология
+---
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+Текстът започва тук.
+```
 
-## 👀 Want to learn more?
+Линк към YouTube видео, оставен сам на ред, се показва като вграден плейър.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into
-our [Discord server](https://astro.build/chat).
+Когато статия от „Предстоящи статии“ излезе, махни я от `upcoming` в нейния раздел.
+
+## Цветове
+
+Виолетово, перлено бяло и златисто, с неоново синьо и светли сини нюанси.
+
+| Име | Цвят | Употреба |
+| --- | --- | --- |
+| `night` | `#120A2E` | фон |
+| `amethyst-500` | `#7F5AF0` | основно виолетово |
+| `pearl` | `#F6F2FF` | текст |
+| `gold` | `#D9B45A` | дати, активен линк, разделители |
+| `neon` | `#2BD2FF` | сиянието на логото, фокус, hover |
+| `ice-200` | `#BDE8FF` | светлосиньо: линкове, акценти |
+
+Шрифтове: Forum за заглавия, Literata за текст. И двата поддържат кирилица и са включени в сайта, без връзка към Google Fonts.
