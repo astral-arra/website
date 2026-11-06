@@ -11,12 +11,21 @@ const year = new Date().getFullYear();
       <a href={mailto()} class="mt-2 inline-block text-ice-200 hover:text-neon">{EMAIL}</a>
     </div>
     <nav aria-label="Социални мрежи">
-      <ul class="flex flex-wrap gap-x-6 gap-y-2 text-pearl-muted">
+      <ul class="flex flex-wrap gap-3">
         {
           social.map((s) => (
             <li>
-              <a href={s.url} target="_blank" rel="noopener" class="hover:text-neon">
-                {s.name}
+              <a
+                href={s.url}
+                target="_blank"
+                rel="noopener"
+                aria-label={s.name}
+                title={s.name}
+                class="flex h-11 w-11 items-center justify-center rounded-full border border-night-line text-pearl-muted transition hover:border-neon hover:text-neon hover:shadow-neon"
+              >
+                <svg viewBox="0 0 24 24" class="h-5 w-5" fill="currentColor" aria-hidden="true">
+                  <path d={s.icon} />
+                </svg>
               </a>
             </li>
           ))

@@ -83,7 +83,7 @@
   /* Article text: a wide, calm column, justified edge to edge with hyphenation
      so the spacing stays even on phones too. */
   .article-body {
-    font-size: 1.125rem;
+    font-size: 1.0625rem;
     line-height: 1.8;
   }
 
