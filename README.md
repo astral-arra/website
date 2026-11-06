@@ -1,6 +1,6 @@
 # Astral ARRA
 
-Сайтът [astralarra.com](https://astralarra.com): статии, Синхромистичен портал, консултации и библиотека. Направен е с [Astro](https://astro.build) и Tailwind CSS.
+Сайтът [www.astralarra.com](https://www.astralarra.com): статии, Синхромистичен портал, консултации и библиотека. Направен е с [Astro](https://astro.build) и Tailwind CSS.
 
 ## Работа локално
 

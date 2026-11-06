@@ -519,6 +519,11 @@
       "source": "/shop",
       "destination": "/books",
       "permanent": true
+    },
+    {
+      "source": "/map",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
