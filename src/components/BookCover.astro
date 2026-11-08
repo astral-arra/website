@@ -3,7 +3,7 @@
 interface Props {
   title: string;
   subtitle?: string;
-  motif: "glow" | "sigil" | "web";
+  motif: "glow" | "sigil" | "web" | "threads";
 }
 
 const { title, subtitle, motif } = Astro.props;
@@ -50,9 +50,28 @@ const { title, subtitle, motif } = Astro.props;
       </svg>
     )
   }
+  {
+    motif === "threads" && (
+      <svg viewBox="0 0 200 300" class="absolute inset-0 h-full w-full" aria-hidden="true">
+        <defs>
+          <linearGradient id="gold-thread" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#F0DCA0" />
+            <stop offset="1" stop-color="#B8923A" />
+          </linearGradient>
+        </defs>
+        <g fill="none" stroke="url(#gold-thread)" stroke-width="0.9" stroke-linecap="round">
+          {Array.from({ length: 9 }, (_, i) => {
+            const x = 30 + i * 17.5;
+            return <path d={`M${x} 0 C ${x + 40} 70, ${x - 50} 130, ${100 + (i - 4) * 4} 118 S ${x + 30} 220, ${x - 10} 300`} stroke-opacity={0.35 + (i % 3) * 0.2} />;
+          })}
+        </g>
+        <circle cx="100" cy="118" r="5" fill="#F0DCA0" />
+      </svg>
+    )
+  }
   <div class="absolute inset-3 rounded-[2px] border border-gold/50"></div>
   <div class="absolute inset-x-6 bottom-8 text-center">
-    <p class="font-display text-3xl leading-tight text-pearl">{title}</p>
+    <p class="font-display text-2xl leading-tight text-pearl xl:text-3xl">{title}</p>
     {subtitle && <p class="mt-2 text-sm text-ice-100">{subtitle}</p>}
     <p class="mt-5 text-xs text-gold">Astral AЯRA</p>
   </div>

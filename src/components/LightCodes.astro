@@ -1,0 +1,47 @@
+---
+// A row of light codes that light up one after another, like a slow wave.
+import { LIGHT_CODES } from "../lib/glyphs";
+---
+
+<ul class="light-codes grid grid-cols-4 gap-x-4 gap-y-8 sm:grid-cols-6 lg:grid-cols-12" aria-hidden="true">
+  {
+    LIGHT_CODES.map((d, i) => (
+      <li class="flex justify-center">
+        <svg viewBox="-3 -3 30 42" class="code h-20 w-auto" style={`animation-delay: ${(i * 0.45).toFixed(2)}s`}>
+          <path d={d} fill="none" stroke="#BDE8FF" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .code {
+    opacity: 0.45;
+    animation: code-light 5.4s ease-in-out infinite;
+  }
+
+  @keyframes code-light {
+    0%,
+    100% {
+      opacity: 0.45;
+      filter: drop-shadow(0 0 1px rgba(43, 210, 255, 0.4));
+    }
+    18% {
+      opacity: 1;
+      filter: drop-shadow(0 0 2px #e4f6ff) drop-shadow(0 0 12px rgba(43, 210, 255, 0.9));
+    }
+    40% {
+      opacity: 0.6;
+      filter: drop-shadow(0 0 1px rgba(43, 210, 255, 0.5));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .code {
+      animation: none;
+      opacity: 0.9;
+      filter: drop-shadow(0 0 6px rgba(43, 210, 255, 0.6));
+    }
+  }
+</style>
