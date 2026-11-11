@@ -1,6 +1,8 @@
 ---
 // Animated portal for the top of "Синхромистичен портал": a light vortex inside
-// slowly turning rings of ticks, zodiac signs and a hexagram.
+// slowly turning rings of ticks, light codes and a hexagram.
+import { LIGHT_CODES } from "../lib/glyphs";
+
 const C = 200;
 const ticks = Array.from({ length: 72 }, (_, i) => {
   const a = (i * 5 * Math.PI) / 180;
@@ -15,10 +17,11 @@ const ticks = Array.from({ length: 72 }, (_, i) => {
     long,
   };
 });
-// U+FE0E keeps the signs as text glyphs instead of emoji.
-const signs = "♈♉♊♋♌♍♎♏♐♑♒♓".split("").map((g, i) => {
-  const a = ((i * 30 - 90) * Math.PI) / 180;
-  return { g: g + "︎", x: C + Math.cos(a) * 152, y: C + Math.sin(a) * 152 };
+// Twelve light codes around the ring, each turned to face outwards.
+const codes = LIGHT_CODES.map((d, i) => {
+  const deg = i * 30 - 90;
+  const a = (deg * Math.PI) / 180;
+  return { d, x: C + Math.cos(a) * 152, y: C + Math.sin(a) * 152, rot: deg + 90 };
 });
 const tri = (start: number) =>
   [0, 120, 240]
@@ -61,18 +64,18 @@ const tri = (start: number) =>
       <circle cx={C} cy={C} r="166" fill="none" stroke="#8FD3FF" stroke-opacity="0.25" stroke-width="0.6"></circle>
       <circle cx={C} cy={C} r="138" fill="none" stroke="#8FD3FF" stroke-opacity="0.25" stroke-width="0.6"></circle>
       {
-        signs.map((s) => (
-          <text
-            x={s.x}
-            y={s.y}
-            fill="#BDE8FF"
-            fill-opacity="0.8"
-            font-size="17"
-            text-anchor="middle"
-            dominant-baseline="central"
-          >
-            {s.g}
-          </text>
+        codes.map((g) => (
+          <path
+            d={g.d}
+            transform={`translate(${g.x} ${g.y}) rotate(${g.rot}) scale(0.62) translate(-12 -18)`}
+            fill="none"
+            stroke="#BDE8FF"
+            stroke-opacity="0.9"
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            filter="url(#portal-glow)"
+          />
         ))
       }
     </g>

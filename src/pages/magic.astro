@@ -1,23 +1,56 @@
 ---
 import Layout from "../components/Layout.astro";
-import SubSections from "../components/SubSections.astro";
-
-const parts = [
-  {
-    id: "visokovibracionen-portal",
-    title: "Високовибрационен портал",
-    text: "Практики и материали за повдигане на вибрацията. Подготвя се.",
-  },
-  {
-    id: "zashtita",
-    title: "Защита",
-    text: "Практики и материали за енергийна и астрална защита. Подготвя се.",
-  },
-];
+import Merkaba from "../components/Merkaba.astro";
+import LightCodes from "../components/LightCodes.astro";
+import SigilGrid from "../components/SigilGrid.astro";
+import { HIGH_SIGILS, PROTECTION_SIGILS } from "../lib/glyphs";
 ---
 
-<Layout title="Магически кът" description="Магическият кът на Astral ARRA: Високовибрационен портал и Защита." activeUrl="/magic">
+<Layout
+  title="Магически кът"
+  description="Магическият кът на Astral ARRA: Високовибрационен портал със светлинни кодове, сигили и меркаба, и сигили за защита."
+  activeUrl="/magic"
+>
   <h1 class="text-5xl md:text-6xl">Магически кът</h1>
   <p class="mt-4 max-w-prose text-lg text-pearl-muted">Високовибрационен портал и защита.</p>
-  <SubSections parts={parts} />
+  <nav aria-label="На тази страница" class="mt-8">
+    <ul class="flex flex-wrap gap-2 text-[0.95rem]">
+      <li>
+        <a href="#visokovibracionen-portal" class="block rounded-full border border-night-line px-4 py-1.5 text-pearl-muted hover:border-neon hover:text-neon">
+          Високовибрационен портал
+        </a>
+      </li>
+      <li>
+        <a href="#zashtita" class="block rounded-full border border-night-line px-4 py-1.5 text-pearl-muted hover:border-neon hover:text-neon">
+          Защита
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <section id="visokovibracionen-portal" class="mt-16 scroll-mt-24 border-t border-night-line/80 pt-14">
+    <div class="grid items-center gap-10 md:grid-cols-[1fr_minmax(0,24rem)] md:gap-14">
+      <div>
+        <h2 class="text-4xl md:text-5xl">Високовибрационен портал</h2>
+        <p class="mt-5 max-w-prose text-lg text-pearl-muted">
+          Светлинни кодове, сигили за висока вибрация и меркаба – светлинното превозно средство на духа.
+        </p>
+      </div>
+      <Merkaba size="24rem" />
+    </div>
+
+    <h3 class="mt-20 text-3xl">Светлинни кодове</h3>
+    <div class="mt-10">
+      <LightCodes />
+    </div>
+
+    <h3 class="mt-20 text-3xl">Сигили за висока вибрация</h3>
+    <SigilGrid sigils={HIGH_SIGILS} tone="gold" />
+  </section>
+
+  <section id="zashtita" class="mt-20 scroll-mt-24 border-t border-night-line/80 pt-14">
+    <h2 class="text-4xl md:text-5xl">Защита</h2>
+    <p class="mt-5 max-w-prose text-lg text-pearl-muted">Сигили за енергийна и астрална защита.</p>
+    <SigilGrid sigils={PROTECTION_SIGILS} tone="violet" />
+  </section>
 </Layout>

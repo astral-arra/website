@@ -1,0 +1,125 @@
+---
+// A slowly turning merkaba (star tetrahedron), drawn on an SVG from a small 3D model.
+// One tetrahedron turns one way, the other the opposite way.
+interface Props {
+  size?: string;
+}
+const { size = "26rem" } = Astro.props;
+---
+
+<div class="merkaba relative mx-auto aspect-square w-full" style={`max-width: ${size}`} aria-hidden="true">
+  <div class="merkaba-glow absolute inset-[18%] rounded-full"></div>
+  <svg viewBox="-110 -110 220 220" class="absolute inset-0 h-full w-full overflow-visible">
+    <defs>
+      <filter id="merkaba-glow" x="-30%" y="-30%" width="160%" height="160%">
+        <feGaussianBlur stdDeviation="2.2" result="b"></feGaussianBlur>
+        <feMerge><feMergeNode in="b"></feMergeNode><feMergeNode in="SourceGraphic"></feMergeNode></feMerge>
+      </filter>
+    </defs>
+    <circle r="104" fill="none" stroke="#D9B45A" stroke-opacity="0.35" stroke-width="0.6"></circle>
+    <circle r="92" fill="none" stroke="#8FD3FF" stroke-opacity="0.2" stroke-width="0.6" stroke-dasharray="1 4"></circle>
+    <g filter="url(#merkaba-glow)" stroke-linecap="round">
+      <g class="tetra-up" fill="none" stroke="#F0DCA0" stroke-width="1.4"></g>
+      <g class="tetra-down" fill="none" stroke="#8FD3FF" stroke-width="1.4"></g>
+    </g>
+    <circle r="3" fill="#F6F2FF"></circle>
+  </svg>
+</div>
+
+<style>
+  .merkaba-glow {
+    background: radial-gradient(circle, rgba(189, 232, 255, 0.35), rgba(127, 90, 240, 0.18) 45%, transparent 70%);
+    animation: merkaba-breathe 7s ease-in-out infinite;
+  }
+
+  @keyframes merkaba-breathe {
+    0%,
+    100% {
+      opacity: 0.6;
+      transform: scale(0.92);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1.08);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .merkaba-glow {
+      animation: none;
+    }
+  }
+</style>
+
+<script>
+  type V = [number, number, number];
+  const up: V[] = [
+    [0, 1, 0],
+    [0.9428, -0.3333, 0],
+    [-0.4714, -0.3333, 0.8165],
+    [-0.4714, -0.3333, -0.8165],
+  ];
+  const down: V[] = up.map(([x, y, z]) => [-x, -y, z]);
+  const edges = [
+    [0, 1],
+    [0, 2],
+    [0, 3],
+    [1, 2],
+    [2, 3],
+    [3, 1],
+  ];
+  const R = 96;
+  const NS = "http://www.w3.org/2000/svg";
+
+  function project([x, y, z]: V, spin: number, tilt: number): [number, number, number] {
+    // rotate around the vertical axis, then tilt towards the viewer
+    const x1 = x * Math.cos(spin) + z * Math.sin(spin);
+    const z1 = -x * Math.sin(spin) + z * Math.cos(spin);
+    const y2 = y * Math.cos(tilt) - z1 * Math.sin(tilt);
+    const z2 = y * Math.sin(tilt) + z1 * Math.cos(tilt);
+    return [x1 * R, -y2 * R, z2];
+  }
+
+  function setup(group: SVGGElement) {
+    return edges.map(() => {
+      const line = document.createElementNS(NS, "line");
+      group.appendChild(line);
+      return line;
+    });
+  }
+
+  function draw(lines: SVGLineElement[], verts: V[], spin: number, tilt: number) {
+    const p = verts.map((v) => project(v, spin, tilt));
+    edges.forEach(([a, b], i) => {
+      const l = lines[i];
+      l.setAttribute("x1", p[a][0].toFixed(2));
+      l.setAttribute("y1", p[a][1].toFixed(2));
+      l.setAttribute("x2", p[b][0].toFixed(2));
+      l.setAttribute("y2", p[b][1].toFixed(2));
+      // edges at the back are fainter
+      const depth = (p[a][2] + p[b][2]) / 2;
+      l.setAttribute("stroke-opacity", (0.55 + depth * 0.45).toFixed(2));
+    });
+  }
+
+  document.querySelectorAll<HTMLElement>(".merkaba").forEach((root) => {
+    const upLines = setup(root.querySelector(".tetra-up")!);
+    const downLines = setup(root.querySelector(".tetra-down")!);
+    const tilt = 0.5;
+    const still = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const render = (t: number) => {
+      const a = t / 9000;
+      draw(upLines, up, a * Math.PI * 2, tilt);
+      draw(downLines, down, -a * Math.PI * 2, tilt);
+    };
+    if (still) {
+      render(1200);
+      return;
+    }
+    const loop = (t: number) => {
+      render(t);
+      requestAnimationFrame(loop);
+    };
+    requestAnimationFrame(loop);
+  });
+</script>

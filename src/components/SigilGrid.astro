@@ -1,0 +1,61 @@
+---
+import type { Sigil } from "../lib/glyphs";
+
+interface Props {
+  sigils: Sigil[];
+  tone: "gold" | "violet";
+}
+
+const { sigils, tone } = Astro.props;
+const stroke = tone === "gold" ? "#E8C877" : "#B9A6FF";
+const glow = tone === "gold" ? "rgba(217, 180, 90, 0.55)" : "rgba(143, 211, 255, 0.55)";
+---
+
+<ul class="sigils mt-10 grid grid-cols-2 gap-x-6 gap-y-10 sm:grid-cols-3" style={`--glow: ${glow}`}>
+  {
+    sigils.map((s, i) => (
+      <li class="flex flex-col items-center text-center">
+        <svg
+          viewBox="-6 -6 132 132"
+          class="sigil w-full max-w-[11rem]"
+          style={`animation-delay: ${-i * 1.3}s`}
+          role="img"
+          aria-label={`Сигил ${s.name}`}
+        >
+          <path
+            d={s.d}
+            fill="none"
+            stroke={stroke}
+            stroke-width="1.6"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+        <p class="mt-4 font-display text-xl text-pearl">{s.name}</p>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .sigil {
+    filter: drop-shadow(0 0 2px var(--glow)) drop-shadow(0 0 10px var(--glow));
+    animation: sigil-glow 8s ease-in-out infinite;
+  }
+
+  @keyframes sigil-glow {
+    0%,
+    100% {
+      filter: drop-shadow(0 0 1px var(--glow)) drop-shadow(0 0 6px var(--glow));
+    }
+    50% {
+      filter: drop-shadow(0 0 3px var(--glow)) drop-shadow(0 0 18px var(--glow));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .sigil {
+      animation: none;
+    }
+  }
+</style>
