@@ -1,0 +1,101 @@
+---
+// Google Analytics 4 със съгласие (Consent Mode v2, „basic“ режим):
+// gtag.js се зарежда едва след като посетителят натисне „Приемам“.
+const GA_ID = "G-DVXSZJMHNN";
+---
+
+<div
+  id="cookie-banner"
+  class="fixed inset-x-0 bottom-0 z-50 hidden px-4 pb-4 md:px-6 md:pb-6"
+  role="dialog"
+  aria-live="polite"
+  aria-label="Бисквитки"
+>
+  <div
+    class="mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl border border-night-line bg-night-deep/95 p-5 text-pearl-muted shadow-neon backdrop-blur md:flex-row md:items-center md:gap-6"
+  >
+    <p class="text-[0.95rem] leading-relaxed">
+      Използваме бисквитки на Google Analytics, за да разберем кои статии четете и как да подобрим сайта.
+      Те се включват само с Ваше съгласие. <a href="/privacy" class="text-ice-200 underline hover:text-neon">Повече</a>
+    </p>
+    <div class="flex shrink-0 gap-3">
+      <button
+        type="button"
+        data-consent="denied"
+        class="rounded-full border border-night-line px-5 py-2 text-sm text-pearl-muted transition hover:border-pearl-dim hover:text-pearl"
+      >
+        Отказвам
+      </button>
+      <button
+        type="button"
+        data-consent="granted"
+        class="rounded-full border border-gold bg-gold/10 px-5 py-2 text-sm text-gold-300 transition hover:bg-gold/20"
+      >
+        Приемам
+      </button>
+    </div>
+  </div>
+</div>
+
+<script is:inline define:vars={{ GA_ID }}>
+  (function () {
+    var KEY = "arra-consent";
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { window.dataLayer.push(arguments); }
+    window.gtag = gtag;
+    gtag("consent", "default", {
+      ad_storage: "denied",
+      ad_user_data: "denied",
+      ad_personalization: "denied",
+      analytics_storage: "denied",
+    });
+
+    var loaded = false;
+    function loadGA() {
+      if (loaded) return;
+      loaded = true;
+      gtag("consent", "update", { analytics_storage: "granted" });
+      var s = document.createElement("script");
+      s.async = true;
+      s.src = "https://www.googletagmanager.com/gtag/js?id=" + GA_ID;
+      document.head.appendChild(s);
+      gtag("js", new Date());
+      gtag("config", GA_ID);
+    }
+
+    function read() { try { return localStorage.getItem(KEY); } catch (e) { return null; } }
+    function save(v) { try { localStorage.setItem(KEY, v); } catch (e) {} }
+
+    var banner = document.getElementById("cookie-banner");
+    function show() { banner.classList.remove("hidden"); }
+    function hide() { banner.classList.add("hidden"); }
+
+    var choice = read();
+    if (choice === "granted") loadGA();
+    else if (choice !== "denied") show();
+
+    banner.addEventListener("click", function (e) {
+      var v = e.target.closest("[data-consent]");
+      if (!v) return;
+      var value = v.getAttribute("data-consent");
+      save(value);
+      hide();
+      if (value === "granted") loadGA();
+      else if (loaded) {
+        document.cookie.split(";").forEach(function (c) {
+          var name = c.split("=")[0].trim();
+          if (name.indexOf("_ga") === 0) {
+            var host = location.hostname.replace(/^www\./, "");
+            document.cookie = name + "=; Max-Age=0; path=/; domain=." + host;
+            document.cookie = name + "=; Max-Age=0; path=/";
+          }
+        });
+        location.reload();
+      }
+    });
+
+    document.addEventListener("click", function (e) {
+      if (e.target.closest("[data-cookie-settings]")) { e.preventDefault(); show(); }
+    });
+  })();
+</script>
