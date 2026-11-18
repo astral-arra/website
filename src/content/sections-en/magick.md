@@ -1,0 +1,28 @@
+---
+title: "Magick"
+order: 5
+tagline: "\"By the power of truth, I, while living, have conquered the universe.\""
+image: "../images/sections/magick/00.jpg"
+upcoming:
+  - title: "What is magick?"
+    teaser: "Think you know what magick is?"
+    image: "../images/sections/magick/00.jpg"
+  - title: "What is déjà vu?"
+    teaser: "Do you have the feeling that you've already…"
+    image: "../images/sections/magick/02.jpg"
+  - title: "Is it right to do love magick?"
+    image: "../images/sections/magick/04.jpg"
+  - title: "Who is the Arachnid Queen and how do you work with her?"
+    image: "../images/sections/magick/05.jpg"
+  - title: "The pendulum – does it work, or is it a scam?"
+    image: "../images/sections/magick/06.jpg"
+  - title: "How to manifest successfully"
+    image: "../images/sections/magick/07.jpg"
+  - title: "The mystery of the veil"
+    image: "../images/sections/magick/08.jpg"
+  - title: "What is automagick?"
+    teaser: "And how to avoid it."
+    image: "../images/sections/magick/09.jpg"
+  - title: "Satanic deceptions to watch out for"
+    image: "../images/sections/magick/10.jpg"
+---

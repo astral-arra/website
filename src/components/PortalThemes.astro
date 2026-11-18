@@ -1,17 +1,30 @@
 ---
 // What the portal covers, as a small infographic: a glyph, the theme and what it holds.
-const themes = [
-  { glyph: "sync", title: "Синхроничности", text: "Повтарящи се числа, символи, събития" },
-  { glyph: "timelines", title: "Времеви линии", text: "Пресичания, разклонения, алтернативни сценарии" },
-  { glyph: "eye", title: "Посланици на Програмата", text: "Архетипи, символи, същности и образи" },
-  { glyph: "code", title: "Кодове на Матрицата", text: "Повтарящи се модели и закономерности" },
-  { glyph: "focus", title: "Магическо възприятие", text: "Състояния на съзнанието и фокус" },
-  { glyph: "pendulum", title: "Синхромистични експерименти", text: "Лични наблюдения и практически опити" },
-];
+import { getLang, t } from "../lib/i18n";
+
+const lang = getLang(Astro.url);
+const themes = {
+  bg: [
+    { glyph: "sync", title: "Синхроничности", text: "Повтарящи се числа, символи, събития" },
+    { glyph: "timelines", title: "Времеви линии", text: "Пресичания, разклонения, алтернативни сценарии" },
+    { glyph: "eye", title: "Посланици на Програмата", text: "Архетипи, символи, същности и образи" },
+    { glyph: "code", title: "Кодове на Матрицата", text: "Повтарящи се модели и закономерности" },
+    { glyph: "focus", title: "Магическо възприятие", text: "Състояния на съзнанието и фокус" },
+    { glyph: "pendulum", title: "Синхромистични експерименти", text: "Лични наблюдения и практически опити" },
+  ],
+  en: [
+    { glyph: "sync", title: "Synchronicities", text: "Repeating numbers, symbols and events" },
+    { glyph: "timelines", title: "Timelines", text: "Crossings, branchings, alternative scenarios" },
+    { glyph: "eye", title: "Messengers of the Program", text: "Archetypes, symbols, entities and images" },
+    { glyph: "code", title: "Codes of the Matrix", text: "Recurring patterns and hidden laws" },
+    { glyph: "focus", title: "Magical perception", text: "States of consciousness and focus" },
+    { glyph: "pendulum", title: "Synchromystic experiments", text: "Personal observations and hands-on trials" },
+  ],
+}[lang];
 ---
 
 <section class="mt-20" aria-labelledby="themes-heading">
-  <h2 id="themes-heading" class="text-3xl md:text-4xl">Какво ще откриете в портала</h2>
+  <h2 id="themes-heading" class="text-3xl md:text-4xl">{t(lang)("portalThemes")}</h2>
   <ul
     class="mt-10 grid overflow-hidden rounded-sm border border-night-line/90 bg-night-line/90 sm:grid-cols-2 lg:grid-cols-3"
     style="gap: 1px;"

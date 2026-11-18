@@ -1,0 +1,34 @@
+---
+import Layout from "../../components/Layout.astro";
+import { EMAIL, mailto } from "../../lib/contact";
+---
+
+<Layout title="Privacy and cookies" description="How Astral ARRA uses cookies and visitor statistics.">
+  <article class="article-body prose prose-arra mx-auto max-w-[52rem]">
+    <h1>Privacy and cookies</h1>
+
+    <h2>Statistics without cookies</h2>
+    <p>
+      The site uses Vercel Web Analytics to count page visits. This service sets no cookies and collects no data
+      that could identify you personally.
+    </p>
+
+    <h2>Google Analytics</h2>
+    <p>
+      If you click “Accept” in the cookie banner, Google Analytics 4 is switched on. It sets cookies
+      (<code>_ga</code>, <code>_ga_*</code>) and collects aggregated information: which pages you read, which
+      country and device you come from, and how you found the site. The data is kept for up to 14 months and is not
+      used for advertising. Without your consent, Google Analytics is not loaded.
+    </p>
+    <p>
+      You can change your choice at any time from the
+      <button type="button" data-cookie-settings class="text-ice-200 underline hover:text-neon">“Cookies”</button>
+      link at the bottom of every page.
+    </p>
+
+    <h2>Email</h2>
+    <p>
+      When you write to me at <a href={mailto()}>{EMAIL}</a>, I use your address and message only to reply to you.
+    </p>
+  </article>
+</Layout>

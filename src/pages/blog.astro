@@ -1,23 +1,5 @@
 ---
-import { getCollection } from "astro:content";
-import Layout from "../components/Layout.astro";
-import PostList from "../components/PostList.astro";
-import SectionNav from "../components/SectionNav.astro";
-
-const posts = await getCollection("blog");
+import BlogIndex from "../views/BlogIndex.astro";
 ---
 
-<Layout
-  title="Статии"
-  description="Статии на Astral ARRA за таро, астрал, астрален дизайн, гностицизъм, магия и синхромистични анализи."
-  activeUrl="/blog"
->
-  <h1 class="text-5xl md:text-6xl">Статии</h1>
-  <p class="mt-4 max-w-prose text-lg text-pearl-muted">
-    Таро, астрал, астрален дизайн, гностицизъм, магия и анализи.
-  </p>
-  <SectionNav />
-  <div class="mt-12">
-    <PostList posts={posts} baseUrl="/blog" />
-  </div>
-</Layout>
+<BlogIndex />

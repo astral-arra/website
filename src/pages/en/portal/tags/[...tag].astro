@@ -1,0 +1,15 @@
+---
+import { getCollection } from "astro:content";
+import TagPage from "../../../../views/TagPage.astro";
+import { groupBy } from "../../../../lib/posts";
+
+export async function getStaticPaths() {
+  const groups = groupBy(await getCollection("portal-en"), "tags");
+  return Object.entries(groups).map(([tag, posts]) => ({ params: { tag }, props: { posts } }));
+}
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+---
+
+<TagPage tag={tag!} kind="portal" posts={posts} />

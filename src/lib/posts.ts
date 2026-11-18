@@ -1,6 +1,7 @@
 import type { CollectionEntry } from "astro:content";
+import { formatDate as fmt, type Lang } from "./i18n";
 
-type Post = CollectionEntry<"blog" | "portal">;
+type Post = CollectionEntry<"blog" | "portal" | "blog-en" | "portal-en">;
 
 export function sortByDate<T extends Post>(posts: T[]): T[] {
   return [...posts].sort(
@@ -8,8 +9,8 @@ export function sortByDate<T extends Post>(posts: T[]): T[] {
   );
 }
 
-export function formatDate(date: Date): string {
-  return date.toLocaleDateString("bg-BG", { day: "numeric", month: "long", year: "numeric" });
+export function formatDate(date: Date, lang: Lang = "bg"): string {
+  return fmt(date, lang);
 }
 
 /** Groups posts by one of their list fields (tags or categories). */

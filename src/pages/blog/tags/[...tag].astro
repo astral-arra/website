@@ -1,7 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import Layout from "../../../components/Layout.astro";
-import PostList from "../../../components/PostList.astro";
+import TagPage from "../../../views/TagPage.astro";
 import { groupBy } from "../../../lib/posts";
 
 export async function getStaticPaths() {
@@ -13,10 +12,4 @@ const { tag } = Astro.params;
 const { posts } = Astro.props;
 ---
 
-<Layout title={`${tag} | Статии`} activeUrl="/blog">
-  <a href="/blog" class="text-sm text-ice-300 hover:text-neon">Статии</a>
-  <h1 class="mt-3 text-4xl md:text-5xl">Таг: {tag}</h1>
-  <div class="mt-10">
-    <PostList posts={posts} baseUrl="/blog" />
-  </div>
-</Layout>
+<TagPage tag={tag!} kind="blog" posts={posts} />

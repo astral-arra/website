@@ -1,11 +1,15 @@
 ---
 import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
 import logo from "../assets/images/logo-pearl.png";
+import { NAV, getLang, localize, t } from "../lib/i18n";
 
-const navConfig = await getCollection("nav");
-const navItems = navConfig[0].data;
-const { url = "", isHero = false } = Astro.props;
+const lang = getLang(Astro.url);
+const tr = t(lang);
+const navItems = NAV[lang];
+const { url = "", isHero = false, alternate } = Astro.props;
+const otherLang = lang === "bg" ? "en" : "bg";
+const switchHref = alternate ?? localize("/", otherLang);
+const switchShort = lang === "bg" ? "EN" : "БГ";
 
 const isActive = (href: string) => url === href || (href !== "/" && url.startsWith(`${href}/`));
 ---
@@ -19,11 +23,11 @@ const isActive = (href: string) => url === href || (href !== "/" && url.startsWi
   ]}
 >
   <div class="mx-auto flex max-w-6xl items-center justify-between gap-6 px-5 py-3 md:px-8">
-    <a href="/" class:list={["block shrink-0", isHero && "invisible"]} aria-label="Astral ARRA, начало">
+    <a href={localize("/", lang)} class:list={["block shrink-0", isHero && "invisible"]} aria-label={tr("home")}>
       <Image src={logo} alt="" class="h-14 w-auto md:h-16" loading="eager" widths={[64, 128]} sizes="64px" />
     </a>
 
-    <nav aria-label="Основно меню" class="hidden lg:block">
+    <nav aria-label={tr("mainMenu")} class="hidden lg:block">
       <ul class="flex items-center text-[0.92rem] xl:text-[0.95rem]">
         {
           navItems.map((item) => (
@@ -42,10 +46,31 @@ const isActive = (href: string) => url === href || (href !== "/" && url.startsWi
             </li>
           ))
         }
-        <li class="pl-2 text-lg" aria-hidden="true">🧿</li>
+        <li class="pl-2">
+          <a
+            href={switchHref}
+            hreflang={otherLang}
+            lang={otherLang}
+            title={tr("switchLabel")}
+            class="block rounded-full border border-night-line px-2.5 py-1 text-xs tracking-wider text-ice-200 hover:border-neon hover:text-neon"
+          >
+            {switchShort}
+          </a>
+        </li>
+        <li class="pl-3 text-lg" aria-hidden="true">🧿</li>
       </ul>
     </nav>
 
+    <div class="flex items-center gap-2 lg:hidden">
+      <a
+        href={switchHref}
+        hreflang={otherLang}
+        lang={otherLang}
+        title={tr("switchLabel")}
+        class="rounded-full border border-night-line px-2.5 py-1 text-xs tracking-wider text-ice-200 hover:border-neon hover:text-neon"
+      >
+        {switchShort}
+      </a>
     <button
       id="menu-toggle"
       type="button"
@@ -53,16 +78,17 @@ const isActive = (href: string) => url === href || (href !== "/" && url.startsWi
       aria-controls="mobile-nav"
       aria-expanded="false"
     >
-      <span class="sr-only">Отвори менюто</span>
+      <span class="sr-only" data-open={tr("openMenu")} data-close={tr("closeMenu")}>{tr("openMenu")}</span>
       <svg viewBox="0 0 24 24" class="h-6 w-6" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
         <path d="M3 7h18M3 12h18M3 17h18"></path>
       </svg>
     </button>
+    </div>
   </div>
 
   <nav
     id="mobile-nav"
-    aria-label="Основно меню"
+    aria-label={tr("mainMenu")}
     class="hidden border-t border-night-line bg-night-deep/95 backdrop-blur lg:hidden"
   >
     <ul class="flex flex-col px-5 py-4">
@@ -96,6 +122,6 @@ const isActive = (href: string) => url === href || (href !== "/" && url.startsWi
     const open = toggle.getAttribute("aria-expanded") === "true";
     toggle.setAttribute("aria-expanded", String(!open));
     panel?.classList.toggle("hidden", open);
-    if (label) label.textContent = open ? "Отвори менюто" : "Затвори менюто";
+    if (label instanceof HTMLElement) label.textContent = (open ? label.dataset.open : label.dataset.close) ?? "";
   });
 </script>

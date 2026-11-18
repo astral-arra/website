@@ -1,0 +1,21 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../components/Layout.astro";
+import PostList from "../components/PostList.astro";
+import SectionNav from "../components/SectionNav.astro";
+import { COLLECTIONS } from "../lib/collections";
+import { getLang, localize, t } from "../lib/i18n";
+
+const lang = getLang(Astro.url);
+const tr = t(lang);
+const posts = await getCollection(COLLECTIONS[lang].blog);
+---
+
+<Layout title={tr("articles")} description={tr("articlesDescription")} activeUrl={localize("/blog", lang)}>
+  <h1 class="text-5xl md:text-6xl">{tr("articles")}</h1>
+  <p class="mt-4 max-w-prose text-lg text-pearl-muted">{tr("articlesLead")}</p>
+  <SectionNav />
+  <div class="mt-12">
+    <PostList posts={posts} baseUrl={localize("/blog", lang)} />
+  </div>
+</Layout>

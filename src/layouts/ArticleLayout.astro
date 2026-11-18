@@ -3,27 +3,32 @@ import { Image } from "astro:assets";
 import { getEntry, type CollectionEntry } from "astro:content";
 import Layout from "../components/Layout.astro";
 import { formatDate } from "../lib/posts";
+import { getLang, localize, t } from "../lib/i18n";
 
 interface Props {
-  post: CollectionEntry<"blog" | "portal">;
+  post: CollectionEntry<"blog" | "portal" | "blog-en" | "portal-en">;
   section: { url: string; title: string };
+  /** The same article in the other language, if it has been translated. */
+  alternate?: string | null;
 }
 
-const { post, section } = Astro.props;
+const { post, section, alternate = null } = Astro.props;
+const lang = getLang(Astro.url);
+const tr = t(lang);
 const { title, date, author, tags = [], image, description } = post.data;
 const { Content } = await post.render();
 const topic = post.data.section ? await getEntry(post.data.section) : undefined;
 ---
 
-<Layout title={title} description={description ?? title} image={image?.src} activeUrl={section.url}>
-  <article class="article mx-auto max-w-[52rem]">
-    <nav aria-label="Път до статията" class="flex flex-wrap gap-x-2 text-sm text-pearl-dim">
+<Layout title={title} description={description ?? title} image={image?.src} activeUrl={section.url} alternate={alternate}>
+  <article class="article mx-auto max-w-[52rem]" data-video-title={tr("youtube")}>
+    <nav aria-label={tr("breadcrumb")} class="flex flex-wrap gap-x-2 text-sm text-pearl-dim">
       <a href={section.url} class="text-ice-300 hover:text-neon">{section.title}</a>
       {
         topic && (
           <>
             <span aria-hidden="true">/</span>
-            <a href={`/blog/categories/${topic.slug}`} class="text-ice-300 hover:text-neon">
+            <a href={localize(`/blog/categories/${topic.slug}`, lang)} class="text-ice-300 hover:text-neon">
               {topic.data.title}
             </a>
           </>
@@ -34,7 +39,7 @@ const topic = post.data.section ? await getEntry(post.data.section) : undefined;
     {post.data.subtitle && <p class="mt-4 font-display text-xl text-ice-100 md:text-2xl">{post.data.subtitle}</p>}
     <div class="mt-6 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-pearl-dim">
       <span>{author}</span>
-      {date && <time datetime={date.toISOString()} class="text-gold">{formatDate(date)}</time>}
+      {date && <time datetime={date.toISOString()} class="text-gold">{formatDate(date, lang)}</time>}
     </div>
     <div class="gold-rule mt-6"></div>
 
@@ -50,7 +55,7 @@ const topic = post.data.section ? await getEntry(post.data.section) : undefined;
 
     {
       tags.length > 0 && (
-        <ul class="mt-12 flex flex-wrap gap-2 border-t border-night-line pt-6 text-sm" aria-label="Тагове">
+        <ul class="mt-12 flex flex-wrap gap-2 border-t border-night-line pt-6 text-sm" aria-label={tr("tags")}>
           {tags.map((tag) => (
             <li>
               <a
@@ -79,7 +84,8 @@ const topic = post.data.section ? await getEntry(post.data.section) : undefined;
     const params = new URL(link.href).searchParams;
     params.delete("v");
     const embed = document.createElement("iframe");
-    embed.title = link.textContent?.trim() || "YouTube видео";
+    embed.title =
+      link.textContent?.trim() || document.querySelector<HTMLElement>("[data-video-title]")?.dataset.videoTitle || "YouTube";
     embed.className = "aspect-video w-full rounded-sm";
     embed.allow =
       "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";

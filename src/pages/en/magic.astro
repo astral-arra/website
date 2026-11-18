@@ -1,0 +1,56 @@
+---
+import Layout from "../../components/Layout.astro";
+import Merkaba from "../../components/Merkaba.astro";
+import LightCodes from "../../components/LightCodes.astro";
+import SigilGrid from "../../components/SigilGrid.astro";
+import { HIGH_SIGILS, PROTECTION_SIGILS } from "../../lib/glyphs";
+---
+
+<Layout
+  title="Magic Corner"
+  description="The Magic Corner of Astral ARRA: a High-Vibration Portal with light codes, sigils and a merkaba, and sigils for protection."
+  activeUrl="/en/magic"
+>
+  <h1 class="text-5xl md:text-6xl">Magic Corner</h1>
+  <p class="mt-4 max-w-prose text-lg text-pearl-muted">High-Vibration Portal and protection.</p>
+  <nav aria-label="On this page" class="mt-8">
+    <ul class="flex flex-wrap gap-2 text-[0.95rem]">
+      <li>
+        <a href="#high-vibration-portal" class="block rounded-full border border-night-line px-4 py-1.5 text-pearl-muted hover:border-neon hover:text-neon">
+          High-Vibration Portal
+        </a>
+      </li>
+      <li>
+        <a href="#protection" class="block rounded-full border border-night-line px-4 py-1.5 text-pearl-muted hover:border-neon hover:text-neon">
+          Protection
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <section id="high-vibration-portal" class="mt-16 scroll-mt-24 border-t border-night-line/80 pt-14">
+    <div class="grid items-center gap-10 md:grid-cols-[1fr_minmax(0,24rem)] md:gap-14">
+      <div>
+        <h2 class="text-4xl md:text-5xl">High-Vibration Portal</h2>
+        <p class="mt-5 max-w-prose text-lg text-pearl-muted">
+          Light codes, sigils for high vibration and the merkaba – the light vehicle of the spirit.
+        </p>
+      </div>
+      <Merkaba size="24rem" />
+    </div>
+
+    <h3 class="mt-20 text-3xl">Light codes</h3>
+    <div class="mt-10">
+      <LightCodes />
+    </div>
+
+    <h3 class="mt-20 text-3xl">Sigils for high vibration</h3>
+    <SigilGrid sigils={HIGH_SIGILS} tone="gold" />
+  </section>
+
+  <section id="protection" class="mt-20 scroll-mt-24 border-t border-night-line/80 pt-14">
+    <h2 class="text-4xl md:text-5xl">Protection</h2>
+    <p class="mt-5 max-w-prose text-lg text-pearl-muted">Sigils for energetic and astral protection.</p>
+    <SigilGrid sigils={PROTECTION_SIGILS} tone="violet" />
+  </section>
+</Layout>

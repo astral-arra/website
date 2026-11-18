@@ -2,19 +2,21 @@
 import { Image } from "astro:assets";
 import type { CollectionEntry } from "astro:content";
 import { formatDate, sortByDate } from "../lib/posts";
+import { getLang, t } from "../lib/i18n";
 
 interface Props {
-  posts: CollectionEntry<"blog" | "portal">[];
+  posts: CollectionEntry<"blog" | "portal" | "blog-en" | "portal-en">[];
   baseUrl: string;
 }
 
 const { posts, baseUrl } = Astro.props;
+const lang = getLang(Astro.url);
 const sorted = sortByDate(posts);
 ---
 
 {
   sorted.length === 0 ? (
-    <p class="text-pearl-muted">Тук още няма публикации.</p>
+    <p class="text-pearl-muted">{t(lang)("noPosts")}</p>
   ) : (
     <ul class="divide-y divide-night-line/80 border-y border-night-line/80">
       {sorted.map((post) => (
@@ -37,7 +39,7 @@ const sorted = sortByDate(posts);
             <span class="block">
               {post.data.date && (
                 <time datetime={post.data.date.toISOString()} class="text-sm text-gold">
-                  {formatDate(post.data.date)}
+                  {formatDate(post.data.date, lang)}
                 </time>
               )}
               <span class="mt-1 block font-display text-2xl leading-snug text-pearl group-hover:text-neon md:text-3xl">

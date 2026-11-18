@@ -1,21 +1,23 @@
 ---
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
+import { getLang, t } from "../lib/i18n";
 
 interface Props {
   items: { title: string; teaser?: string; image?: ImageMetadata }[];
 }
 
 const { items } = Astro.props;
+const tr = t(getLang(Astro.url));
 ---
 
 {
   items.length > 0 && (
     <section class="mt-20" aria-labelledby="upcoming-heading">
       <h2 id="upcoming-heading" class="text-3xl md:text-4xl">
-        Предстоящи статии
+        {tr("upcoming")}
       </h2>
-      <p class="mt-3 max-w-prose text-pearl-muted">Тези текстове се пишат и ще излязат тук.</p>
+      <p class="mt-3 max-w-prose text-pearl-muted">{tr("upcomingLead")}</p>
       <ul class="mt-8 grid gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
         {items.map((item) => (
           <li class="flex flex-col">
@@ -32,7 +34,7 @@ const { items } = Astro.props;
             )}
             <h3 class="mt-4 font-display text-xl leading-snug text-pearl">{item.title}</h3>
             {item.teaser && <p class="mt-2 text-[0.95rem] leading-relaxed text-pearl-muted">{item.teaser}</p>}
-            <p class="mt-3 text-sm text-ice-300">Скоро</p>
+            <p class="mt-3 text-sm text-ice-300">{tr("soon")}</p>
           </li>
         ))}
       </ul>
