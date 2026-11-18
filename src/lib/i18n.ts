@@ -52,6 +52,10 @@ export const NAV: Record<Lang, { title: string; url: string }[]> = {
 const strings = {
   bg: {
     siteDescription: "Astral ARRA: синхроничности, езотерика, астрология и Хюман дизайн.",
+    homeTitle: "Astral ARRA – таро, синхромистицизъм и езотерика",
+    homeDescription:
+      "Таро, синхромистицизъм, астрал, гностицизъм и магия: статии, лични преживявания и таро консултации от Astral ARRA.",
+    sectionDescription: "Статии на Astral ARRA в раздел",
     home: "Astral ARRA, начало",
     mainMenu: "Основно меню",
     openMenu: "Отвори менюто",
@@ -93,6 +97,10 @@ const strings = {
   },
   en: {
     siteDescription: "Astral ARRA: synchronicities, esotericism, astrology and Human Design.",
+    homeTitle: "Astral ARRA – Tarot, Synchromysticism & Esoteric Knowledge",
+    homeDescription:
+      "Tarot, synchromysticism, the astral, Gnosticism and magick: articles, personal experiences and tarot readings by Astral ARRA.",
+    sectionDescription: "Articles by Astral ARRA in the section",
     home: "Astral ARRA, home",
     mainMenu: "Main menu",
     openMenu: "Open menu",

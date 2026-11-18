@@ -3,7 +3,7 @@ translationOf: synchronistic_experiences_pt_1
 title: "Experiences in Synchronicity pt.1"
 date: 2023-09-08T08:06:56.743Z
 author: Astral ARRA
-description: "Something rather strange happened today… And by “strange” I mean that I now have fairly clear proof (at least for myself) that our consciousness travels through different time windows and can choose a time reality."
+description: "A walk through Veliko Tarnovo, two black cats and a missing video frame: my clearest proof that consciousness travels through time windows."
 image: "../images/synchronistic_experiences_pt_1_1.png"
 tags:
   - archons
@@ -15,7 +15,7 @@ Let me explain.
 
 After waking up in a pretty decent mood, I had a peculiar premonition from the morning on. I'd set my mind on buying a big sphere of gemstone (cherry quartz), and my cards for the day were the **Two of Pentacles** and **Strength**, so _I was like: let's go_! Gradually my day started charging up with higher and higher vibrations. Afterwards I had a very pleasant conversation with the saleswoman at the shop where I bought the sphere. I'll keep the conversation secret, though, as it was quite personal (we talked about the new path in my life), but from then on synchronicities began to shower down on me, fitting together extremely precisely like pieces of a puzzle. I decided to take a metaphysical-meditative walk through the old part of the city (Veliko Tarnovo), and on walks like this I always follow the direction my Higher Self leads me in, without letting my Mind and its "must" commands interfere, carefully watching my thoughts and sensations as I pass through spatial windows... As I wandered around, picking up the energy and experiences of my parallel Self-incarnations in a neighbouring time reality, who live in the houses and streets of a similar city (I really don't know how to explain it, but long story short, Val Valerian is right...), I was falling into an ever deeper layer of my consciousness. Which meant the Matrix would try to wake me up. And sure enough, a black cat tried to cross my path, and I decided I wouldn't let it, because I knew very well it would be a **restart** – and I'd only just felt myself moving into higher vibrations and starting to open portals to the timeline I wanted, one outside the matrix of the Dark Ones.
 
-![image of an eye](../images/synchronistic_experiences_pt_1_2.png)
+![A black cat in a round stone portal](../images/synchronistic_experiences_pt_1_2.png)
 
 Long story short, the Dark Ones who currently rule the Earth and try to control all its potential and real timelines want us, every time, to "choose" the worst and most traumatic of the options available to us under our design and program, so as to manipulate us into ever deeper trauma, which leads to ever deeper anchoring and looping in the matrix and fewer and fewer degrees of free will – all so they can drain our biophotons, our life energy. For many people all this turns into an ever deeper loop process that is very hard to stop.
 
@@ -29,7 +29,7 @@ The Dark Ones make sure this collapse always happens at the crest of the wave, w
 
 Remember when a black cat appeared in [The Matrix](https://en.wikipedia.org/wiki/The_Matrix)?
 
-![image of an eye](../images/synchronistic_experiences_pt_1_3.png)
+![The black cat from the film The Matrix](../images/synchronistic_experiences_pt_1_3.png)
 
 Meow, meow…
 
@@ -44,7 +44,7 @@ So, at the moment a black cat appears, it's only an indicator that you've opened
 A portal to what? To more degrees of freedom and the chance to manifest the scenario you want but which isn't in the program, or a scenario that will pull you out of a toxic loop – or even to enter a state where you don't need a scenario at all!!! :))) If you meet a black cat, it's a sign that you're at a very high degree of free will and have considerable control over the program, which is why the archons are now trying to intercept you. Your "thread" of consciousness is moving unpredictably through space-time, and they need to locate you in order to restrict you and impose a new loop – that is, keep you running in the same place like a hamster in a wheel.
 Or something else:
 
-![image of an eye](../images/synchronistic_experiences_pt_1_5.png)
+![An Ouroboros – a serpent biting its tail in the shape of infinity](../images/synchronistic_experiences_pt_1_5.png)
 
 The familiar [Ouroboros](https://en.wikipedia.org/wiki/Ouroboros) with the Serpent-[Archon](/en/blog/archons). Its true meaning is the archon that has caught you in a traumatic loop.
 
@@ -55,7 +55,7 @@ As expected, this turned out to be a pretty good decision.
 
 After deftly slipping out of the predictable trajectory, escaping the black cat and re-entering **randomness**, I sank into an even deeper **focus**, and so into an even higher level of consciousness. That's when something interesting happened, which will tie in with the ending of this article. I decided to take a little side street, because I'd seen an interesting grave-monument to rebels that caught my eye, and an over-enthusiastic cat instantly popped out onto my path ☺ Not a black one :D Street cats that are open to contact with you are always a very good sign. It means **high vibrations and entry into the Astral! A higher-order consciousness, with the possibility of controlling time windows and portals through the astral field**. The Gods are smiling at you and are happy for you :)
 
-![image of an eye](../images/synchronistic_experiences_pt_1_4.png)
+![A friendly street cat](../images/synchronistic_experiences_pt_1_4.png)
 
 _Cats carry genes from the Sirius races, which is why they have reptilian pupils and unusual astral abilities – and not only that ;)_
 

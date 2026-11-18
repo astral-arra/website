@@ -5,6 +5,7 @@ import Layout from "../components/Layout.astro";
 import { formatDate, sortByDate } from "../lib/posts";
 import { COLLECTIONS } from "../lib/collections";
 import { getLang, localize, t } from "../lib/i18n";
+import { website } from "../lib/seo";
 import logo from "../assets/images/logo-pearl.png";
 
 const lang = getLang(Astro.url);
@@ -20,7 +21,13 @@ const latest = [
 ].filter(Boolean);
 ---
 
-<Layout isHero activeUrl={localize("/", lang)}>
+<Layout
+  isHero
+  title={tr("homeTitle")}
+  description={tr("homeDescription")}
+  activeUrl={localize("/", lang)}
+  jsonLd={website(lang, tr("homeDescription"))}
+>
   <section class="relative isolate flex min-h-[100svh] items-end overflow-hidden pb-14 md:items-center md:pb-0">
     <div class="hero-stage -z-20" aria-hidden="true">
       <img src="/images/oracle-girl.png" alt="" class="h-full w-full" fetchpriority="high" />

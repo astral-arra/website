@@ -3,7 +3,7 @@ translationOf: archonts
 title: "Archons, Organic Portals and Other Vile Cr(e)atures"
 date: 2023-09-05T08:06:56.743Z
 author: Astral ARRA
-description: "How my encounters with the archons began – the dream in the underground tomb, archons as managers of the system, organic portals, and why the Earth is a farm, a prison and a field of Play."
+description: "How my encounters with the archons began – a dream in an underground tomb, archons as managers of the system, organic portals, and the Earth as farm and prison."
 section: gnosticism
 image: "../images/archonts2.png"
 tags:
@@ -18,7 +18,7 @@ tags:
 >
 > Ra Uru Hu
 
-![image of statues](../images/archonts1.png)
+![Two stone statues of kings rising among the rocks](../images/archonts1.png)
 
 _(This article was written back in the now "distant" 2020. The author has evolved and built on it a great deal since then, but this information still holds many essential layers, has its place in the process and deserves to be published here too ☺)_
 
@@ -36,7 +36,7 @@ Luckily, I was smart enough to keep notes and a [dream journal](/en/sonovnik), s
 
 So, my first encounters with the archons – and actually the first time I learned the name – were in a dream. Before that I had never even heard the word (at least I have no conscious memory of it), strange as that (uneducated) fact may be... I think that by then I'd already gone quite deep into the subject, my OBEs were becoming brutal, more and more lucid and controlled, and so I got "caught" hanging around where I shouldn't. I still remember the dream in which I met the archons quite well. We were a group of people – apparently we knew each other in the so-called "astral", and I think we were in a parallel dimension too (most "dreams" are essentially experiences in "parallel dimensions", and the "astral" is a kind of layer between them – a crossing and overlapping of images). I don't remember exactly what happened before we entered something like an underground tomb. The dominant tones were light grey and everything looked somehow very dusty – that was the feeling that stayed with me (with us – I could sense the others in the group). I have a faint memory that we had backpacks and were carrying something in them, something we had... stolen? Crystals, maybe, who knows... I stared at the walls and saw them gradually start to crumble, and human bodies take shape out of them, which, now that I think about it, remind me exactly of this:
 
-![image of a statue head](../images/archonts2.png)
+![A stone face of a being from Linkin Park's In the End video](../images/archonts2.png)
 
 _These are the beings from the Linkin Park video [In the End](https://www.youtube.com/watch?v=eVTXPUF4Oz4)._
 
@@ -88,8 +88,8 @@ The Matrix is a sum of phenomena. It is a fairly complex but quite stably runnin
 
 2. The Earth is a **prison**. The planet is a prison for aliens who have "offended" one of the factions. Usually the bigger "shots" are sent here, who also tend to do some work for the factions (pre-programmed), used as information mules. The Earth is where the especially "guilty" are locked up – those at high levels of consciousness, that is, advanced ones whose isolation from the affairs of the galaxy, once and for all, is imperative, and the idea, of course, is to "push" and "shove" them back into low levels of consciousness. This also applies, of course, to the middle levels of consciousness, as well as the lower ones that developed on Earth, with the ultimate goal that everything that can't be reprogrammed into biorobots for the Empire is pushed into so-called 2D – a symbol of which is the cross itself, which is nothing but a two-dimensional representation of the 3D cube, which in turn is a representation of the 4D [tesseract](https://en.wikipedia.org/wiki/Tesseract), and so on.
 
-   ![tesseracts](../images/archonts3.png)
-   ![tesseracts folding scheme](../images/archonts4.png)
+   ![A tesseract: the cube and its unfolded cross](../images/archonts3.png)
+   ![Diagram of a cross folding into a cube](../images/archonts4.png)
 
    And if anyone doesn't believe there is life in the second dimension, I advise them to read [Flatland](https://en.wikipedia.org/wiki/Flatland) or watch this episode of the iconic series **[The Orville](https://en.wikipedia.org/wiki/The_Orville)**:
 

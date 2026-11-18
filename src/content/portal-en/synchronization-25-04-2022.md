@@ -3,7 +3,7 @@ translationOf: sinhronizaciya-25-04-2022
 title: "Synchronization 25.04.2022"
 date: 2022-04-25
 author: Astral ARRA
-description: "The black goo parasite and the archon whose essence I ran into: the spider Jabulon, Baal, Gate 44 in Human Design, the loss of smell and seven insights from the synchronicities."
+description: "The black goo parasite and the archon I ran into: the spider Jabulon, Baal, Gate 44 in Human Design, the loss of smell and seven insights from synchronicities."
 image: "../images/sinhronizaciya-25-04-2022/00.jpg"
 ---
 
@@ -15,7 +15,7 @@ By the way, the image above shows the demon **BAAL** from the [Goetia](https://e
 
 The image below shows the reason we're not in Paradise ;)
 
-![](../images/sinhronizaciya-25-04-2022/01.jpg)
+![A halved apple whose seeds form a five-pointed star](../images/sinhronizaciya-25-04-2022/01.jpg)
 
 Is anyone else connecting **the myth of Eve and the apple, Apple, and the spider-god of the black Freemasons, Jabulon or BAAL (Ba-Al – Barium-Aluminium ;)**?
 
@@ -25,7 +25,7 @@ So, connecting all of this – **the loss of smell** with **c\*rona v\*rus** and
 
 Right, let's carry on along the [synchromystic](/en/portal) thread. I open Facebook, and the first post I see is this picture:
 
-![](../images/sinhronizaciya-25-04-2022/02.jpg)
+![A spiral of light threads woven into a spider web](../images/sinhronizaciya-25-04-2022/02.jpg)
 
 🤯 We're on the right track ;) **The program of the matrix speaks through synchronicities**. Or someone who wants to send a message does. More likely my Higher Self is poking around in the code to show me the Truth.
 
@@ -57,4 +57,4 @@ I immediately thought of the key scene from the famous series (based on a true s
 
 Here is the Portal in *Stranger Things*:
 
-![](../images/sinhronizaciya-25-04-2022/03.jpg)
+![The red portal from the series Stranger Things](../images/sinhronizaciya-25-04-2022/03.jpg)

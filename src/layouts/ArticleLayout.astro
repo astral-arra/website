@@ -4,6 +4,7 @@ import { getEntry, type CollectionEntry } from "astro:content";
 import Layout from "../components/Layout.astro";
 import { formatDate } from "../lib/posts";
 import { getLang, localize, t } from "../lib/i18n";
+import { article, breadcrumbs } from "../lib/seo";
 
 interface Props {
   post: CollectionEntry<"blog" | "portal" | "blog-en" | "portal-en">;
@@ -18,9 +19,38 @@ const tr = t(lang);
 const { title, date, author, tags = [], image, description } = post.data;
 const { Content } = await post.render();
 const topic = post.data.section ? await getEntry(post.data.section) : undefined;
+const path = Astro.url.pathname;
+const jsonLd = [
+  article({
+    lang,
+    path,
+    title,
+    description,
+    image: image?.src,
+    date,
+    tags,
+    section: topic?.data.title ?? section.title,
+  }),
+  breadcrumbs([
+    { name: "Astral ARRA", path: localize("/", lang) },
+    { name: section.title, path: section.url },
+    ...(topic ? [{ name: topic.data.title, path: localize(`/blog/categories/${topic.slug}`, lang) }] : []),
+    { name: title, path },
+  ]),
+];
 ---
 
-<Layout title={title} description={description ?? title} image={image?.src} activeUrl={section.url} alternate={alternate}>
+<Layout
+  title={title}
+  description={description ?? title}
+  image={image?.src}
+  activeUrl={section.url}
+  alternate={alternate}
+  type="article"
+  published={date}
+  tags={tags}
+  jsonLd={jsonLd}
+>
   <article class="article mx-auto max-w-[52rem]" data-video-title={tr("youtube")}>
     <nav aria-label={tr("breadcrumb")} class="flex flex-wrap gap-x-2 text-sm text-pearl-dim">
       <a href={section.url} class="text-ice-300 hover:text-neon">{section.title}</a>

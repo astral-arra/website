@@ -19,7 +19,7 @@ const sectionTitle = kind === "blog" ? tr("articles") : tr("portal");
 const other = lang === "bg" ? "en" : "bg";
 ---
 
-<Layout title={`${tag} | ${sectionTitle}`} activeUrl={base} alternate={localize(`/${kind}`, other)} looseAlternate>
+<Layout title={`${tag} | ${sectionTitle}`} activeUrl={base} alternate={localize(`/${kind}`, other)} looseAlternate noindex>
   <a href={base} class="text-sm text-ice-300 hover:text-neon">{sectionTitle}</a>
   <h1 class="mt-3 text-4xl md:text-5xl">{tr("tag")}: {tag}</h1>
   <div class="mt-10">

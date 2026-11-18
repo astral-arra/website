@@ -10,6 +10,7 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
-    sitemap(),
+    // Tag lists are thin pages kept out of search (noindex), so they stay out of the sitemap too.
+    sitemap({ filter: (page) => !page.includes("/tags/") }),
   ],
 });
