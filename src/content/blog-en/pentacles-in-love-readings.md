@@ -3,7 +3,7 @@ translationOf: pentaklite-v-lyubovno-gadanie
 title: "Pentacles in Love Readings About the Future"
 subtitle: "What every card of the suit of Pentacles means in love – from the Ace to the King"
 author: Astral ARRA
-description: "What the Pentacles mean in a love reading: the meaning of every card from the Ace to the King of Pentacles for the relationship, your partner's intentions and the future, plus the questions to ask yourself."
+description: "What the Pentacles mean in a love reading: every card from Ace to King for the relationship, your partner's intentions and the future – plus questions to ask."
 section: taro
 image: "../images/pentaklite-v-lyubovno-gadanie/cover.jpg"
 tags:

@@ -3,7 +3,7 @@ translationOf: trikove-za-efektivno-gledane-na-taro
 title: "A Few Quick Tips for Effective Tarot Readings"
 subtitle: "How to get the cards talking when they go quiet"
 author: Astral ARRA
-description: "How to read tarot more accurately: a ritual before the spread, first impressions, a significator card, precise questions and the “cross-examination” technique – practical tips for beginners and advanced readers."
+description: "How to read tarot more accurately: a ritual before the spread, first impressions, a significator card, precise questions and the “cross-examination” technique."
 section: taro
 image: "../images/trikove-za-efektivno-gledane-na-taro/cover.jpg"
 tags:

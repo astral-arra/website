@@ -18,13 +18,13 @@ But back to the synchronicity. Here, straight from my notes, is the day I instal
 
 > Then, on my way to the bus stop, I saw a car with an unusual plate – XXXXXX (six Xs) – with some strange people in it, and the stop itself had been vandalised: the wall was smashed and had a hole in it (yes, a whole hole, like in a Marvel movie), and right above the hole someone had placed a crushed can of... Monster. Yes, that one, with the Hebrew letters 666 and the mark of the Beast...
 
-![](../images/randonautica-the-beginning/01.jpg)
+![The Monster Energy logo read as 666 in Hebrew numerals](../images/randonautica-the-beginning/01.jpg)
 
 I think I just got a "Welcome to the Game" from the Dark Side... 🫠
 
 This is actually extremely powerful symbolism, showing that the purpose of this quantum computer is to break through reality (666 is material reality) and open portals (that's what the hole symbolises). A bus stop in the [astral](/en/blog/categories/astral) symbolises the passage from one density (reality) to another. Interestingly, in the astral a stop is linked to waiting and to complying with [archon](/en/blog/archons) programs – you can't just wander off into some other astral space. Metaphorically, the hole in the wall of the stop tells me that whoever is behind this app and the quantum generator has learned to cross these limits in the astral and instead open direct routes to other local spaces – in material reality too, not only non-local ones in the astral. Back to the breakthrough into reality I mentioned. It's clear to me that the purpose of creating such portals – besides bypassing archon programs and travelling faster in the astral – is also to connect something in the astral with something in material reality and open a little door for it... Quite the Stranger Things vibes, and for now I won't speculate about what it is they want to give access to our reality...
 
-![](../images/randonautica-the-beginning/02.jpg)
+![A Stranger Things portal opening in a game corridor](../images/randonautica-the-beginning/02.jpg)
 
 *Stranger Things' portals invade 'Fortnite' ahead of season 3 release*
 
@@ -36,7 +36,7 @@ Still, I will say that the timing of all this is not, not at all, random, and I'
 
 *Edit: as of 2025 I'm convinced this is so, although the process has slowed down considerably.*
 
-![](../images/randonautica-the-beginning/03.jpg)
+![The Randonautica app with its owl logo](../images/randonautica-the-beginning/03.jpg)
 
 The Masonic owl, of course, as the app's symbol :) The same animal is used in the film [The Fourth Kind (2009)](https://www.imdb.com/title/tt1220198/) as the sign of the alien Greys, appearing right before the abductions.
 

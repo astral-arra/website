@@ -20,6 +20,14 @@ interface Props {
   alternate?: string | null;
   /** The alternate is only a related page (e.g. a tag list), not a translation: no hreflang. */
   looseAlternate?: boolean;
+  /** "article" for articles: adds article:* Open Graph tags. */
+  type?: "website" | "article";
+  published?: Date;
+  tags?: string[];
+  /** schema.org structured data for this page. */
+  jsonLd?: Record<string, unknown> | Record<string, unknown>[];
+  /** Keep thin pages (tag lists) out of search results. */
+  noindex?: boolean;
 }
 
 const siteName = "Astral ARRA";
@@ -31,6 +39,11 @@ const {
   image,
   activeUrl = "",
   isHero = false,
+  type = "website",
+  published,
+  tags = [],
+  jsonLd,
+  noindex = false,
 } = Astro.props;
 const withSlash = (p: string) => (p.endsWith("/") ? p : `${p}/`);
 const given = Astro.props.alternate === undefined ? swapLang(Astro.url.pathname) : Astro.props.alternate;
@@ -40,8 +53,10 @@ const there = alternate && !Astro.props.looseAlternate ? new URL(alternate, Astr
 const bgUrl = lang === "bg" ? here : there;
 const enUrl = lang === "en" ? here : there;
 
-const fullTitle = title && title !== siteName ? `${title} | ${siteName}` : siteName;
+const fullTitle = !title ? siteName : title.includes(siteName) ? title : `${title} | ${siteName}`;
 const canonical = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image ?? "/og-default.jpg", Astro.site);
+const structured = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 ---
 
 <!doctype html>
@@ -52,16 +67,25 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <title>{fullTitle}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <meta property="og:site_name" content={siteName} />
     <meta property="og:title" content={title ?? siteName} />
     <meta property="og:description" content={description} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={type} />
+    {type === "article" && published && <meta property="article:published_time" content={published.toISOString()} />}
+    {type === "article" && <meta property="article:author" content={siteName} />}
+    {type === "article" && tags.map((tag) => <meta property="article:tag" content={tag} />)}
     <meta property="og:locale" content={lang === "en" ? "en_GB" : "bg_BG"} />
     {bgUrl && enUrl && <link rel="alternate" hreflang="bg" href={bgUrl} />}
     {bgUrl && enUrl && <link rel="alternate" hreflang="en" href={enUrl} />}
     {bgUrl && enUrl && <link rel="alternate" hreflang="x-default" href={bgUrl} />}
     <meta property="og:url" content={canonical} />
-    {image && <meta property="og:image" content={new URL(image, Astro.site)} />}
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title ?? siteName} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    {structured.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
     <meta name="theme-color" content="#120A2E" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />
     <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />

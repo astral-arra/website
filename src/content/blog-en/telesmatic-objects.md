@@ -150,7 +150,7 @@ Some of the steps include:
 
 And most importantly, we must understand that fear works in OUR favour, not against us.
 
-![](../images/telesmatichni-obekti/01.jpg)
+![A priestess among the stars holds glowing symbols in her palms](../images/telesmatichni-obekti/01.jpg)
 
 ## 🔮 Personal consultation and astral diagnosis
 
