@@ -1,0 +1,25 @@
+---
+// One article page, in either language; picks its counterpart for the language switch.
+import type { CollectionEntry } from "astro:content";
+import ArticleLayout from "../layouts/ArticleLayout.astro";
+import { articleAlternates } from "../lib/collections";
+import { getLang, localize, t } from "../lib/i18n";
+
+interface Props {
+  post: CollectionEntry<"blog" | "portal" | "blog-en" | "portal-en">;
+  kind: "blog" | "portal";
+}
+
+const { post, kind } = Astro.props;
+const lang = getLang(Astro.url);
+const tr = t(lang);
+const base = localize(`/${kind}`, lang);
+const alternates = await articleAlternates(kind);
+const alternate = alternates.get(`${base}/${post.slug}`) ?? null;
+---
+
+<ArticleLayout
+  post={post}
+  section={{ url: base, title: kind === "blog" ? tr("articles") : tr("portal") }}
+  alternate={alternate}
+/>

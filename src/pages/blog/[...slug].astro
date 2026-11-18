@@ -1,6 +1,6 @@
 ---
 import { getCollection } from "astro:content";
-import ArticleLayout from "../../layouts/ArticleLayout.astro";
+import ArticlePage from "../../views/ArticlePage.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -10,4 +10,4 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 ---
 
-<ArticleLayout post={post} section={{ url: "/blog", title: "Статии" }} />
+<ArticlePage post={post} kind="blog" />

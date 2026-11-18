@@ -53,7 +53,7 @@ export const LIGHT_CODES: string[] = [
   `M3 30V18a9 9 0 0 1 18 0V30 M7 30V19a5 5 0 0 1 10 0V30 ${c(12, 26, 1.4)}`,
 ];
 
-export type Sigil = { name: string; d: string };
+export type Sigil = { name: string; en: string; d: string };
 
 const frame = c(60, 60, 54);
 
@@ -61,6 +61,7 @@ const frame = c(60, 60, 54);
 export const HIGH_SIGILS: Sigil[] = [
   {
     name: "Светлина",
+    en: "Light",
     d: `${frame} ${c(60, 60, 12)} ${c(60, 60, 2)} ${Array.from({ length: 12 }, (_, i) => {
       const a = (i * 30 * Math.PI) / 180;
       const r2 = i % 2 ? 34 : 46;
@@ -69,22 +70,27 @@ export const HIGH_SIGILS: Sigil[] = [
   },
   {
     name: "Възход",
+    en: "Ascent",
     d: `${frame} ${poly([[60, 22], [94, 86], [26, 86]])} M60 104V12 M48 52L60 40L72 52 M44 68L60 54L76 68 ${c(60, 12, 3)}`,
   },
   {
     name: "Хармония",
+    en: "Harmony",
     d: `${frame} ${c(47, 60, 24)} ${c(73, 60, 24)} M23 60H97 ${c(60, 39, 2.5)} ${c(60, 81, 2.5)} M60 6V26 M60 94V114`,
   },
   {
     name: "Изобилие",
+    en: "Abundance",
     d: `${frame} ${spiral(60, 60, 3.25, 40, 160)} ${c(60, 14, 2.5)} ${c(99, 83, 2.5)} ${c(21, 83, 2.5)}`,
   },
   {
     name: "Ясновидство",
+    en: "Clairvoyance",
     d: `${frame} M18 64C34 40 86 40 102 64C86 88 34 88 18 64Z ${c(60, 64, 11)} ${c(60, 64, 3)} ${poly([[60, 14], [70, 32], [50, 32]])} M60 32V44`,
   },
   {
     name: "Безкрайност",
+    en: "Infinity",
     d: `${frame} M60 60C72 42 98 42 98 60C98 78 72 78 60 60C48 42 22 42 22 60C22 78 48 78 60 60Z M60 14V44 M60 76V106 ${c(60, 14, 3)} ${c(60, 106, 3)}`,
   },
 ];
@@ -93,26 +99,32 @@ export const HIGH_SIGILS: Sigil[] = [
 export const PROTECTION_SIGILS: Sigil[] = [
   {
     name: "Щит",
+    en: "Shield",
     d: `${poly(regular(5, 52))} ${c(60, 62, 22)} M60 32V96 M44 58H76 ${c(60, 62, 3)}`,
   },
   {
     name: "Огледало",
+    en: "Mirror",
     d: `${frame} ${poly([[30, 26], [90, 26], [60, 60]])} ${poly([[30, 94], [90, 94], [60, 60]])} M14 60H106 ${c(14, 60, 3)} ${c(106, 60, 3)}`,
   },
   {
     name: "Корен",
+    en: "Root",
     d: `${frame} M60 12V84 M60 84L36 106 M60 84L84 106 M60 84V108 M38 30C38 52 82 52 82 30 M48 66H72 ${c(60, 12, 3)}`,
   },
   {
     name: "Пазител",
+    en: "Guardian",
     d: `${poly(regular(4, 54))} ${c(60, 60, 32)} M36 60C46 48 74 48 84 60C74 72 46 72 36 60Z ${c(60, 60, 6)}`,
   },
   {
     name: "Печат",
+    en: "Seal",
     d: `${poly(regular(6, 52, -90))} M60 60L60 8 M60 60L105.03 86 M60 60L14.97 86 ${c(60, 60, 10)} ${c(60, 60, 2.5)}`,
   },
   {
     name: "Кръг",
+    en: "Circle",
     d: `${c(60, 60, 54)} ${c(60, 60, 40)} ${c(60, 60, 18)} M60 2V118 M2 60H118 ${c(60, 20, 4)} ${c(100, 60, 4)} ${c(60, 100, 4)} ${c(20, 60, 4)}`,
   },
 ];

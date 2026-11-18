@@ -1,16 +1,19 @@
 import { z, defineCollection, reference } from "astro:content";
 
 // Articles ("Статии") and portal entries ("Синхромистичен портал") share one shape.
-const posts = defineCollection({
+// The English versions live in their own collections (blog-en, portal-en, sections-en);
+// `translationOf` names the Bulgarian entry an English one translates.
+const postsFor = (sectionsCollection) => defineCollection({
   type: "content",
   schema: ({ image }) =>
     z.object({
+      translationOf: z.string().optional(),
       title: z.string(),
       subtitle: z.string().optional(),
       author: z.string().default("Astral ARRA"),
       date: z.date().optional(),
       description: z.string().optional(),
-      section: reference("sections").optional(),
+      section: reference(sectionsCollection).optional(),
       tags: z.array(z.string()).optional(),
       categories: z.array(z.string()).optional(),
       image: image().optional(),
@@ -54,9 +57,12 @@ const site = defineCollection({
 });
 
 export const collections = {
-  blog: posts,
-  portal: posts,
+  blog: postsFor("sections"),
+  portal: postsFor("sections"),
   sections,
+  "blog-en": postsFor("sections-en"),
+  "portal-en": postsFor("sections-en"),
+  "sections-en": sections,
   nav,
   site,
 };

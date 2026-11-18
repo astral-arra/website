@@ -1,0 +1,54 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../components/Layout.astro";
+import PostList from "../components/PostList.astro";
+import UpcomingList from "../components/UpcomingList.astro";
+import PortalGate from "../components/PortalGate.astro";
+import PortalThemes from "../components/PortalThemes.astro";
+import { Content as IntroBg } from "../texts/portal-intro.md";
+import { Content as IntroEn } from "../texts/portal-intro.en.md";
+import { COLLECTIONS } from "../lib/collections";
+import { getLang, localize, t } from "../lib/i18n";
+import newMoon from "../content/images/sections/portal/05.jpg";
+
+const lang = getLang(Astro.url);
+const tr = t(lang);
+const base = localize("/portal", lang);
+const Intro = lang === "en" ? IntroEn : IntroBg;
+const posts = await getCollection(COLLECTIONS[lang].portal);
+const upcoming = [
+  {
+    title:
+      lang === "en"
+        ? "New Moon in Virgo, black magic and a tarot talk with the old man in the park..."
+        : "Новолуние в дева, черна магия и таро разговор със стареца в парка...",
+    image: newMoon,
+  },
+];
+---
+
+<Layout title={tr("portal")} description={tr("portalLead")} activeUrl={base}>
+  <div class="grid items-center gap-10 md:grid-cols-[1fr_minmax(0,26rem)] md:gap-14">
+    <div class="order-2 md:order-1">
+      <h1 class="text-5xl leading-tight md:text-7xl">{tr("portal")}</h1>
+      <p class="mt-5 max-w-md font-display text-xl text-ice-100 md:text-2xl">{tr("portalLead")}</p>
+    </div>
+    <div class="order-1 px-6 md:order-2 md:px-0">
+      <PortalGate />
+    </div>
+  </div>
+
+  <div class="article-body prose prose-lg prose-arra mt-16 max-w-[52rem]">
+    <Intro />
+  </div>
+
+  <PortalThemes />
+
+  <section class="mt-20" aria-labelledby="posts-heading">
+    <h2 id="posts-heading" class="text-3xl md:text-4xl">{tr("posts")}</h2>
+    <div class="mt-8">
+      <PostList posts={posts} baseUrl={base} />
+    </div>
+  </section>
+  <UpcomingList items={upcoming} />
+</Layout>

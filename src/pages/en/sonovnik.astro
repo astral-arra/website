@@ -1,0 +1,36 @@
+---
+import { Image } from "astro:assets";
+import Layout from "../../components/Layout.astro";
+import SubSections from "../../components/SubSections.astro";
+import banner from "../../assets/images/dreams.jpg";
+
+const parts = [
+  {
+    id: "dream-book",
+    title: "Dream Book",
+    text: "The meanings of the symbols we meet in dreams.",
+  },
+  {
+    id: "glossary",
+    title: "Glossary",
+    text: "The terms of dreaming, astral travel and lucid dreaming, briefly explained.",
+  },
+  {
+    id: "my-dreams",
+    title: "My Dreams",
+    text: "The dreams I remember most clearly, and what they showed me.",
+  },
+];
+---
+
+<Layout
+  title="Dream Book"
+  description="A dream book, a glossary of terms for dreams and astral travel, and my own dreams."
+  image={banner.src}
+  activeUrl="/en/sonovnik"
+>
+  <h1 class="text-5xl md:text-6xl">Dream Book</h1>
+  <p class="mt-4 max-w-prose text-lg text-pearl-muted">Dreams, symbols and astral journeys.</p>
+  <Image src={banner} alt="" widths={[915]} sizes="(min-width: 1152px) 1088px, 100vw" class="mt-10 w-full rounded-sm" />
+  <SubSections parts={parts} />
+</Layout>

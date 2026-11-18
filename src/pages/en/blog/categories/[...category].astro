@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content";
+import CategoryPage from "../../../../views/CategoryPage.astro";
+
+export async function getStaticPaths() {
+  const sections = await getCollection("sections-en");
+  const posts = await getCollection("blog-en");
+  return sections.map((section) => ({
+    params: { category: section.slug },
+    props: { section, posts: posts.filter((p) => p.data.section?.slug === section.slug) },
+  }));
+}
+
+const { section, posts } = Astro.props;
+---
+
+<CategoryPage section={section} posts={posts} />

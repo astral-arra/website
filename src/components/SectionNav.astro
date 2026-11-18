@@ -1,19 +1,24 @@
 ---
 import { getCollection } from "astro:content";
+import { getLang, localize, t } from "../lib/i18n";
 
 interface Props {
   current?: string;
 }
 
 const { current } = Astro.props;
-const sections = (await getCollection("sections")).sort((a, b) => a.data.order - b.data.order);
+const lang = getLang(Astro.url);
+const tr = t(lang);
+const sections = (await getCollection(lang === "en" ? "sections-en" : "sections")).sort(
+  (a, b) => a.data.order - b.data.order,
+);
 ---
 
-<nav aria-label="Раздели" class="mt-8">
+<nav aria-label={tr("sections")} class="mt-8">
   <ul class="flex flex-wrap gap-2 text-[0.95rem]">
     <li>
       <a
-        href="/blog"
+        href={localize("/blog", lang)}
         aria-current={!current ? "page" : undefined}
         class:list={[
           "block rounded-full border px-4 py-1.5",
@@ -22,14 +27,14 @@ const sections = (await getCollection("sections")).sort((a, b) => a.data.order -
             : "border-night-line text-pearl-muted hover:border-neon hover:text-neon",
         ]}
       >
-        Всички
+        {tr("all")}
       </a>
     </li>
     {
       sections.map((s) => (
         <li>
           <a
-            href={`/blog/categories/${s.slug}`}
+            href={localize(`/blog/categories/${s.slug}`, lang)}
             aria-current={current === s.slug ? "page" : undefined}
             class:list={[
               "block rounded-full border px-4 py-1.5",

@@ -1,7 +1,26 @@
 ---
 // Google Analytics 4 със съгласие (Consent Mode v2, „basic“ режим):
 // gtag.js се зарежда едва след като посетителят натисне „Приемам“.
+import { getLang, localize } from "../lib/i18n";
+
 const GA_ID = "G-DVXSZJMHNN";
+const lang = getLang(Astro.url);
+const text = {
+  bg: {
+    label: "Бисквитки",
+    body: "Използваме бисквитки на Google Analytics, за да разберем кои статии четете и как да подобрим сайта. Те се включват само с Ваше съгласие.",
+    more: "Повече",
+    decline: "Отказвам",
+    accept: "Приемам",
+  },
+  en: {
+    label: "Cookies",
+    body: "We use Google Analytics cookies to see which articles you read and how to improve the site. They are only set if you agree.",
+    more: "More",
+    decline: "Decline",
+    accept: "Accept",
+  },
+}[lang];
 ---
 
 <div
@@ -9,14 +28,13 @@ const GA_ID = "G-DVXSZJMHNN";
   class="fixed inset-x-0 bottom-0 z-50 hidden px-4 pb-4 md:px-6 md:pb-6"
   role="dialog"
   aria-live="polite"
-  aria-label="Бисквитки"
+  aria-label={text.label}
 >
   <div
     class="mx-auto flex max-w-3xl flex-col gap-4 rounded-2xl border border-night-line bg-night-deep/95 p-5 text-pearl-muted shadow-neon backdrop-blur md:flex-row md:items-center md:gap-6"
   >
     <p class="text-[0.95rem] leading-relaxed">
-      Използваме бисквитки на Google Analytics, за да разберем кои статии четете и как да подобрим сайта.
-      Те се включват само с Ваше съгласие. <a href="/privacy" class="text-ice-200 underline hover:text-neon">Повече</a>
+      {text.body} <a href={localize("/privacy", lang)} class="text-ice-200 underline hover:text-neon">{text.more}</a>
     </p>
     <div class="flex shrink-0 gap-3">
       <button
@@ -24,14 +42,14 @@ const GA_ID = "G-DVXSZJMHNN";
         data-consent="denied"
         class="rounded-full border border-night-line px-5 py-2 text-sm text-pearl-muted transition hover:border-pearl-dim hover:text-pearl"
       >
-        Отказвам
+        {text.decline}
       </button>
       <button
         type="button"
         data-consent="granted"
         class="rounded-full border border-gold bg-gold/10 px-5 py-2 text-sm text-gold-300 transition hover:bg-gold/20"
       >
-        Приемам
+        {text.accept}
       </button>
     </div>
   </div>

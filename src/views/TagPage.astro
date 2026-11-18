@@ -1,0 +1,28 @@
+---
+import type { CollectionEntry } from "astro:content";
+import Layout from "../components/Layout.astro";
+import PostList from "../components/PostList.astro";
+import { getLang, localize, t } from "../lib/i18n";
+
+interface Props {
+  tag: string;
+  kind: "blog" | "portal";
+  posts: CollectionEntry<"blog" | "portal" | "blog-en" | "portal-en">[];
+}
+
+const { tag, kind, posts } = Astro.props;
+const lang = getLang(Astro.url);
+const tr = t(lang);
+const base = localize(`/${kind}`, lang);
+const sectionTitle = kind === "blog" ? tr("articles") : tr("portal");
+// Tags differ between the languages, so the switch leads to the other language's list.
+const other = lang === "bg" ? "en" : "bg";
+---
+
+<Layout title={`${tag} | ${sectionTitle}`} activeUrl={base} alternate={localize(`/${kind}`, other)} looseAlternate>
+  <a href={base} class="text-sm text-ice-300 hover:text-neon">{sectionTitle}</a>
+  <h1 class="mt-3 text-4xl md:text-5xl">{tr("tag")}: {tag}</h1>
+  <div class="mt-10">
+    <PostList posts={posts} baseUrl={base} />
+  </div>
+</Layout>
