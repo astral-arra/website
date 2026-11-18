@@ -1,6 +1,6 @@
 ---
-import { Image } from "astro:assets";
 import banner from "../../assets/images/magic-banner.jpg";
+import MagicBanner from "../../components/MagicBanner.astro";
 import Layout from "../../components/Layout.astro";
 import Merkaba from "../../components/Merkaba.astro";
 import LightCodes from "../../components/LightCodes.astro";
@@ -16,14 +16,7 @@ import { HIGH_SIGILS, PROTECTION_SIGILS } from "../../lib/glyphs";
 >
   <h1 class="text-5xl md:text-6xl">Magic Corner</h1>
   <p class="mt-4 max-w-prose text-lg text-pearl-muted">High-Vibration Portal and protection.</p>
-  <Image
-    src={banner}
-    alt="Sacred geometry: Metatron's Cube with a crescent moon at its centre, in pearly light"
-    widths={[800, 1200, 1800, 2400]}
-    sizes="(min-width: 1152px) 1088px, 100vw"
-    class="mt-10 w-full rounded-sm"
-    loading="eager"
-  />
+  <MagicBanner alt="Sacred geometry: Metatron's Cube with a crescent moon at its centre, in pearly light" />
   <nav aria-label="On this page" class="mt-8">
     <ul class="flex flex-wrap gap-2 text-[0.95rem]">
       <li>
