@@ -145,3 +145,24 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Tables inside articles: left-aligned, compact, and scrollable on narrow screens. */
+.article-body table {
+  text-align: left;
+  hyphens: manual;
+}
+.article-body thead th {
+  text-align: left;
+  vertical-align: bottom;
+}
+@media (max-width: 640px) {
+  .article-body table {
+    display: block;
+    overflow-x: auto;
+    font-size: 0.875em;
+  }
+  .article-body th,
+  .article-body td {
+    min-width: 8.5rem;
+  }
+}

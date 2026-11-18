@@ -4,6 +4,8 @@ order: 1
 tagline: "Научи се да владееш Бъдещето и Миналото... СЕГА!"
 image: "../images/sections/taro/00.jpg"
 upcoming:
+  - title: "Синхромистичното тълкувание на картата „Светът“"
+    image: "../images/taro-karta-svetat/cover.jpg"
   - title: "А сега? Картите винаги ли познават?"
     image: "../images/sections/taro/00.jpg"
   - title: "Можем ли сами да си гледаме на Таро?"

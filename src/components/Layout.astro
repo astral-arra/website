@@ -93,7 +93,7 @@ const structured = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     <link rel="sitemap" href="/sitemap-index.xml" />
   </head>
   <body>
-    <div class="grid min-h-screen grid-rows-layout">
+    <div class="grid min-h-screen grid-cols-[minmax(0,1fr)] grid-rows-layout">
       <MainNav url={activeUrl} isHero={isHero} alternate={alternate} />
       <main class:list={["w-full", isHero ? "" : "mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-20"]}>
         <slot />
