@@ -1,0 +1,54 @@
+---
+// Free PDF download card shown under the books.
+import { Image } from "astro:assets";
+import cover from "../assets/images/free-affirmations-cover.jpg";
+import { getLang } from "../lib/i18n";
+
+const lang = getLang(Astro.url);
+const href = "/downloads/55-afirmacii-badeshtiya-az.pdf";
+const text = {
+  bg: {
+    heading: "Безплатно за изтегляне",
+    title: "55 афирмации за свързване с Бъдещия Аз",
+    body: "Афирмации, молитва и практика стъпка по стъпка, с които да настроиш аурата си към своята Оптимална времева линия. Отпечатай я или я отваряй на телефона – можеш да отбелязваш афирмациите, с които работиш всеки ден.",
+    meta: "PDF · 15 страници · 0,9 MB",
+    cta: "Изтегли безплатно",
+    alt: "Корица на „55 афирмации за свързване с Бъдещия Аз“",
+  },
+  en: {
+    heading: "Free download",
+    title: "55 Affirmations to Connect with Your Future Self",
+    body: "Affirmations, a prayer and a step-by-step practice for tuning your aura to your Optimal Timeline. Print it or keep it on your phone, and tick off the affirmations you work with each day.",
+    meta: "PDF in Bulgarian · 15 pages · 0.9 MB",
+    cta: "Download free",
+    alt: "Cover of “55 Affirmations to Connect with Your Future Self”",
+  },
+}[lang];
+---
+
+<section aria-labelledby="free-heading" class="mt-24 border-t border-night-line/80 pt-14">
+  <h2 id="free-heading" class="text-3xl md:text-4xl">{text.heading}</h2>
+  <div class="mt-10 grid items-center gap-8 sm:grid-cols-[minmax(0,14rem)_1fr] md:gap-12">
+    <a href={href} download class="block">
+      <Image
+        src={cover}
+        alt={text.alt}
+        widths={[300, 600]}
+        sizes="(min-width: 640px) 14rem, 70vw"
+        class="w-full max-w-[16rem] rounded-[3px] shadow-[0_30px_60px_-30px_rgba(43,210,255,0.35)] ring-1 ring-gold/40 sm:max-w-none"
+      />
+    </a>
+    <div>
+      <p class="font-display text-2xl leading-snug text-pearl md:text-3xl">{text.title}</p>
+      <p class="mt-4 max-w-prose text-lg text-pearl-muted">{text.body}</p>
+      <p class="mt-3 text-sm text-ice-300">{text.meta}</p>
+      <a
+        href={href}
+        download
+        class="mt-7 inline-block rounded-full border border-neon px-6 py-3 text-ice-100 shadow-neon hover:bg-neon/10 hover:text-pearl"
+      >
+        {text.cta}
+      </a>
+    </div>
+  </div>
+</section>
