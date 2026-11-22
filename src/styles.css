@@ -166,3 +166,133 @@
     min-width: 8.5rem;
   }
 }
+
+/* The four creatures (or any symbol set) as illustrated cards. */
+.article-body .creatures {
+  list-style: none;
+  margin: 2.25rem 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.25rem;
+  text-align: center;
+  hyphens: manual;
+}
+@media (min-width: 768px) {
+  .article-body .creatures {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+.article-body .creature {
+  margin: 0;
+  padding: 1.25rem 0.75rem 1.4rem;
+  border: 1px solid rgba(217, 180, 90, 0.35);
+  border-radius: 0.75rem;
+  background: rgba(28, 18, 69, 0.55);
+}
+.article-body .creature img {
+  display: block;
+  width: 8.5rem;
+  max-width: 80%;
+  aspect-ratio: 1;
+  height: auto;
+  margin: 0 auto 1rem;
+  border-radius: 9999px;
+  object-fit: cover;
+  box-shadow: 0 0 0 2px rgba(217, 180, 90, 0.55), 0 0 28px -4px var(--glow, rgba(43, 210, 255, 0.45));
+}
+.article-body .creature--air { --glow: rgba(189, 232, 255, 0.55); }
+.article-body .creature--water { --glow: rgba(111, 168, 255, 0.6); }
+.article-body .creature--fire { --glow: rgba(240, 180, 90, 0.6); }
+.article-body .creature--earth { --glow: rgba(150, 200, 120, 0.5); }
+.article-body .creature p {
+  margin: 0;
+  text-align: center;
+}
+.article-body .creature-name {
+  font-family: "Forum", Georgia, serif;
+  font-size: 1.45rem;
+  color: #f6f2ff;
+}
+.article-body .creature-sign {
+  margin-top: 0.3rem !important;
+  font-size: 0.95rem;
+  color: #d9b45a;
+}
+.article-body .creature-keys {
+  margin-top: 0.35rem !important;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #cfc6ea;
+}
+
+/* A highlighted message on a translucent, glassy panel. */
+.article-body .card-message {
+  margin: 2.5rem 0;
+  padding: 1.75rem 2rem;
+  border: 1px solid rgba(189, 232, 255, 0.28);
+  border-radius: 1rem;
+  background: linear-gradient(135deg, rgba(127, 90, 240, 0.16), rgba(43, 210, 255, 0.07));
+  backdrop-filter: blur(6px);
+  box-shadow: 0 20px 50px -30px rgba(43, 210, 255, 0.5);
+}
+.article-body .card-message p {
+  margin: 0;
+  font-family: "Forum", Georgia, serif;
+  font-size: 1.35rem;
+  line-height: 1.55;
+  color: #e4f6ff;
+  text-align: left;
+}
+.article-body .card-message .card-message-label {
+  margin-bottom: 0.6rem;
+  font-family: inherit;
+  font-size: 0.8rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #d9b45a;
+}
+
+/* Collapsible FAQ entries. */
+.article-body details.faq {
+  margin: 0.9rem 0;
+  border: 1px solid rgba(51, 38, 107, 0.9);
+  border-radius: 0.75rem;
+  background: rgba(28, 18, 69, 0.45);
+}
+.article-body details.faq summary {
+  cursor: pointer;
+  list-style: none;
+  padding: 1rem 3rem 1rem 1.25rem;
+  position: relative;
+  font-weight: 600;
+  color: #f6f2ff;
+}
+.article-body details.faq summary::-webkit-details-marker {
+  display: none;
+}
+.article-body details.faq summary::after {
+  content: "+";
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.4rem;
+  line-height: 1;
+  color: #d9b45a;
+  transition: transform 0.2s;
+}
+.article-body details.faq[open] summary::after {
+  transform: translateY(-50%) rotate(45deg);
+}
+.article-body details.faq summary:hover {
+  color: #2bd2ff;
+}
+.article-body details.faq > :not(summary) {
+  margin: 0 1.25rem 1.1rem;
+}
+
+/* A smaller, centred image (e.g. a single tarot card). */
+.article-body .img-narrow img {
+  max-width: min(17rem, 70%);
+}

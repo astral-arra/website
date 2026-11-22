@@ -119,14 +119,26 @@ You'll find more examples of cross-examination on [my YouTube channel](https://w
 
 ## Frequently asked questions
 
-**What should I do when the cards "won't talk"?**
+<details class="faq">
+<summary>What should I do when the cards "won't talk"?</summary>
+
 Do a short focusing ritual, ask a more specific question and use a significator card. If the answer is still foggy, ask the same question from another angle – with cross-examination.
 
-**How many cards should I draw for one question?**
+</details>
+
+<details class="faq">
+<summary>How many cards should I draw for one question?</summary>
+
 For a clear question, one to three cards are enough. More cards make sense for complex situations and spreads with fixed positions.
 
-**Can I use these tricks with oracle cards too?**
+</details>
+
+<details class="faq">
+<summary>Can I use these tricks with oracle cards too?</summary>
+
 Yes. The ritual, first impressions, the journal and precise questions work just as well with oracle decks.
+
+</details>
 
 ## Conclusion
 
