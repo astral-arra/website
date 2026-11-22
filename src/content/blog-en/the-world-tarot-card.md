@@ -1,7 +1,7 @@
 ---
 translationOf: taro-karta-svetat
 title: "The World Tarot Card – When the Cycle Is Complete, Clarity Follows"
-subtitle: "The meaning of Major Arcana XXI: symbolism, upright and reversed, and the card's message"
+subtitle: "The last card of the Major Arcana – the wreath and the four creatures, its meaning in a spread, and the message of a completed cycle"
 date: 2026-11-18
 author: Astral ARRA
 description: "The meaning of The World tarot card (Major Arcana XXI): the wreath and the four creatures, upright and reversed, in love, work and on the spiritual path."
@@ -12,6 +12,8 @@ tags:
   - major arcana
   - the world
 ---
+
+This time I have prepared an in-depth look at the final card of the Major Arcana – The World – through the lens of archetype, psychology and symbolism. I will show you how I read it: not simply as a “good card”, but as a key to the meaning of the whole road travelled.
 
 The World is the final card of the Major Arcana. It marks the end of a symbolic journey – a process of gathering experience, overcoming obstacles, awakening and inner transformation. Its appearance signals the moment when the scattered pieces of what we have lived through begin to make sense and settle into a single, coherent picture.
 
@@ -33,6 +35,8 @@ The World invites us to look back without returning to the old – to recognise 
 
 ## The symbolism of The World card
 
+![The World card: a dancing figure in a laurel wreath, with an angel, an eagle, a bull and a lion among the clouds in the corners](../images/taro-karta-svetat/world-symbols.jpg)
+
 The classic image shows a dancing figure encircled by an oval wreath. In the four corners stand four symbolic creatures: a man or angel, an eagle, a bull and a lion.
 
 Each of these elements carries a meaning of its own.
@@ -49,14 +53,35 @@ The central figure embodies freedom attained and the reconciliation of opposites
 
 The four creatures are linked to the four Evangelists of Christian iconography, and to the four fixed signs of the zodiac:
 
-- **The Angel – Aquarius:** air, intellect and consciousness.
-- **The Eagle – Scorpio:** water, transformation and depth.
-- **The Lion – Leo:** fire, vitality and creative power.
-- **The Bull – Taurus:** earth, matter and stability.
+<ul class="creatures not-prose">
+<li class="creature creature--air">
+<img src="/images/the-world/angel.jpg" alt="The Angel" width="360" height="360" loading="lazy" />
+<p class="creature-name">The Angel</p>
+<p class="creature-sign"><span aria-hidden="true">♒&#xFE0E;</span> Aquarius · air</p>
+<p class="creature-keys">intellect and consciousness</p>
+</li><li class="creature creature--water">
+<img src="/images/the-world/eagle.jpg" alt="The Eagle" width="360" height="360" loading="lazy" />
+<p class="creature-name">The Eagle</p>
+<p class="creature-sign"><span aria-hidden="true">♏&#xFE0E;</span> Scorpio · water</p>
+<p class="creature-keys">transformation and depth</p>
+</li><li class="creature creature--fire">
+<img src="/images/the-world/lion.jpg" alt="The Lion" width="360" height="360" loading="lazy" />
+<p class="creature-name">The Lion</p>
+<p class="creature-sign"><span aria-hidden="true">♌&#xFE0E;</span> Leo · fire</p>
+<p class="creature-keys">vitality and creative power</p>
+</li><li class="creature creature--earth">
+<img src="/images/the-world/bull.jpg" alt="The Bull" width="360" height="360" loading="lazy" />
+<p class="creature-name">The Bull</p>
+<p class="creature-sign"><span aria-hidden="true">♉&#xFE0E;</span> Taurus · earth</p>
+<p class="creature-keys">matter and stability</p>
+</li>
+</ul>
 
 Esoterically, these four images can be read as the four fundamental principles from which the manifest world is built. Their presence around the central figure speaks of balance between the different dimensions of existence.
 
 ## The end of one cycle and the beginning of another
+
+![An engraving of The World: a figure on the globe inside a laurel wreath, a serpent in the shape of infinity beneath, sacred geometry, the Sun and the Moon around](../images/taro-karta-svetat/world-cycle.jpg)
 
 One of the most striking features of The World is its place in the architecture of the Major Arcana.
 
@@ -74,6 +99,8 @@ The World can thus be read as the moment when accumulated experience has taken o
 
 ## The meaning of The World in a tarot spread
 
+![A woman laying out a tarot spread by candlelight, with The World at its centre](../images/taro-karta-svetat/world-reading.jpg)
+
 Depending on the question and the surrounding cards, The World can carry several core meanings:
 
 - **Personal life:** the completion of an important stage of personal growth; a clearer understanding of yourself, your desires and your place in the world.
@@ -82,6 +109,12 @@ Depending on the question and the surrounding cards, The World can carry several
 - **The spiritual path:** the integration of accumulated knowledge and experience; seeing how the stages of your spiritual path connect, and arriving at a broader perspective.
 
 ## Reversed – when the cycle remains unfinished
+
+<div class="img-narrow">
+
+![The World reversed, from the classic Rider–Waite–Smith tarot](../images/taro-karta-svetat/world-reversed.jpg)
+
+</div>
 
 Reversed, The World can signal a sense of incompleteness. You may be close to the finish line, yet unable to take the final step.
 
@@ -111,18 +144,33 @@ Then clarity comes.
 
 **You need not see the whole picture while you are still painting it. Sometimes you must first finish the journey to understand how far you have truly come.**
 
-> **The card's message:** Let the old cycle close. Integrate what you have learned and release what has already served its purpose. Completion is not the end of growth, but an invitation to continue from a new level of understanding.
+<div class="card-message not-prose">
+<p class="card-message-label">The card's message</p>
+<p>Let the old cycle close. Integrate what you have learned and release what has already served its purpose. Completion is not the end of growth, but an invitation to continue from a new level of understanding.</p>
+</div>
 
 ## Frequently asked questions
 
-**Is The World a good card in tarot?**
+<details class="faq">
+<summary>Is The World a good card in tarot?</summary>
+
 Yes – it is one of the most favourable cards in the deck. It speaks of a completed cycle, a result achieved and clarity about the road behind you.
 
-**What does The World mean in a love reading?**
+</details>
+
+<details class="faq">
+<summary>What does The World mean in a love reading?</summary>
+
 Wholeness and clarity in the relationship: either stabilising and stepping into a new stage, or the natural end of a bond whose cycle is complete. The question and the neighbouring cards decide which.
 
-**What does The World reversed mean?**
+</details>
+
+<details class="faq">
+<summary>What does The World reversed mean?</summary>
+
 An unfinished cycle: postponed decisions, recurring patterns and difficulty letting go of the past, even though the finish line is near.
+
+</details>
 
 ## Afterword: how I read a card
 
@@ -141,16 +189,16 @@ That is why, in my system, every interpretation rests on three coordinates:
 
 The prism is the lens through which we read the symbol. This article combines several prisms, with the psychological and archetypal perspectives leading:
 
-| Prism | Presence in the article | How it shows |
-| --- | --- | --- |
-| Archetypal | core | completion, wholeness, integration |
-| Psychological | core | inner transformation and awareness |
-| Spiritual | strong | growth and the gaining of wisdom |
-| Symbolic | strong | the wreath, the central figure, the four creatures |
-| Numerological | present | XXI → 2 + 1 = 3 |
-| Astrological | present | the four fixed signs of the zodiac |
-| Existential | present | the meaning of experience and accepting endings |
-| Temporal | moderate | one stage ending and another beginning |
+| Prism | How it shows |
+| --- | --- |
+| Archetypal | completion, wholeness, integration |
+| Psychological | inner transformation and awareness |
+| Spiritual | growth and the gaining of wisdom |
+| Symbolic | the wreath, the central figure, the four creatures |
+| Numerological | XXI → 2 + 1 = 3 |
+| Astrological | the four fixed signs of the zodiac |
+| Existential | the meaning of experience and accepting endings |
+| Temporal | one stage ending and another beginning |
 
 The more precisely you know which prism and which context you are reading through, the clearer the cards' answer becomes (more on precise questions in ["A Few Quick Tips for Effective Tarot Readings"](/en/blog/tips-for-effective-tarot-readings)). And to follow how a card's meaning evolves over time, keep a [tarot journal](/en/blog/how-to-keep-a-tarot-journal).
 

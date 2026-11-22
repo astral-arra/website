@@ -125,14 +125,26 @@ In the positive aspect this is the card of a harmonious, stable and serious rela
 
 ## Frequently asked questions
 
-**Is the Ace of Pentacles a good card in a love reading?**
+<details class="faq">
+<summary>Is the Ace of Pentacles a good card in a love reading?</summary>
+
 Yes – it shows a real opportunity and an invitation. But like every ace it's an idea, not an action; how it unfolds depends on the cards around it.
 
-**Which Pentacles card is the least favourable for love?**
+</details>
+
+<details class="faq">
+<summary>Which Pentacles card is the least favourable for love?</summary>
+
 The Five of Pentacles (hardship, lack of care) and the Knight of Pentacles in its negative aspect (coldness and material stubbornness).
 
-**What do many Pentacles in one spread mean?**
+</details>
+
+<details class="faq">
+<summary>What do many Pentacles in one spread mean?</summary>
+
 That the focus is on the stability and future of the relationship – the material foundation, reliability and serious intentions – rather than on emotions.
+
+</details>
 
 ## In the end
 

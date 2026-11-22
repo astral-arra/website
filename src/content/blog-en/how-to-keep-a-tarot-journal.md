@@ -119,14 +119,26 @@ You'll find more practical advice in the article ["A Few Quick Tips for Effectiv
 
 ## Frequently asked questions
 
-**How often should I write in my tarot journal?**
+<details class="faq">
+<summary>How often should I write in my tarot journal?</summary>
+
 After every spread, even if it's just one card for the day. Regularity matters more than volume.
 
-**Should I also record readings for other people?**
+</details>
+
+<details class="faq">
+<summary>Should I also record readings for other people?</summary>
+
 Yes, but only with their permission and without personal details. These entries build experience fast and show how the cards work for different people.
 
-**Can I start a journal if I'm a beginner?**
+</details>
+
+<details class="faq">
+<summary>Can I start a journal if I'm a beginner?</summary>
+
 That's the best time. The sooner you start, the more valuable your archive will be a year from now.
+
+</details>
 
 ## A few last words...
 
