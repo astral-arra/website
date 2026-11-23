@@ -6,7 +6,7 @@ author: Astral ARRA
 description: "How to read tarot more accurately: a ritual before the spread, first impressions, a significator card, precise questions and the “cross-examination” technique."
 section: taro
 image: "../images/trikove-za-efektivno-gledane-na-taro/cover.jpg"
-imageAlt: "A freckled woman looks straight into the camera, half her face hidden behind a fan of tarot cards"
+imageAlt: "Lit candles, an amethyst and oracle cards on a dark table – the setting for a focused tarot reading"
 tags:
   - tarot
   - tarot reading
@@ -50,7 +50,7 @@ When you draw a card, pay attention to the first feeling or thought that comes t
 
 **Remember:** Tarot is a tool for working with intuition, and however many traditional meanings the cards have, in the end it is your personal intuitive impression that decides whether a reading holds. Besides, many decks differ considerably from the original [Rider–Waite–Smith](https://en.wikipedia.org/wiki/Rider%E2%80%93Waite_Tarot) symbolism and show quite different, specific scenes (the Tarot of the Elves, for example), which can capture a situation precisely.
 
-How to tell a genuine first intuition from fear and your own projections is the subject of a separate article: [“Intuition or Fear?”](/en/blog/intuition-or-fear).
+How to tell a genuine first intuition from fear and your own projections is the subject of a separate article: [“Intuition or Fear?”](/en/blog/intuition-or-fear); how to develop your intuition, of another: [“How Important Is Intuition in Tarot?”](/en/blog/how-important-is-intuition-in-tarot).
 
 ## 3. Keep a tarot journal 📒✍️
 
