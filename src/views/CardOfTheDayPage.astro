@@ -1,0 +1,172 @@
+---
+import Layout from "../components/Layout.astro";
+import CardOfTheDay from "../components/CardOfTheDay.astro";
+import { getLang, localize } from "../lib/i18n";
+import { breadcrumbs } from "../lib/seo";
+
+const lang = getLang(Astro.url);
+const BG_URL = "/karta-za-deniya";
+const EN_URL = "/en/card-of-the-day";
+
+const c = {
+  bg: {
+    title: "Таро карта за деня – изтегли своята карта безплатно",
+    h1: "Таро карта за деня",
+    description:
+      "Изтегли своята таро карта за деня: архетипно послание, енергия на деня, скритото послание, сянката на картата и въпрос за размисъл. Безплатно, всеки ден.",
+    lead: "Синхронизирай деня си ⭐",
+    home: "Начало",
+  },
+  en: {
+    title: "Tarot Card of the Day – Draw Your Free Daily Card",
+    h1: "Tarot Card of the Day",
+    description:
+      "Draw your free tarot card of the day: its archetypal message, the energy of the day, the hidden message, the card's shadow and a question for reflection. A new card every day.",
+    lead: "Synchronise your day ⭐",
+    home: "Home",
+  },
+}[lang];
+
+const self = lang === "bg" ? BG_URL : EN_URL;
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: c.h1,
+    description: c.description,
+    inLanguage: lang,
+    url: new URL(`${self}/`, Astro.site).toString(),
+  },
+  breadcrumbs([
+    { name: c.home, path: localize("/", lang) },
+    { name: c.h1, path: self },
+  ]),
+];
+---
+
+<Layout
+  title={c.title}
+  description={c.description}
+  image={lang === "bg" ? "/og-card-of-the-day.jpg" : "/og-card-of-the-day-en.jpg"}
+  activeUrl={self}
+  alternate={lang === "bg" ? EN_URL : BG_URL}
+  jsonLd={jsonLd}
+>
+  <header class="text-center">
+    <h1 class="text-5xl md:text-6xl">{c.h1}</h1>
+    <p class="mx-auto mt-4 max-w-prose font-display text-2xl text-gold-300">{c.lead}</p>
+  </header>
+
+  <CardOfTheDay lang={lang} />
+
+  <div class="article-body prose prose-lg prose-arra mx-auto mt-24 max-w-[44rem]">
+    {
+      lang === "bg" ? (
+        <>
+          <h2>Как да работиш с картата за деня</h2>
+          <p>
+            Картата за деня е една от най-простите и същевременно най-силните таро практики. Аз самата
+            я използвам като малък ритуал: изтеглям карта сутрин, а вечер се връщам към нея и виждам как
+            посланието ѝ се е проявило през деня. Понякога съвпадението е буквално, понякога – тихо и
+            символично, но почти винаги има какво да ме научи.
+          </p>
+          <ul>
+            <li>
+              <strong>Задай си въпрос.</strong> Най-простият е „Какво трябва да знам днес?“, но можеш да
+              попиташ и „На какво да обърна внимание?“ или „Каква енергия ме очаква?“.
+            </li>
+            <li>
+              <strong>Довери се на първото впечатление.</strong> Преди да прочетеш значението, погледни
+              картата – кой детайл те привлича първи?
+            </li>
+            <li>
+              <strong>Върни се вечер.</strong> Запиши как картата се е проявила. Така само за месец ще
+              изградиш свой личен речник на картите – повече за това в статията{" "}
+              <a href="/blog/kak-da-si-vodim-taro-dnevnik">„Как да си водим таро дневник“</a>.
+            </li>
+          </ul>
+          <p>
+            Посланията тук са ключ, не цялата врата. Ако искаш да погледнем заедно по-дълбок
+            разклад, виж <a href="/consult">консултациите</a>.
+          </p>
+
+          <h2>Често задавани въпроси</h2>
+          <details class="faq">
+            <summary>Мога ли да изтегля повече от една карта на ден?</summary>
+            <p>
+              Картата за деня е една – тя остава с теб до полунощ. Ако теглиш отново и отново, докато
+              получиш „удобна“ карта, посланието губи силата си. Утре те чака нова карта.
+            </p>
+          </details>
+          <details class="faq">
+            <summary>Какво да правя, ако картата е „лоша“?</summary>
+            <p>
+              В таро няма лоши карти. „Кулата“ или „Десетка мечове“ не предсказват беда, а показват
+              процес, на който да обърнеш внимание – и често носят най-ценния урок за деня.
+            </p>
+          </details>
+          <details class="faq">
+            <summary>Кое таро е използвано тук?</summary>
+            <p>
+              Класическото таро Rider–Waite–Smith, рисувано от Памела Колман Смит и издадено през 1909
+              година. Изображенията са обществено достояние.
+            </p>
+          </details>
+        </>
+      ) : (
+        <>
+          <h2>How to work with your card of the day</h2>
+          <p>
+            The daily card is one of the simplest tarot practices – and one of the most powerful. I use it
+            as a small ritual myself: I draw a card in the morning, then return to it in the evening to see
+            how its message unfolded through the day. Sometimes the echo is literal, sometimes quiet and
+            symbolic, but there is almost always something to learn.
+          </p>
+          <ul>
+            <li>
+              <strong>Ask a question.</strong> The simplest is “What do I need to know today?”, but you
+              might also ask “What should I pay attention to?” or “What energy awaits me?”.
+            </li>
+            <li>
+              <strong>Trust your first impression.</strong> Before reading the meaning, look at the card –
+              which detail catches your eye first?
+            </li>
+            <li>
+              <strong>Return in the evening.</strong> Note how the card showed up. Within a month you will
+              have built your own personal dictionary of the cards – more on that in{" "}
+              <a href="/en/blog/how-to-keep-a-tarot-journal">“How to Keep a Tarot Journal”</a>.
+            </li>
+          </ul>
+          <p>
+            These messages are a key, not the whole door. If you would like us to look at a
+            deeper spread together, see <a href="/en/consult">readings</a>.
+          </p>
+
+          <h2>Frequently asked questions</h2>
+          <details class="faq">
+            <summary>Can I draw more than one card a day?</summary>
+            <p>
+              There is one card for the day, and it stays with you until midnight. Drawing again and again
+              until a “comfortable” card appears drains the message of its power. A new card awaits you
+              tomorrow.
+            </p>
+          </details>
+          <details class="faq">
+            <summary>What if I draw a “bad” card?</summary>
+            <p>
+              There are no bad cards in tarot. The Tower or the Ten of Swords do not foretell disaster; they
+              point to a process worth your attention – and often carry the most valuable lesson of the day.
+            </p>
+          </details>
+          <details class="faq">
+            <summary>Which tarot deck is used here?</summary>
+            <p>
+              The classic Rider–Waite–Smith tarot, illustrated by Pamela Colman Smith and first published in
+              1909. The images are in the public domain.
+            </p>
+          </details>
+        </>
+      )
+    }
+  </div>
+</Layout>

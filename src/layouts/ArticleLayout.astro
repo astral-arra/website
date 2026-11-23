@@ -99,6 +99,21 @@ const jsonLd = [
         </ul>
       )
     }
+
+    {
+      topic?.slug === "taro" && (
+        <a
+          href={tr("cardOfDayUrl")}
+          class="group mt-12 flex items-center gap-5 rounded-xl border border-night-line bg-night-raised/50 p-5 transition hover:border-gold/60"
+        >
+          <img src="/cards/17-star.webp" alt="" width="56" height="97" loading="lazy" class="w-14 rounded shadow-lg" />
+          <span>
+            <span class="block font-display text-2xl text-pearl">{tr("cardOfDay")}</span>
+            <span class="mt-1 block text-ice-200 group-hover:text-neon">{tr("drawCard")} →</span>
+          </span>
+        </a>
+      )
+    }
   </article>
 </Layout>
 
