@@ -23,12 +23,6 @@ As an experienced reader, I know beyond doubt that the cards ALWAYS show somethi
 
 *The answer is far more intricate than it first appears. In this article we will only skim the surface, touching on a few key points. A fuller exploration awaits in my book “Tarot Prisms”, once it is published – hopefully in 2027.*
 
-<div class="img-medium">
-
-![A woman in a bright headscarf lays out cards on a table, eyes closed, as if listening to them](../images/a-sega-de-kartite-vinagi-li-poznavat/gadatelka.png)
-
-</div>
-
 The magic of tarot divination is rooted in the depths of quantum physics, the science of timelines, the exercise of free will and the manipulation of the astral planes. Let us unravel the question point by point. To say whether tarot is always right, we need to understand how all of this works – from the quantum field to consciousness itself. Because the cards are not outside us; they are WITHIN us. They simply mirror frames from the stream through which our consciousness is at once passing and immersing itself.
 
 What exactly are we capturing when we draw a card? Where does the information come from? Do the cards show the future – or do they reflect a particular potential our consciousness is already moving through?
