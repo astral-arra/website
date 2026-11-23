@@ -147,7 +147,7 @@ There is a difference between repeating a question and asking it from different 
 
 [Keeping a tarot journal](/en/blog/how-to-keep-a-tarot-journal) is one of the best ways to develop more reliable judgement. Record the question, the cards, your first impression and how the situation unfolded.
 
-This allows you to see which of your intuitive readings prove helpful – and which more often reflect fears or prior expectations.
+This allows you to see which of your intuitive readings prove helpful – and which more often reflect fears or prior expectations. As for why some readings never come true at all, I explore that in [“So Now What? Are the Cards Always Right?”](/en/blog/are-the-cards-always-right).
 
 ## Intuition and the Higher Self
 

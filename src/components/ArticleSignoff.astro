@@ -1,0 +1,165 @@
+---
+// Closes every article: the author's signature and a glowing neon button for a reading inquiry.
+import "@fontsource/great-vibes/latin-400.css";
+import { mailto } from "../lib/contact";
+import type { Lang } from "../lib/i18n";
+
+interface Props {
+  lang: Lang;
+  title: string;
+}
+const { lang, title } = Astro.props;
+
+const s = {
+  bg: {
+    lead: "Искате ли да погледнем заедно Вашия разклад?",
+    button: "Запитване за консултация",
+    subject: `Запитване за консултация – „${title}“`,
+    more: "Повече за консултациите",
+    moreUrl: "/consult",
+  },
+  en: {
+    lead: "Would you like us to look at your spread together?",
+    button: "Ask about a reading",
+    subject: `Reading inquiry – “${title}”`,
+    more: "More about readings",
+    moreUrl: "/en/consult",
+  },
+}[lang];
+---
+
+<footer class="signoff">
+  <p class="signature" aria-label="Astral ARRA">
+    <span aria-hidden="true">Astral ARRA</span>
+  </p>
+
+  <div class="cta">
+    <p class="cta-lead">{s.lead}</p>
+    <a class="neon-button" href={mailto(s.subject)}>
+      <span aria-hidden="true">✦</span>
+      {s.button}
+      <span aria-hidden="true">✦</span>
+    </a>
+    <a class="cta-more" href={s.moreUrl}>{s.more} →</a>
+  </div>
+</footer>
+
+<style>
+  .signoff {
+    margin-top: 3.5rem;
+  }
+
+  .signature {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 1rem;
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(2.4rem, 6vw, 3.2rem);
+    line-height: 1;
+    color: theme("colors.gold.300");
+    text-shadow: 0 0 14px rgba(217, 180, 90, 0.35);
+  }
+  .signature::before {
+    content: "";
+    flex: 0 1 7rem;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(217, 180, 90, 0.7));
+  }
+
+  .cta {
+    margin-top: 3rem;
+    padding: 2.2rem 1.5rem;
+    border: 1px solid theme("colors.night.line");
+    border-radius: 1rem;
+    background: radial-gradient(ellipse at 50% 0%, rgba(43, 210, 255, 0.08), transparent 70%);
+    text-align: center;
+  }
+  .cta-lead {
+    font-family: theme("fontFamily.display");
+    font-size: clamp(1.4rem, 3.5vw, 1.8rem);
+    color: theme("colors.pearl.DEFAULT");
+  }
+
+  .neon-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-top: 1.4rem;
+    padding: 0.95rem 2rem;
+    border: 2px solid #2bd2ff;
+    border-radius: 9999px;
+    font-size: 1.1rem;
+    letter-spacing: 0.03em;
+    color: #e8f9ff;
+    text-shadow:
+      0 0 4px #bde8ff,
+      0 0 12px #2bd2ff;
+    box-shadow:
+      0 0 6px #2bd2ff,
+      0 0 18px rgba(43, 210, 255, 0.6),
+      0 0 42px rgba(43, 210, 255, 0.35),
+      inset 0 0 12px rgba(43, 210, 255, 0.35);
+    animation: neon-pulse 2.6s ease-in-out infinite;
+    transition:
+      background-color 0.25s,
+      transform 0.25s;
+  }
+  .neon-button span {
+    color: theme("colors.gold.300");
+    text-shadow: 0 0 8px rgba(240, 220, 160, 0.8);
+  }
+  .neon-button:hover,
+  .neon-button:focus-visible {
+    outline: none;
+    background-color: rgba(43, 210, 255, 0.12);
+    transform: translateY(-2px);
+    animation-duration: 1.1s;
+  }
+
+  @keyframes neon-pulse {
+    0%,
+    100% {
+      box-shadow:
+        0 0 6px #2bd2ff,
+        0 0 18px rgba(43, 210, 255, 0.6),
+        0 0 42px rgba(43, 210, 255, 0.35),
+        inset 0 0 12px rgba(43, 210, 255, 0.35);
+    }
+    50% {
+      box-shadow:
+        0 0 10px #2bd2ff,
+        0 0 28px rgba(43, 210, 255, 0.8),
+        0 0 64px rgba(43, 210, 255, 0.5),
+        inset 0 0 18px rgba(43, 210, 255, 0.5);
+    }
+  }
+
+  .cta-more {
+    display: block;
+    margin-top: 1.2rem;
+    font-size: 0.9rem;
+    color: theme("colors.pearl.dim");
+  }
+  .cta-more:hover {
+    color: theme("colors.neon.DEFAULT");
+  }
+
+  @media (max-width: 480px) {
+    .cta {
+      padding-inline: 0.75rem;
+    }
+    .neon-button {
+      gap: 0.45rem;
+      padding: 0.8rem 1.1rem;
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .neon-button {
+      animation: none;
+    }
+  }
+</style>

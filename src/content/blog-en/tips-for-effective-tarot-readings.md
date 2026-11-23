@@ -100,7 +100,7 @@ When you ask Tarot questions, be as specific as possible. Instead of "What will 
 
 **Be specific**, and ask different questions several times to see all the possible angles, situations and timelines. **Precisely worded questions** lead to clearer, more useful answers – when you ask in more detail, Tarot gets a clearer idea of exactly what you want to know.
 
-A clever trick for **timing** is to ask whether something will happen between certain dates. That way you can even "pin down" the tarot.
+A clever trick for **timing** is to ask whether something will happen between certain dates. That way you can even "pin down" the tarot. Why timing is so elusive, I explain in [“So Now What? Are the Cards Always Right?”](/en/blog/are-the-cards-always-right).
 
 *Another example of asking questions:*
 

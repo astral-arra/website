@@ -6,8 +6,6 @@ image: "../images/sections/taro/00.jpg"
 upcoming:
   - title: "The synchromystic interpretation of The World"
     image: "../images/taro-karta-svetat/cover.jpg"
-  - title: "So now what? Are the cards always right?"
-    image: "../images/sections/taro/00.jpg"
   - title: "Can we read tarot for ourselves?"
     image: "../images/sections/taro/02.jpg"
   - title: "The common mistakes you make in your readings"
