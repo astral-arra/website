@@ -1,10 +1,13 @@
 import type { Lang } from "../lib/i18n";
 import { MAJORS } from "./tarot-majors";
-import { MINORS } from "./tarot-minors";
+import { CUPS } from "./tarot-cups";
+import { PENTACLES as PENTACLE_CARDS } from "./tarot-pentacles";
+import { SWORDS } from "./tarot-swords";
+import { WANDS } from "./tarot-wands";
 
-export type { CardText } from "./tarot-types";
+export type { CardText, CardEntry } from "./tarot-types";
 
-export const CARDS = [...MAJORS, ...MINORS];
+export const CARDS = [...MAJORS, ...CUPS, ...PENTACLE_CARDS, ...SWORDS, ...WANDS];
 
 /** Articles that go deeper into a card; other cards link to the tarot section. */
 const DEEPER: Record<string, Record<Lang, { title: string; url: string }>> = {
@@ -30,8 +33,5 @@ export function deeperFor(id: string, lang: Lang) {
 
 /** The data the page script needs, in one language. */
 export function deckFor(lang: Lang) {
-  return CARDS.map(({ id, ...text }) => {
-    const [name, keys, message, advice] = text[lang];
-    return { id, name, keys, message, advice, more: deeperFor(id, lang) };
-  });
+  return CARDS.map((card) => ({ id: card.id, ...card[lang], more: deeperFor(card.id, lang) }));
 }

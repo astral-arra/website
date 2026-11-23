@@ -1,23 +1,35 @@
 ---
-// The interactive "card of the day": a fan of face-down cards; the visitor picks one,
-// it turns over, and the same card stays with them until midnight (kept in localStorage).
+// The interactive "card of the day": a fan of face-down cards teases the visitor; on a click
+// the deck gathers, shuffles, and one card springs out, spins and turns face up in a burst of
+// sparks. The same card stays with the visitor until midnight (kept in localStorage).
 // A shared link (?k=<card id>) opens straight on the card a friend sent.
+// `compact` (used on the home page) shows the card with its archetypal message and a link to
+// the full reading on the card-of-the-day page.
 import { deckFor } from "../data/tarot";
 import type { Lang } from "../lib/i18n";
 
 interface Props {
   lang: Lang;
+  compact?: boolean;
 }
-const { lang } = Astro.props;
-const deck = deckFor(lang);
+const { lang, compact = false } = Astro.props;
 
 const s = {
   bg: {
     prompt: "Поеми дълбоко въздух, задай си въпроса „Какво трябва да знам днес?“ и избери една карта.",
     pick: "Избери карта",
     keys: "Ключови думи",
-    advice: "Съвет за деня",
-    deeper: "Прочети повече",
+    sections: {
+      archetype: "Архетипно послание",
+      energy: "Енергия на деня",
+      hidden: "Скритото послание",
+      shadow: "Сянката на картата",
+      higherSelf: "Послание към Висшия Аз",
+      question: "Въпрос за размисъл",
+      advice: "Съвет",
+    },
+    full: "Прочети цялото послание",
+    fullUrl: "/karta-za-deniya",
     share: "Сподели картата си",
     copy: "Копирай линка",
     copied: "Линкът е копиран",
@@ -33,8 +45,17 @@ const s = {
     prompt: "Take a deep breath, ask yourself “What do I need to know today?” and choose a card.",
     pick: "Choose a card",
     keys: "Keywords",
-    advice: "Advice for the day",
-    deeper: "Read more",
+    sections: {
+      archetype: "Archetypal message",
+      energy: "Energy of the day",
+      hidden: "The hidden message",
+      shadow: "The card's shadow",
+      higherSelf: "Message to the Higher Self",
+      question: "Question for reflection",
+      advice: "Advice",
+    },
+    full: "Read the full message",
+    fullUrl: "/en/card-of-the-day",
     share: "Share your card",
     copy: "Copy link",
     copied: "Link copied",
@@ -48,8 +69,24 @@ const s = {
   },
 }[lang];
 
+type SectionKey = keyof typeof s.sections;
+// The reading, in its fixed order. Glyphs are text symbols (not emoji) so they take the gold colour.
+const SECTIONS: { key: SectionKey; glyph: string }[] = [
+  { key: "archetype", glyph: "✦" },
+  { key: "energy", glyph: "☉" },
+  { key: "hidden", glyph: "☽" },
+  { key: "shadow", glyph: "◐" },
+  { key: "higherSelf", glyph: "✧" },
+];
+
+// The home page only needs what the compact view shows.
+const deck = deckFor(lang).map((c) =>
+  compact ? { id: c.id, name: c.name, keys: c.keys, archetype: c.archetype } : c,
+);
+
 const config = {
   deck,
+  compact,
   shareText: s.shareText("{name}"),
   copied: s.copied,
   copy: s.copy,
@@ -57,14 +94,14 @@ const config = {
 };
 ---
 
-<section class="cotd" data-state="idle" aria-live="polite">
+<section class:list={["cotd", { "cotd--compact": compact }]} data-state="idle" aria-live="polite">
   <p class="cotd-prompt">{s.prompt}</p>
 
   <div class="cotd-table">
     <ul class="cotd-fan" aria-label={s.pick}>
       {
         Array.from({ length: 7 }, (_, i) => (
-          <li style={`--i:${i - 3};--o:${Math.abs(i - 3)}`}>
+          <li style={`--i:${i - 3};--o:${Math.abs(i - 3)};--d:${i * 0.18}s`}>
             <button type="button" class="cotd-back" aria-label={`${s.pick} ${i + 1}`} disabled>
               <span class="sr-only">{s.pick}</span>
             </button>
@@ -74,10 +111,12 @@ const config = {
     </ul>
 
     <div class="cotd-card" hidden>
+      <div class="cotd-glow" aria-hidden="true"></div>
       <div class="cotd-card-inner">
         <div class="cotd-face cotd-face--back"></div>
         <img class="cotd-face cotd-face--front" alt="" width="360" height="624" />
       </div>
+      <div class="cotd-sparks" aria-hidden="true"></div>
     </div>
   </div>
 
@@ -87,29 +126,70 @@ const config = {
     <p class="cotd-label" data-friend={s.friend} data-mine={s.mine}></p>
     <h2 class="cotd-name"></h2>
     <p class="cotd-keys"><span class="sr-only">{s.keys}: </span><span></span></p>
-    <p class="cotd-message"></p>
-    <div class="cotd-advice">
-      <p class="cotd-advice-label">{s.advice}</p>
-      <p class="cotd-advice-text"></p>
-    </div>
-    <a class="cotd-more" href="#"><span></span> →</a>
 
-    <div class="cotd-share">
-      <p class="cotd-share-label">{s.share}</p>
-      <div class="cotd-share-buttons">
-        <button type="button" data-share="native" hidden>{s.share}</button>
-        <a data-share="facebook" target="_blank" rel="noopener">Facebook</a>
-        <a data-share="whatsapp" target="_blank" rel="noopener">WhatsApp</a>
-        <a data-share="viber">Viber</a>
-        <button type="button" data-share="copy">{s.copy}</button>
-      </div>
-    </div>
+    {
+      compact ? (
+        <>
+          <p class="cotd-lead" data-field="archetype" />
+          <a class="cotd-cta" href={s.fullUrl}>
+            {s.full} →
+          </a>
+        </>
+      ) : (
+        <>
+          <div class="cotd-sections">
+            {SECTIONS.map(({ key, glyph }) => (
+              <section class="cotd-section">
+                <h3 class="cotd-section-title">
+                  <span aria-hidden="true">{glyph}&#xFE0E;</span> {s.sections[key]}
+                </h3>
+                <p data-field={key} />
+              </section>
+            ))}
+          </div>
 
-    <p class="cotd-again">{s.again}</p>
-    <a class="cotd-own" href="?" hidden>{s.own}</a>
+          <div class="cotd-question">
+            <p class="cotd-panel-label">{s.sections.question}</p>
+            <p class="cotd-question-text" data-field="question" />
+          </div>
+          <div class="cotd-advice">
+            <p class="cotd-panel-label">{s.sections.advice}</p>
+            <p class="cotd-advice-text" data-field="advice" />
+          </div>
+
+          <a class="cotd-more" href="#">
+            <span /> →
+          </a>
+
+          <div class="cotd-share">
+            <p class="cotd-share-label">{s.share}</p>
+            <div class="cotd-share-buttons">
+              <button type="button" data-share="native" hidden>
+                {s.share}
+              </button>
+              <a data-share="facebook" target="_blank" rel="noopener">
+                Facebook
+              </a>
+              <a data-share="whatsapp" target="_blank" rel="noopener">
+                WhatsApp
+              </a>
+              <a data-share="viber">Viber</a>
+              <button type="button" data-share="copy">
+                {s.copy}
+              </button>
+            </div>
+          </div>
+
+          <p class="cotd-again">{s.again}</p>
+          <a class="cotd-own" href="?" hidden>
+            {s.own}
+          </a>
+        </>
+      )
+    }
   </div>
 
-  <script type="application/json" id="cotd-config" set:html={JSON.stringify(config)} />
+  <script type="application/json" class="cotd-config" set:html={JSON.stringify(config)} />
 </section>
 
 <script>
@@ -117,22 +197,35 @@ const config = {
     id: string;
     name: string;
     keys: string;
-    message: string;
-    advice: string;
-    more: { title: string; url: string };
+    more?: { title: string; url: string };
+    [field: string]: unknown;
   };
-  type Config = { deck: Card[]; shareText: string; copied: string; copy: string; seeOwn: string };
+  type Config = {
+    deck: Card[];
+    compact: boolean;
+    shareText: string;
+    copied: string;
+    copy: string;
+    seeOwn: string;
+  };
 
-  const root = document.querySelector<HTMLElement>(".cotd");
-  const config: Config | null = root
-    ? JSON.parse(document.getElementById("cotd-config")?.textContent || "null")
-    : null;
+  const KEY = "arra-card-of-the-day";
+  const today = new Date().toLocaleDateString("sv"); // YYYY-MM-DD, local time
+  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const wait = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-  if (root && config) {
-    const KEY = "arra-card-of-the-day";
-    const today = new Date().toLocaleDateString("sv"); // YYYY-MM-DD, local time
+  function track(event: string, params: Record<string, unknown>) {
+    const w = window as unknown as { gtag?: (...a: unknown[]) => void };
+    w.gtag?.("event", event, params);
+  }
+
+  document.querySelectorAll<HTMLElement>(".cotd").forEach((root) => {
+    const config: Config = JSON.parse(root.querySelector(".cotd-config")?.textContent || "null");
+    if (!config) return;
+
     const $ = <T extends Element = HTMLElement>(sel: string) => root.querySelector(sel) as T;
     const byId = (id: string | null) => config.deck.find((c) => c.id === id);
+    const backs = [...root.querySelectorAll<HTMLButtonElement>(".cotd-back")];
 
     const read = () => {
       try {
@@ -155,42 +248,32 @@ const config = {
       return config.deck[n[0] % config.deck.length];
     };
 
-    const fill = (card: Card, fromFriend: boolean) => {
+    function fill(card: Card, fromFriend: boolean) {
       const img = $<HTMLImageElement>(".cotd-face--front");
       img.src = `/cards/${card.id}.webp`;
       img.alt = card.name;
       $(".cotd-name").textContent = card.name;
       $(".cotd-keys span:last-child").textContent = card.keys;
-      $(".cotd-message").textContent = card.message;
-      $(".cotd-advice-text").textContent = card.advice;
-      const more = $<HTMLAnchorElement>(".cotd-more");
-      more.href = card.more.url;
-      $(".cotd-more span").textContent = card.more.title;
+      root.querySelectorAll<HTMLElement>("[data-field]").forEach((el) => {
+        el.textContent = String(card[el.dataset.field!] ?? "");
+      });
       const label = $(".cotd-label");
       label.textContent = (fromFriend ? label.dataset.friend : label.dataset.mine) || "";
+      if (config.compact) return;
+
+      const more = $<HTMLAnchorElement>(".cotd-more");
+      more.href = card.more!.url;
+      $(".cotd-more span").textContent = card.more!.title;
       $(".cotd-own").hidden = !fromFriend;
       $(".cotd-again").hidden = fromFriend;
       setupShare(card);
-    };
-
-    const show = (card: Card, { animate, fromFriend = false }: { animate: boolean; fromFriend?: boolean }) => {
-      fill(card, fromFriend);
-      $(".cotd-card").hidden = false;
-      $(".cotd-reading").hidden = false;
-      if (animate) {
-        root.dataset.state = "drawing";
-        // let the chosen card lift first, then turn it over
-        setTimeout(() => (root.dataset.state = "revealed"), 650);
-      } else {
-        root.dataset.state = "revealed";
-      }
-    };
+    }
 
     function setupShare(card: Card) {
       const url = new URL(location.pathname, location.origin);
       url.searchParams.set("k", card.id);
       const link = url.toString();
-      const text = config!.shareText.replace("{name}", card.name);
+      const text = config.shareText.replace("{name}", card.name);
       const enc = encodeURIComponent;
       $<HTMLAnchorElement>("[data-share=facebook]").href = `https://www.facebook.com/sharer/sharer.php?u=${enc(link)}`;
       $<HTMLAnchorElement>("[data-share=whatsapp]").href = `https://wa.me/?text=${enc(`${text} ${link}`)}`;
@@ -204,51 +287,176 @@ const config = {
       copy.onclick = async () => {
         try {
           await navigator.clipboard.writeText(link);
-          copy.textContent = config!.copied;
-          setTimeout(() => (copy.textContent = config!.copy), 2200);
+          copy.textContent = config.copied;
+          setTimeout(() => (copy.textContent = config.copy), 2200);
         } catch {
           prompt("", link);
         }
       };
-      root!.querySelectorAll<HTMLElement>("[data-share]").forEach((el) =>
+      root.querySelectorAll<HTMLElement>("[data-share]").forEach((el) =>
         el.addEventListener("click", () => track("share", { method: el.dataset.share, card: card.id }), { once: true }),
       );
     }
 
-    function track(event: string, params: Record<string, unknown>) {
-      const w = window as unknown as { gtag?: (...a: unknown[]) => void };
-      w.gtag?.("event", event, params);
+    function showStatic(card: Card, fromFriend = false) {
+      fill(card, fromFriend);
+      $(".cotd-card").hidden = false;
+      $(".cotd-reading").hidden = false;
+      root.dataset.state = "revealed";
     }
 
-    const friend = byId(new URLSearchParams(location.search).get("k"));
+    // --- the playful part -------------------------------------------------------------
+
+    // While nobody has chosen yet, a random card now and then peeks up, as if to say "me!"
+    let peekTimer = 0;
+    function startPeeking() {
+      if (reduceMotion) return;
+      let last = -1;
+      peekTimer = window.setInterval(() => {
+        if (root.dataset.state !== "idle") return;
+        let i = Math.floor(Math.random() * backs.length);
+        if (i === last) i = (i + 1) % backs.length;
+        last = i;
+        backs[i].animate(
+          [
+            { transform: "translateY(0) rotate(0)" },
+            { transform: "translateY(-1.4rem) rotate(-4deg)", offset: 0.35 },
+            { transform: "translateY(-1.1rem) rotate(4deg)", offset: 0.55 },
+            { transform: "translateY(-1.3rem) rotate(-2deg)", offset: 0.7 },
+            { transform: "translateY(0) rotate(0)" },
+          ],
+          { duration: 1100, easing: "ease-in-out" },
+        );
+      }, 2300);
+    }
+
+    function sparkBurst() {
+      const box = $(".cotd-sparks");
+      const glyphs = ["✦", "✧", "⋆", "·", "✦", "•"];
+      for (let i = 0; i < 26; i++) {
+        const p = document.createElement("span");
+        p.textContent = glyphs[i % glyphs.length];
+        const angle = (Math.PI * 2 * i) / 26 + Math.random() * 0.4;
+        const dist = 90 + Math.random() * 120;
+        const x = Math.cos(angle) * dist;
+        const y = Math.sin(angle) * dist * 1.25;
+        p.style.fontSize = `${0.7 + Math.random() * 1.1}rem`;
+        p.style.color = i % 3 ? "#F0DCA0" : "#BDE8FF";
+        box.append(p);
+        p.animate(
+          [
+            { transform: "translate(-50%, -50%) scale(0.2)", opacity: 1 },
+            { transform: `translate(calc(-50% + ${x}px), calc(-50% + ${y}px)) scale(1)`, opacity: 1, offset: 0.6 },
+            { transform: `translate(calc(-50% + ${x * 1.15}px), calc(-50% + ${y * 1.15 + 30}px)) scale(0.4)`, opacity: 0 },
+          ],
+          { duration: 1300 + Math.random() * 600, easing: "cubic-bezier(.15,.7,.3,1)", fill: "forwards" },
+        ).finished.then(() => p.remove());
+      }
+    }
+
+    async function drawAnimated(chosen: HTMLButtonElement, card: Card) {
+      fill(card, false);
+      root.dataset.state = "drawing";
+      const items = backs.map((b) => b.closest("li")!);
+
+      // 1. the fan gathers into one deck
+      items.forEach((li, k) =>
+        li.animate(
+          [{ transform: getComputedStyle(li).transform }, { transform: `translate(${(k - 3) * 1.5}px, ${-k}px) rotate(0deg)` }],
+          { duration: 420, delay: Math.abs(k - 3) * 40, easing: "cubic-bezier(.5,0,.2,1)", fill: "forwards" },
+        ),
+      );
+      await wait(560);
+
+      // 2. a quick riffle – cards hop left and right out of the pile
+      const riffles = items.map((li, k) =>
+        li.animate(
+          [
+            { transform: `translate(${(k - 3) * 1.5}px, ${-k}px)` },
+            { transform: `translate(${k % 2 ? 70 : -70}px, ${-k - 14}px) rotate(${k % 2 ? 12 : -12}deg)`, offset: 0.25 },
+            { transform: `translate(${(k - 3) * 1.5}px, ${-k}px)`, offset: 0.5 },
+            { transform: `translate(${k % 2 ? -62 : 62}px, ${-k - 10}px) rotate(${k % 2 ? -10 : 10}deg)`, offset: 0.75 },
+            { transform: `translate(${(k - 3) * 1.5}px, ${-k}px)` },
+          ],
+          { duration: 820, delay: k * 35, easing: "ease-in-out", fill: "forwards" },
+        ),
+      );
+      await Promise.all(riffles.map((a) => a.finished));
+
+      // 3. the pile sinks away while the chosen card springs out, spins and turns over
+      items.forEach((li) => li.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 300, fill: "forwards" }));
+      chosen.blur();
+      const cardEl = $(".cotd-card");
+      cardEl.hidden = false;
+      root.dataset.state = "flipping";
+      const inner = $(".cotd-card-inner");
+      const flip = inner.animate(
+        [
+          { transform: "translateY(2.5rem) scale(0.72) rotateY(0deg) rotateZ(0deg)" },
+          { transform: "translateY(-3.2rem) scale(1.08) rotateY(200deg) rotateZ(-8deg)", offset: 0.45 },
+          { transform: "translateY(-0.6rem) scale(1.02) rotateY(470deg) rotateZ(4deg)", offset: 0.75 },
+          { transform: "translateY(0) scale(1) rotateY(540deg) rotateZ(0deg)" },
+        ],
+        { duration: 1500, easing: "cubic-bezier(.3,.6,.25,1)", fill: "forwards" },
+      );
+      setTimeout(() => {
+        sparkBurst();
+        $(".cotd-glow").animate(
+          [
+            { opacity: 0, transform: "scale(0.6)" },
+            { opacity: 1, transform: "scale(1.15)", offset: 0.4 },
+            { opacity: 0.55, transform: "scale(1)" },
+          ],
+          { duration: 1400, easing: "ease-out", fill: "forwards" },
+        );
+      }, 1050);
+      await flip.finished;
+
+      root.dataset.state = "revealed";
+      $(".cotd-reading").hidden = false;
+      await wait(250);
+      const reading = $(".cotd-reading");
+      if (reading.getBoundingClientRect().top > innerHeight * 0.85) {
+        reading.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+
+    // --- start ------------------------------------------------------------------------
+
+    const friend = config.compact ? undefined : byId(new URLSearchParams(location.search).get("k"));
     const mine = read();
 
     if (friend && friend.id !== mine?.id) {
       if (mine) $(".cotd-own").textContent = config.seeOwn;
-      show(friend, { animate: false, fromFriend: true });
+      showStatic(friend, true);
     } else if (mine) {
-      show(mine, { animate: false });
+      showStatic(mine);
     } else {
-      root.querySelectorAll<HTMLButtonElement>(".cotd-back").forEach((btn) => {
+      startPeeking();
+      backs.forEach((btn) => {
         btn.disabled = false;
         btn.addEventListener("click", () => {
           if (root.dataset.state !== "idle") return;
-          btn.closest("li")!.classList.add("chosen");
+          clearInterval(peekTimer);
           const card = randomCard();
           save(card);
           track("draw_card", { card: card.id });
-          show(card, { animate: true });
-          setTimeout(() => $(".cotd-reading").scrollIntoView({ behavior: "smooth", block: "nearest" }), 1400);
+          if (reduceMotion) showStatic(card);
+          else drawAnimated(btn, card);
         });
       });
     }
-  }
+  });
 </script>
 
 <style>
   .cotd {
     --w: clamp(6.2rem, 22vw, 9.5rem);
     margin-top: 2.5rem;
+  }
+
+  .cotd [hidden] {
+    display: none !important;
   }
 
   .cotd-prompt {
@@ -258,6 +466,9 @@ const config = {
     font-size: 1.125rem;
     color: theme("colors.pearl.muted");
   }
+  .cotd[data-state="revealed"] .cotd-prompt {
+    display: none;
+  }
 
   .cotd-table {
     position: relative;
@@ -266,13 +477,22 @@ const config = {
     min-height: calc(var(--w) * 1.75 + 4rem);
     margin-top: 2rem;
   }
+  .cotd:not([data-state="idle"]) .cotd-table {
+    min-height: calc(var(--w) * 1.35 * 1.733 + 2rem);
+  }
 
   /* --- the fan of face-down cards --- */
   .cotd-fan {
     position: relative;
     width: var(--w);
     height: calc(var(--w) * 1.73);
-    transition: opacity 0.5s ease;
+  }
+  .cotd[data-state="revealed"] .cotd-fan,
+  .cotd[data-state="flipping"] .cotd-fan {
+    pointer-events: none;
+  }
+  .cotd[data-state="revealed"] .cotd-fan {
+    display: none;
   }
 
   .cotd-fan li {
@@ -280,7 +500,20 @@ const config = {
     inset: 0;
     transform-origin: 50% 140%;
     transform: rotate(calc(var(--i) * 9deg)) translateY(calc(var(--o) * 0.25rem));
-    transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease;
+  }
+  .cotd-fan li:hover,
+  .cotd-fan li:focus-within {
+    z-index: 2;
+  }
+
+  /* the whole fan breathes gently, card after card, like a wave */
+  .cotd[data-state="idle"] .cotd-fan li > .cotd-back {
+    animation: cotd-breathe 3.2s var(--d) ease-in-out infinite;
+  }
+  @keyframes cotd-breathe {
+    50% {
+      translate: 0 -0.35rem;
+    }
   }
 
   .cotd-back,
@@ -301,41 +534,27 @@ const config = {
       0 10px 30px rgba(0, 0, 0, 0.45);
   }
 
-  .cotd-fan li:hover,
-  .cotd-fan li:focus-within {
-    z-index: 2;
-  }
-
   .cotd-back {
     cursor: pointer;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    transition:
+      box-shadow 0.3s ease,
+      transform 0.35s cubic-bezier(0.3, 1.6, 0.5, 1);
   }
-
   .cotd-back:disabled {
     cursor: default;
   }
-
   .cotd-back:not(:disabled):hover,
   .cotd-back:not(:disabled):focus-visible {
     outline: none;
-    transform: translateY(-0.9rem);
+    transform: translateY(-1.1rem) rotate(-3deg) scale(1.04);
     box-shadow:
       inset 0 0 0 4px #1c1245,
       inset 0 0 0 5px rgba(217, 180, 90, 0.9),
       0 0 0 1px rgba(43, 210, 255, 0.6),
       0 0 26px rgba(43, 210, 255, 0.45);
   }
-
-  /* once a card is chosen, the fan fades away */
-  .cotd:not([data-state="idle"]) .cotd-fan li:not(.chosen) {
-    opacity: 0;
-  }
-  .cotd:not([data-state="idle"]) .cotd-fan li.chosen {
-    transform: translateY(-1.5rem) scale(1.05);
-  }
-  .cotd[data-state="revealed"] .cotd-fan {
-    opacity: 0;
-    pointer-events: none;
+  .cotd-back:not(:disabled):active {
+    transform: translateY(-0.6rem) scale(0.97);
   }
 
   /* --- the card that turns over --- */
@@ -344,14 +563,6 @@ const config = {
     width: calc(var(--w) * 1.35);
     aspect-ratio: 360 / 624;
     perspective: 1200px;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .cotd-card[hidden] {
-    display: none;
-  }
-  .cotd[data-state="revealed"] .cotd-card {
-    opacity: 1;
   }
 
   .cotd-card-inner {
@@ -359,7 +570,6 @@ const config = {
     width: 100%;
     height: 100%;
     transform-style: preserve-3d;
-    transition: transform 1s cubic-bezier(0.3, 0.7, 0.2, 1);
   }
   .cotd[data-state="revealed"] .cotd-card-inner {
     transform: rotateY(180deg);
@@ -383,23 +593,37 @@ const config = {
       0 18px 50px rgba(0, 0, 0, 0.55);
   }
 
+  .cotd-glow {
+    position: absolute;
+    inset: -18%;
+    border-radius: 50%;
+    background: radial-gradient(closest-side, rgba(240, 220, 160, 0.35), rgba(127, 90, 240, 0.25) 55%, transparent);
+    opacity: 0;
+    pointer-events: none;
+  }
+  .cotd[data-state="revealed"] .cotd-glow {
+    opacity: 0.55;
+  }
+
+  .cotd-sparks {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+  }
+  .cotd-sparks :global(span) {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    line-height: 1;
+    text-shadow: 0 0 8px currentColor;
+  }
+
   /* --- the reading --- */
   .cotd-reading {
-    max-width: 38rem;
+    max-width: 40rem;
     margin: 2.5rem auto 0;
     text-align: center;
-    animation: cotd-rise 0.8s 0.5s ease both;
-  }
-  .cotd-reading[hidden] {
-    display: none;
-  }
-
-  .cotd [hidden] {
-    display: none !important;
-  }
-
-  .cotd[data-state="revealed"] .cotd-prompt {
-    display: none;
+    animation: cotd-rise 0.8s 0.1s ease both;
   }
 
   .cotd-label {
@@ -422,26 +646,70 @@ const config = {
     color: theme("colors.gold.300");
   }
 
-  .cotd-message {
+  .cotd-sections {
+    margin-top: 2.2rem;
+    text-align: left;
+  }
+  .cotd-section {
+    padding: 1.2rem 0;
+    border-top: 1px solid theme("colors.night.line");
+  }
+  .cotd-section:first-child {
+    border-top: 0;
+  }
+  .cotd-section-title {
+    font-family: theme("fontFamily.display");
+    font-size: 1.35rem;
+    letter-spacing: 0.02em;
+    color: theme("colors.gold.300");
+  }
+  .cotd-section-title span {
+    display: inline-block;
+    width: 1.4rem;
+    color: theme("colors.gold.DEFAULT");
+  }
+  .cotd-section p {
+    margin-top: 0.45rem;
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: theme("colors.pearl.DEFAULT");
+  }
+
+  .cotd-lead {
     margin-top: 1.4rem;
     font-size: 1.2rem;
     line-height: 1.7;
     color: theme("colors.pearl.DEFAULT");
   }
 
+  .cotd-question,
   .cotd-advice {
-    margin-top: 1.6rem;
-    padding: 1.1rem 1.3rem;
-    border: 1px solid rgba(217, 180, 90, 0.4);
+    margin-top: 1.4rem;
+    padding: 1.2rem 1.4rem;
     border-radius: 0.75rem;
+  }
+  .cotd-question {
+    border: 1px solid rgba(43, 210, 255, 0.35);
+    background: rgba(12, 6, 32, 0.6);
+    box-shadow: 0 0 30px rgba(43, 210, 255, 0.08);
+  }
+  .cotd-advice {
+    border: 1px solid rgba(217, 180, 90, 0.4);
     background: rgba(28, 18, 69, 0.55);
     backdrop-filter: blur(6px);
   }
-  .cotd-advice-label {
+  .cotd-panel-label {
     font-size: 0.8rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: theme("colors.gold.DEFAULT");
+  }
+  .cotd-question-text {
+    margin-top: 0.4rem;
+    font-family: theme("fontFamily.display");
+    font-size: 1.45rem;
+    line-height: 1.4;
+    color: theme("colors.ice.100");
   }
   .cotd-advice-text {
     margin-top: 0.35rem;
@@ -449,14 +717,16 @@ const config = {
     color: theme("colors.ice.100");
   }
 
-  .cotd-more {
+  .cotd-more,
+  .cotd-cta {
     display: inline-block;
-    margin-top: 1.4rem;
+    margin-top: 1.6rem;
     padding-bottom: 0.2rem;
     border-bottom: 1px solid theme("colors.neon.DEFAULT");
     color: theme("colors.ice.100");
   }
-  .cotd-more:hover {
+  .cotd-more:hover,
+  .cotd-cta:hover {
     color: theme("colors.neon.DEFAULT");
   }
 
@@ -480,15 +750,15 @@ const config = {
     border-radius: 9999px;
     font-size: 0.95rem;
     color: theme("colors.pearl.muted");
-    transition: border-color 0.2s, color 0.2s, box-shadow 0.2s;
+    transition:
+      border-color 0.2s,
+      color 0.2s,
+      box-shadow 0.2s;
   }
   .cotd-share-buttons > *:hover {
     border-color: theme("colors.neon.DEFAULT");
     color: theme("colors.neon.DEFAULT");
     box-shadow: 0 0 18px rgba(43, 210, 255, 0.3);
-  }
-  .cotd-share-buttons > [hidden] {
-    display: none;
   }
   .cotd-share-buttons [data-share="native"] {
     border-color: rgba(217, 180, 90, 0.6);
@@ -511,6 +781,14 @@ const config = {
   .cotd-own:hover {
     color: theme("colors.night.DEFAULT");
     background: theme("colors.gold.DEFAULT");
+  }
+
+  /* compact (home page) */
+  .cotd--compact {
+    margin-top: 1.5rem;
+  }
+  .cotd--compact .cotd-reading {
+    margin-top: 1.8rem;
   }
 
   @keyframes cotd-rise {

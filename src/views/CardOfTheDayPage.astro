@@ -13,16 +13,16 @@ const c = {
     title: "Таро карта за деня – изтегли своята карта безплатно",
     h1: "Таро карта за деня",
     description:
-      "Изтегли своята таро карта за деня: послание, ключови думи и съвет от класическото таро Rider–Waite–Smith. Безплатно, всеки ден.",
-    lead: "Една карта, един въпрос, едно послание за деня.",
+      "Изтегли своята таро карта за деня: архетипно послание, енергия на деня, скритото послание, сянката на картата и въпрос за размисъл. Безплатно, всеки ден.",
+    lead: "Синхронизирай деня си ⭐",
     home: "Начало",
   },
   en: {
     title: "Tarot Card of the Day – Draw Your Free Daily Card",
     h1: "Tarot Card of the Day",
     description:
-      "Draw your free tarot card of the day: a message, keywords and advice from the classic Rider–Waite–Smith tarot. A new card every day.",
-    lead: "One card, one question, one message for the day.",
+      "Draw your free tarot card of the day: its archetypal message, the energy of the day, the hidden message, the card's shadow and a question for reflection. A new card every day.",
+    lead: "Synchronise your day ⭐",
     home: "Home",
   },
 }[lang];
@@ -54,7 +54,7 @@ const jsonLd = [
 >
   <header class="text-center">
     <h1 class="text-5xl md:text-6xl">{c.h1}</h1>
-    <p class="mx-auto mt-4 max-w-prose text-lg text-pearl-muted">{c.lead}</p>
+    <p class="mx-auto mt-4 max-w-prose font-display text-2xl text-gold-300">{c.lead}</p>
   </header>
 
   <CardOfTheDay lang={lang} />
@@ -86,7 +86,7 @@ const jsonLd = [
             </li>
           </ul>
           <p>
-            Значенията тук са кратки – те са ключ, не цялата врата. Ако искаш да погледнем заедно по-дълбок
+            Посланията тук са ключ, не цялата врата. Ако искаш да погледнем заедно по-дълбок
             разклад, виж <a href="/consult">консултациите</a>.
           </p>
 
@@ -138,7 +138,7 @@ const jsonLd = [
             </li>
           </ul>
           <p>
-            The meanings here are brief – a key, not the whole door. If you would like us to look at a
+            These messages are a key, not the whole door. If you would like us to look at a
             deeper spread together, see <a href="/en/consult">readings</a>.
           </p>
 
