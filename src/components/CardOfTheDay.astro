@@ -522,16 +522,12 @@ const config = {
     width: 100%;
     height: 100%;
     border-radius: 0.6rem;
-    border: 1px solid rgba(217, 180, 90, 0.75);
-    background:
-      radial-gradient(circle at 50% 50%, rgba(240, 220, 160, 0.9) 0 2.5%, transparent 3%),
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cg fill='none' stroke='%23D9B45A' stroke-width='1.1' opacity='.85'%3E%3Ccircle cx='50' cy='50' r='30'/%3E%3Ccircle cx='50' cy='50' r='22'/%3E%3Cpath d='M50 14 58 50 50 86 42 50Z M14 50 50 42 86 50 50 58Z'/%3E%3Cpath d='M50 28 L69 61 L31 61 Z M50 72 L31 39 L69 39 Z' opacity='.7'/%3E%3C/g%3E%3C/svg%3E")
-        center / 78% no-repeat,
-      radial-gradient(ellipse at 50% 40%, #3a2585 0%, #1c1245 55%, #0c0620 100%);
+    border: 1px solid rgba(150, 205, 255, 0.55);
+    /* the A·R·A card back */
+    background: #07012d url("/cards/back.webp") center / cover no-repeat;
     box-shadow:
-      inset 0 0 0 4px #1c1245,
-      inset 0 0 0 5px rgba(217, 180, 90, 0.55),
-      0 10px 30px rgba(0, 0, 0, 0.45);
+      0 0 14px rgba(120, 190, 255, 0.25),
+      0 10px 30px rgba(0, 0, 0, 0.5);
   }
 
   .cotd-back {
@@ -548,10 +544,8 @@ const config = {
     outline: none;
     transform: translateY(-1.1rem) rotate(-3deg) scale(1.04);
     box-shadow:
-      inset 0 0 0 4px #1c1245,
-      inset 0 0 0 5px rgba(217, 180, 90, 0.9),
-      0 0 0 1px rgba(43, 210, 255, 0.6),
-      0 0 26px rgba(43, 210, 255, 0.45);
+      0 0 0 1px rgba(43, 210, 255, 0.7),
+      0 0 26px rgba(43, 210, 255, 0.55);
   }
   .cotd-back:not(:disabled):active {
     transform: translateY(-0.6rem) scale(0.97);
