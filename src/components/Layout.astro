@@ -15,6 +15,8 @@ interface Props {
   title?: string;
   description?: string;
   image?: string;
+  /** Description of the share image (og:image:alt, twitter:image:alt). */
+  imageAlt?: string;
   activeUrl?: string;
   isHero?: boolean;
   /** The same page in the other language; null when it has no translation. */
@@ -38,6 +40,7 @@ const {
   title,
   description = tr("siteDescription"),
   image,
+  imageAlt,
   activeUrl = "",
   isHero = false,
   type = "website",
@@ -82,10 +85,12 @@ const structured = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     {bgUrl && enUrl && <link rel="alternate" hreflang="x-default" href={bgUrl} />}
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImage} />
+    {imageAlt && <meta property="og:image:alt" content={imageAlt} />}
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title ?? siteName} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImage} />
+    {imageAlt && <meta name="twitter:image:alt" content={imageAlt} />}
     {structured.map((data) => <script type="application/ld+json" set:html={JSON.stringify(data)} />)}
     <meta name="theme-color" content="#120A2E" />
     <link rel="icon" href="/favicon.ico" sizes="48x48" />

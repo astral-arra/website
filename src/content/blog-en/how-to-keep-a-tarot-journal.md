@@ -6,6 +6,7 @@ author: Astral ARRA
 description: "How to keep a tarot journal step by step: why it matters, what to record after every spread, paper or digital journal, and original ideas for your practice."
 section: taro
 image: "../images/kak-da-si-vodim-taro-dnevnik/cover.jpg"
+imageAlt: "An open tarot journal with handwritten notes, a fountain pen and The Moon and The Star cards from the Rider–Waite–Smith tarot"
 tags:
   - tarot
   - tarot journal
@@ -21,7 +22,7 @@ I started keeping a journal years ago, almost by accident, and it became one of 
 
 A tarot journal is a notebook, file or app where you record every spread you do: the date, the question, the cards you drew, your interpretation and – later – what actually happened. Over time it becomes your own **tarot dictionary**, an archive of your readings and a chronicle of your path.
 
-![A deck of tarot cards laid out in a spread](../images/kak-da-si-vodim-taro-dnevnik/01.jpg)
+![Cards from a dark, mystical tarot deck laid out in a spread on pale blue cloth](../images/kak-da-si-vodim-taro-dnevnik/01.jpg)
 
 ## Why keep a tarot journal: 5 benefits
 
@@ -47,7 +48,7 @@ Before we get to the "how", it's important to understand the "why".
 
    For me this is the most useful thing a tarot journal does. There is no stronger feeling of illumination than seeing how things unfolded a year later – and realising the cards were actually spot on, but your vision and interpretation back then were more limited, and you couldn't even have imagined some of the events. That is exactly how real experience builds up and how you learn the new, true meanings of the cards. Sadly, it's also how I realised how far our fate is fixed by decisions made long ago... Turning the Wheel of Fortune really is hard. That's why keeping a tarot journal is essential from the very start of your tarot journey. The journal is also the best test of which readings come from intuition and which from fear – more on that in [“Intuition or Fear?”](/en/blog/intuition-or-fear).
 
-![Tarot cards and a notebook on the table](../images/kak-da-si-vodim-taro-dnevnik/02.jpg)
+![Cards with floral motifs scattered across a wooden table – an idea for visual notes in a tarot journal](../images/kak-da-si-vodim-taro-dnevnik/02.jpg)
 
 ## How to keep a tarot journal, step by step
 
@@ -95,7 +96,7 @@ Here is a short template you can copy into your journal:
 - ✔️ your interpretation;
 - ✔️ **later:** what decision you made and how things turned out, plus any new insights.
 
-![A tarot card framed among flowers](../images/kak-da-si-vodim-taro-dnevnik/03.jpg)
+![The Star from the Rider–Waite–Smith tarot, framed among roses and a string of pearls](../images/kak-da-si-vodim-taro-dnevnik/03.jpg)
 
 ## Original ideas for your tarot journal 💡
 

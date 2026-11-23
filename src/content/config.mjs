@@ -17,6 +17,8 @@ const postsFor = (sectionsCollection) => defineCollection({
       tags: z.array(z.string()).optional(),
       categories: z.array(z.string()).optional(),
       image: image().optional(),
+      /** Description of the cover image (alt text, og:image:alt). */
+      imageAlt: z.string().optional(),
     }),
 });
 

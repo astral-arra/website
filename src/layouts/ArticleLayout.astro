@@ -17,7 +17,7 @@ interface Props {
 const { post, section, alternate = null } = Astro.props;
 const lang = getLang(Astro.url);
 const tr = t(lang);
-const { title, date, author, tags = [], image, description } = post.data;
+const { title, date, author, tags = [], image, imageAlt, description } = post.data;
 const { Content } = await post.render();
 const topic = post.data.section ? await getEntry(post.data.section) : undefined;
 const path = Astro.url.pathname;
@@ -45,6 +45,7 @@ const jsonLd = [
   title={title}
   description={description ?? title}
   image={image?.src}
+  imageAlt={imageAlt}
   activeUrl={section.url}
   alternate={alternate}
   type="article"
@@ -76,7 +77,7 @@ const jsonLd = [
 
     {
       image && (
-        <Image src={image} alt="" widths={[832, 1664]} sizes="(min-width: 900px) 832px, 100vw" class="mt-10 w-full rounded-sm" />
+        <Image src={image} alt={imageAlt ?? ""} widths={[832, 1664]} sizes="(min-width: 900px) 832px, 100vw" class="mt-10 w-full rounded-sm" />
       )
     }
 
