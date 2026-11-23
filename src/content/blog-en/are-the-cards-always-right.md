@@ -334,6 +334,6 @@ Rarely with precision, because the cards capture the sequence of events more tha
 
 <div class="img-final">
 
-![A glowing hooded woman among the stars, with the words: “The wise man rules his stars; the fool obeys them”](../images/a-sega-de-kartite-vinagi-li-poznavat/mudriyat.jpg)
+![A glowing hooded woman among the stars, with the words “The wise man rules his stars – the fool obeys them”](../images/a-sega-de-kartite-vinagi-li-poznavat/mudriyat-en.jpg)
 
 </div>
