@@ -10,8 +10,6 @@ upcoming:
     image: "../images/sections/taro/02.jpg"
   - title: "The common mistakes you make in your readings"
     image: "../images/sections/taro/04.jpg"
-  - title: "How important is intuition in Tarot?"
-    image: "../images/sections/taro/05.jpg"
   - title: "Is Tarot from the devil?"
     image: "../images/sections/taro/06.jpg"
   - title: "What's different about reading tarot for clients"

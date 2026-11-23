@@ -10,8 +10,6 @@ upcoming:
     image: "../images/sections/taro/02.jpg"
   - title: "Честите грешки, които допускате в гаданията си"
     image: "../images/sections/taro/04.jpg"
-  - title: "Колко важна е интуицията в Тарото?"
-    image: "../images/sections/taro/05.jpg"
   - title: "Тарото от дявола ли е?"
     image: "../images/sections/taro/06.jpg"
   - title: "Особености на Таро гледането с клиенти"

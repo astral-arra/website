@@ -39,7 +39,7 @@ In the esoteric tradition, however, intuition runs deeper. It is regarded as the
 
 Personally, I believe it matters not to conflate these two perspectives – but not necessarily to set them against each other either. The psychological view helps us understand the mechanics of perception; the esoteric model offers another way of making sense of the experience.
 
-Either way, the need remains to test our own perceptions.
+Either way, the need remains to test our own perceptions. (Why intuition matters so much to the reading itself is the subject of [“How Important Is Intuition in Tarot?”](/en/blog/how-important-is-intuition-in-tarot).)
 
 ## Fear seeks confirmation; intuition seeks observation
 
