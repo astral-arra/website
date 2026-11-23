@@ -51,6 +51,8 @@ When you draw a card, pay attention to the first feeling or thought that comes t
 
 **Remember:** Tarot is a tool for working with intuition, and however many traditional meanings the cards have, in the end it is your personal intuitive impression that decides whether a reading holds. Besides, many decks differ considerably from the original [Rider–Waite–Smith](https://en.wikipedia.org/wiki/Rider%E2%80%93Waite_Tarot) symbolism and show quite different, specific scenes (the Tarot of the Elves, for example), which can capture a situation precisely.
 
+How to tell a genuine first intuition from fear and your own projections is the subject of a separate article: [“Intuition or Fear?”](/en/blog/intuition-or-fear).
+
 ## 3. Keep a tarot journal 📒✍️
 
 Writing down your spreads is extremely useful – I've said it more than once. It lets you follow how your practice evolves over time and notice repetitions and patterns. The journal also lets you quickly "spark" and find synchronicities, meanings and patterns in your readings that are unique to you. Priceless. You really have no idea how much we forget.

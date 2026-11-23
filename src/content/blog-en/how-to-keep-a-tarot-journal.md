@@ -45,7 +45,7 @@ Before we get to the "how", it's important to understand the "why".
 
 5. **Checking whether your readings really work**
 
-   For me this is the most useful thing a tarot journal does. There is no stronger feeling of illumination than seeing how things unfolded a year later – and realising the cards were actually spot on, but your vision and interpretation back then were more limited, and you couldn't even have imagined some of the events. That is exactly how real experience builds up and how you learn the new, true meanings of the cards. Sadly, it's also how I realised how far our fate is fixed by decisions made long ago... Turning the Wheel of Fortune really is hard. That's why keeping a tarot journal is essential from the very start of your tarot journey.
+   For me this is the most useful thing a tarot journal does. There is no stronger feeling of illumination than seeing how things unfolded a year later – and realising the cards were actually spot on, but your vision and interpretation back then were more limited, and you couldn't even have imagined some of the events. That is exactly how real experience builds up and how you learn the new, true meanings of the cards. Sadly, it's also how I realised how far our fate is fixed by decisions made long ago... Turning the Wheel of Fortune really is hard. That's why keeping a tarot journal is essential from the very start of your tarot journey. The journal is also the best test of which readings come from intuition and which from fear – more on that in [“Intuition or Fear?”](/en/blog/intuition-or-fear).
 
 ![Tarot cards and a notebook on the table](../images/kak-da-si-vodim-taro-dnevnik/02.jpg)
 
