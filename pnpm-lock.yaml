@@ -20,6 +20,9 @@ importers:
       '@fontsource/forum':
         specifier: ^5.3.0
         version: 5.3.0
+      '@fontsource/great-vibes':
+        specifier: ^5.3.0
+        version: 5.3.0
       '@vercel/analytics':
         specifier: ^2.0.1
         version: 2.0.1
@@ -350,6 +353,9 @@ packages:
 
   '@fontsource/forum@5.3.0':
     resolution: {integrity: sha512-wZmonoit7JhG5usRNScbeNBzqnqijKD7Kzv6pRBXklVdwsADNarLG/5K6+XoCMx3JyBAwg52TxO+dretsomNrQ==}
+
+  '@fontsource/great-vibes@5.3.0':
+    resolution: {integrity: sha512-1w60cXzXnC9V4y943po8044O1mqRQBiTTK75h7OpZE+1VQtx+KlAAzoIyEE5KNzu05gUpxaCQg7cbL7ITSwegQ==}
 
   '@img/sharp-darwin-arm64@0.33.5':
     resolution: {integrity: sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ==}
@@ -2427,6 +2433,8 @@ snapshots:
   '@fontsource-variable/literata@5.3.0': {}
 
   '@fontsource/forum@5.3.0': {}
+
+  '@fontsource/great-vibes@5.3.0': {}
 
   '@img/sharp-darwin-arm64@0.33.5':
     optionalDependencies:

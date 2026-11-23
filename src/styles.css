@@ -317,3 +317,24 @@
 .article-body .img-narrow img {
   max-width: min(17rem, 70%);
 }
+
+/* A medium, centred image (e.g. a square painting). */
+.article-body .img-medium img {
+  max-width: min(34rem, 92%);
+}
+
+/* A small credit line right under an illustration. */
+.article-body .img-credit {
+  margin-top: -1.2em;
+  text-align: center;
+  font-size: 0.8rem;
+  color: theme("colors.pearl.dim");
+}
+.article-body .img-credit a {
+  color: inherit;
+}
+
+/* The closing image of an article. */
+.article-body .img-final {
+  margin-top: 3rem;
+}

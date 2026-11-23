@@ -2,6 +2,7 @@
 import { Image } from "astro:assets";
 import { getEntry, type CollectionEntry } from "astro:content";
 import Layout from "../components/Layout.astro";
+import ArticleSignoff from "../components/ArticleSignoff.astro";
 import { formatDate } from "../lib/posts";
 import { getLang, localize, t } from "../lib/i18n";
 import { article, breadcrumbs } from "../lib/seo";
@@ -82,6 +83,8 @@ const jsonLd = [
     <div class="article-body prose prose-lg prose-arra mt-10 max-w-none">
       <Content />
     </div>
+
+    <ArticleSignoff lang={lang} title={title} />
 
     {
       tags.length > 0 && (
