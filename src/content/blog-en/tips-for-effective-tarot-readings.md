@@ -6,6 +6,7 @@ author: Astral ARRA
 description: "How to read tarot more accurately: a ritual before the spread, first impressions, a significator card, precise questions and the “cross-examination” technique."
 section: taro
 image: "../images/trikove-za-efektivno-gledane-na-taro/cover.jpg"
+imageAlt: "A freckled woman looks straight into the camera, half her face hidden behind a fan of tarot cards"
 tags:
   - tarot
   - tarot reading
@@ -43,8 +44,6 @@ For some of you it's a good idea to have a small ritual – tapping the cards, s
 
 *Example ritual:* tapping the cards while saying "I call upon the good spirits, bring me knowledge".
 
-![A woman holding a fan of tarot cards in front of her face](../images/trikove-za-efektivno-gledane-na-taro/04.jpg)
-
 ## 2. Trust your first impression 💫
 
 When you draw a card, pay attention to the first feeling or thought that comes to you. Intuition often speaks through exactly these first impressions. Don't worry if you're unsure of the card's meaning – just write down what you feel, then look up more information in books or online to fine-tune your intuitive impressions.
@@ -57,7 +56,7 @@ How to tell a genuine first intuition from fear and your own projections is the 
 
 Writing down your spreads is extremely useful – I've said it more than once. It lets you follow how your practice evolves over time and notice repetitions and patterns. The journal also lets you quickly "spark" and find synchronicities, meanings and patterns in your readings that are unique to you. Priceless. You really have no idea how much we forget.
 
-![An open tarot journal with notes and a small three-card spread](../images/trikove-za-efektivno-gledane-na-taro/taro-dnevnik.jpg)
+![A hand writing in a tarot journal by candlelight, beside a three-card spread: the Ace of Cups, the Three of Wands and The Sun](../images/trikove-za-efektivno-gledane-na-taro/taro-dnevnik.jpg)
 
 *What goes into the journal:*
 
