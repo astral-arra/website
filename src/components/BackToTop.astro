@@ -1,0 +1,94 @@
+---
+// A small round arrow in the bottom-right corner that appears once the visitor has scrolled
+// down and takes them smoothly back to the top of the page.
+import type { Lang } from "../lib/i18n";
+
+interface Props {
+  lang: Lang;
+}
+const label = Astro.props.lang === "bg" ? "Обратно към началото" : "Back to top";
+---
+
+<a href="#top" class="to-top" aria-label={label} title={label} data-to-top>
+  <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true">
+    <path d="M12 19V5M5.5 11.5 12 5l6.5 6.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+  </svg>
+</a>
+
+<script>
+  const button = document.querySelector<HTMLAnchorElement>("[data-to-top]");
+  if (button) {
+    const toggle = () => button.classList.toggle("is-visible", window.scrollY > window.innerHeight * 0.6);
+    toggle();
+    window.addEventListener("scroll", toggle, { passive: true });
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      const smooth = !matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: smooth ? "smooth" : "auto" });
+      button.blur();
+    });
+  }
+</script>
+
+<style>
+  .to-top {
+    position: fixed;
+    right: max(1rem, env(safe-area-inset-right));
+    bottom: max(1rem, env(safe-area-inset-bottom));
+    z-index: 40;
+    display: grid;
+    place-items: center;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid rgba(43, 210, 255, 0.7);
+    border-radius: 9999px;
+    background: rgba(18, 10, 46, 0.82);
+    backdrop-filter: blur(6px);
+    color: #bde8ff;
+    box-shadow:
+      0 0 10px rgba(43, 210, 255, 0.45),
+      0 6px 20px rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(0.75rem);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease,
+      box-shadow 0.25s ease,
+      color 0.25s ease;
+  }
+  .to-top.is-visible {
+    opacity: 1;
+    pointer-events: auto;
+    transform: none;
+  }
+  .to-top:hover,
+  .to-top:focus-visible {
+    outline: none;
+    color: #fff;
+    box-shadow:
+      0 0 6px #2bd2ff,
+      0 0 22px rgba(43, 210, 255, 0.7),
+      0 6px 20px rgba(0, 0, 0, 0.45);
+  }
+  .to-top:hover svg {
+    transform: translateY(-2px);
+  }
+  .to-top svg {
+    transition: transform 0.25s ease;
+  }
+
+  @media (min-width: 768px) {
+    .to-top {
+      right: 1.75rem;
+      bottom: 1.75rem;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .to-top,
+    .to-top svg {
+      transition: none;
+    }
+  }
+</style>
